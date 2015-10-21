@@ -1,9 +1,8 @@
 
 Ecuatii Diferentiale si cu Derivate Partiale
-= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 [TOC]
-
 
 
 #Ecuatii diferentiale de tip primitiva( in $\mathbb{R}$)
@@ -160,14 +159,11 @@ $\alpha C = C$
 *Rezolvari*:
 1. $$ f(t,x) = \frac{2xt}{x^2 - t^2} \\
  f(\alpha t, \alpha x) = \frac{2\alpha^2xt}{\alpha^2x^2 - \alpha^2t^2} = \frac{2xt}{x^2 - t^2} = f(x, t) \implies \text{ ecuatia este omogena} \\
-
 \text{Facem schimbarea de variabila } y(t) = \frac{x(t)}{t} \implies x = ty \\
  \text{Ecuatia devine, deci } \frac{\operatorname{d}}{\operatorname{d}\!t}(ty) = \frac{2t^2y}{t^2y^2 - t^2} \implies y + t \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \frac{2y}{y - 1} \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \left(\frac{2y}{y^2 - 1} - y\right)\frac{1}{t} \text{ care este ecuatie cu variabile separabile} \\
  = \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \left(\frac{3y - y^3}{y^2 - 1}\right)\frac{1}{t} \\
  \text{Avem } a(t) = \frac{1}{t} \text{ si } b(y) = \frac{3y - y^3}{y^2 - 1} \text{ unde } y \in \left( - \frac{1}{2}, \frac{1}{2}\right) \text{ si } t \in (2, 10) \\
-
 \frac{3y - y^3}{y^2 - 1} = 0 \implies y(3 - y^2) = 0 \implies \text{ Solutia stationara } y = 0 \implies \varphi_1 :(2, 10) \to \mathbb{R}, \varphi_1(t) = 0 \text{ solutie stationara pentru ecuatia in } y \implies x_1(t) = 0 \implies t = 0 \\
-
 \text{Pentru } y \neq 0 \frac{y^2 - 1}{y(3 - y^2)}\operatorname{d}\!y = \frac{1}{t}\operatorname{d}\!t \\
  \int\frac{y^2 - 1}{ - y^3 + 3y}\operatorname{d}\!y \text{ integrala care o rezolvam prin schimbare de variabila } \\
  z = - y^3 + 3y \implies \operatorname{d}\!z = - 3(z^2 - 1)\operatorname{d}\!y \\
