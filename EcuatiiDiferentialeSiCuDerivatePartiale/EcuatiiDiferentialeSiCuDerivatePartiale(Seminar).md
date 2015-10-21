@@ -5,6 +5,10 @@ Ecuatii Diferentiale si cu Derivate Partiale
 [TOC]
 
 
+> **NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI**
+
+> Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie [direct pe GitHub](https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/EcuatiiDiferentialeSiCuDerivatePartiale) sau trimite un mail la <mailto:stiu-chestii@vladionescu.me>
+
 #Ecuatii diferentiale de tip primitiva( in $\mathbb{R}$)
 
 Se da o functie $f : I \subset \mathbb{R} \to \mathbb{R}$ continua si se cere sa se determine multimea functiilor $F : I \to \mathbb{R}$ care verifica conditiile:
@@ -286,5 +290,11 @@ B_2\left(\frac{x + 1}{t - 1}\right) = A_2(t - 1) + C \text{ solutie implicita a 
  C^3 = - \frac{3}{4t^4} + 3 C_1 \\
  C(t) = \sqrt[3]{\frac{ - 3}{4t^4} + 3 C_1}, C_1 \in \mathbb{R} \\
  x(t) = t \sqrt[3]{\frac{ - 3}{4t^4} + 3 C_1}$$
+
+
+
+> **NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI**
+
+> Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie [direct pe GitHub](https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/EcuatiiDiferentialeSiCuDerivatePartiale) sau trimite un mail la <mailto:stiu-chestii@vladionescu.me>
 
 > Written with [StackEdit](https://stackedit.io/).
