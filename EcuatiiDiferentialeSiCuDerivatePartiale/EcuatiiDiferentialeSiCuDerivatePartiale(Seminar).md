@@ -291,10 +291,95 @@ B_2\left(\frac{x + 1}{t - 1}\right) = A_2(t - 1) + C \text{ solutie implicita a 
  C(t) = \sqrt[3]{\frac{ - 3}{4t^4} + 3 C_1}, C_1 \in \mathbb{R} \\
  x(t) = t \sqrt[3]{\frac{ - 3}{4t^4} + 3 C_1}$$
 
+#Ecuatia Riccati
 
+**Exemplu**: Fie ecuatia $\frac{\operatorname{d}\!x}{\operatorname{d}\!t} = \frac{1}{t}x^2 - \frac{2}{t^2}x - \frac{2}{t^2}$, cu $t > 0$.
+a. Determinati $\alpha \in \mathbb{R}$ astfel incat ecuatia sa aiba o solutie particulara de forma $\varphi_0(t) = \frac{\alpha}{t}$.
+b. Determiati multimea solutiilor ecuatiei si apoi solutia care verifica conditia $x(1) = 2$, daca exista.
+
+a. $$
+\frac{\operatorname{d}}{\operatorname{d}\!t}\left(\frac{\alpha}{t}\right) = \frac{1}{t} \left(\frac{\alpha}{t}\right)^2 - \frac{2}{t^2}\left(\frac{\alpha}{t}\right) - \frac{2}{t^2} \\
+\implies \alpha \frac{-1}{t^2} = \frac{\alpha^2}{t^3} - \frac{2 \alpha}{t^3} - \frac{2}{t^2} \\
+\implies- \alpha t = \alpha^2 -2\alpha -2t
+\\ \text{ Identificam coeficientii } \alpha^2 - 2\alpha = 0 \text{ si } -\alpha = -2 \text{ si identificam solutia nenula } \alpha = 2
+\\ \implies \text{Solutia particulara este } \varphi_0(t) = \frac{2}{t}
+$$
+
+b. $$
+x = y + \frac{2}{t} \implies \frac{\operatorname{d}}{\operatorname{d}\!t}\left(y + \frac{2}{t}\right) = \frac{1}{t}\left( y + \frac{2}{t}\right)^2 - \frac{2}{t^2}\left(y + \frac{2}{t}\right) - \frac{2}{t} \\
+\frac{\operatorname{d}\!y}{\operatorname{d}\!t} + \frac{-2}{t^2} = \frac{1}{t}\left(y^2 + \frac{4t}{t} + \frac{4}{t^2}\right) - \frac{2y}{t^2} - \frac{4}{t^3} - \frac{2}{t^2} \\
+\frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \frac{2}{t^2}y + \frac{1}{t}y^2 \text{ care este ecuatie Bernoulli} \\
+\\\text{Rezolvam ecuatia Bernoulli. In cazul nostru avem } a_1(t) = \frac{2}{t^2} \text{ si }  b_1(t) = \frac{1}{t} \text{ si } \alpha = 2 \\
+\text{Se rezolva ecuatia liniara omogena atasata } \frac{\operatorname{d}\!\bar{y}}{\operatorname{d}\!t} = \frac{2}{t^2} \bar{y} \\
+y(t) = C e^{A_1(t)} \\
+\int \frac{2}{t^2} \operatorname{d}\!t = \frac{-2}{t} \implies A_1(t) = \frac{-2}{t} \\
+\implies \bar{y}(t) = C e^{\frac{-2}{t}} \\
+\text{Aplicam metoda variatiei constantelor}. \\
+\text{Determinam functia } C : (0, +\infty) \to \mathbb{R} \text{ astfel incat } y(t) = C(t)e^{\frac{-2}{t}} \text{ sa fie solutie a ecuatiei Bernoulli.} \\
+C'(t) e^{\frac{-2}{t}} + C(t) e^{\frac{-2}{t}} \left(\frac{-2}{t}\right)' = \frac{2}{t}C(t) e^{\frac{-2}{t}} + \frac{1}{t}C^2(t) e^{\frac{-4}{t}} \\
+C' e^{\frac{-2}{t}} = \frac{1}{t}C^2 e^{\frac{-4}{t}} \\
+C'(t) = \frac{1}{t}C^2(t) e^{\frac{2}{t}} \text{ care este ecuatie cu variabile separabile}\\
+\frac{dC}{\operatorname{d}\!t} = \frac{e^{\frac{-2}{t}}}{t}C^2 \\
+C^2 = 0 \implies C = 0 \implies y = 0 \implies x=\frac{2}{t} \\
+\text{Pentru } C \neq 0 \text{ separam variabilele} \frac{dC}{c^2} = \frac{e^{\frac{-2}{t}}}{t}\operatorname{d}\!t \\
+\int \frac{dC}{C^2} = \frac{-1}{C} + C_1 \implies B_2(C) = \frac{-1}{C} \\
+\int \frac{e^{\frac{-2}{t}}}{t} \text{ care nu se poate integra.} \\
+B_2(C) = A_2(t) + K \\
+\frac{-1}{C} = \int_1^t\frac{e^{\frac{-2}{s}}}{s}\operatorname{d}\!s + K, K \in \mathbb{R} \\
+C(t) = \frac{1}{\int_1^t\frac{e^{\frac{-2}{s}}}{s}\operatorname{d}\!s + K} \\
+y(t) = \frac{1}{\int_1^t\frac{e^{\frac{-2}{s}}}{s}\operatorname{d}\!s + K} e^{\frac{-2}{t}} \\
+x = \frac{1}{\int_1^t\frac{e^{\frac{-2}{s}}}{s}\operatorname{d}\!s + K} e^{\frac{-2}{t}} + \frac{2}{t} \\
+\text{Din conditia } x(1) = 2 \implies x_1 \frac{1}{\int_1^1\frac{e^{\frac{-2}{s}}}{s}\operatorname{d}\!s + K} e^{\frac{-2}{t}} + \frac{2}{1} = 2 \\
+\implies \nexists K \\
+\text{Dar avem solutia partiala } \varphi_0(t) = \frac{2}{t} \text{ care verifica conditia } \varphi_0(1) = 2 \\
+\text{Solutia } \varphi_0(t) = \frac{2}{t}
+$$
+
+**Tema**: Sa se determine multimea solutiilor ecuatiilor:
+1. $x' = x^2 + 1 - t^2$ stiind ca admite ca solutie $\varphi_0(t) = \alpha t + \beta$, cu $\alpha, \beta \in \mathbb{R}$
+2. $2\left(t-t^2\sqrt{t}\right)x' + 2\sqrt{t}x^2 -x -t = 0$ stiind ca admite ca solutie $\varphi_0(t) = \alpha t + \beta$, cu $\alpha, \beta \in \mathbb{R}$
+3. $x' = -\frac{2t}{t^5-1}x^2 + \frac{t^4}{t^5-1}x + \frac{3t^2}{t^5-1}$, stiind ca admite solutie particulara de forma $\varphi_0(t) = \alpha x^m$, cu $\alpha, m \in \mathbb{R}$
+
+#Ecuatia implicita
+
+**Exercitii**:
+1. $t+x = \left(\frac{x'+1}{x'-1}\right)^2$
+2. $x = 2tx' - \left(x'\right)^2$
+3. $x = t\left(1 + x'\right) + \left(x'\right)^2$
+4. $x = \left(x'\right)^2 - x't + \frac{t^2}{2}$
+5. $\left(x'\right)^3 - 4txx' + 8x^2 =0 $
+
+*Rezolvari*:
+1. **tema**
+2. $$
+x = 2tx' - \left(x'\right)^2 \text{ care este ecuatie de tip Lagrange} \\
+\text{Derivam ecuatia in raport cu } t \text{: } 2x' + 2t\left(x'\right)' - 2\left(x'\right)\left(x'\right)' = x' \\
+\text{Notam } x' = p \implies p = 2p+2tp' -2pp' \\
+\implies p'(2t-2p) = -p \implies p' - \frac{p}{2(p-t)} \\
+\frac{\operatorname{d}\!p}{\operatorname{d}\!t} = \frac{p}{2(p-t)} \\
+\implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = \frac{2(p-t)}{p} \\
+\frac{\operatorname{d}\!t}{\operatorname{d}\!p} = 2 - \frac{2}{p}t \text{ care este ecuatie liniara in } t \text{ si }p \\
+\implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = a(t) + b(p) \implies a(p) = \frac{-2}{p} \text{ si } b(p) = 2 \\
+\text{Verificam } \varphi_0(p) = \alpha p \text{ este solutie pentru } \alpha \text{ convenabil determinat} \\
+\implies \frac{\operatorname{d}}{\operatorname{d}\!p}(\alpha p) = 2 - \frac{2}{p}\alpha p\\
+\implies \alpha = \frac{2}{3} \implies \varphi_0(p) = \frac{2}{3}p \text{ este solutie} \\
+\text{Facem schimbare de variabila } t = s + \varphi_0 \implies t = s + \frac{2}{3} p \\
+\implies \frac{\operatorname{d}}{\operatorname{d}\!p}\left(s + \frac{2}{3}p\right) = 2 - \frac{2}{p}\left(s + \frac{2}{3} p\right) \\
+\implies \frac{\operatorname{d}\!s}{\operatorname{d}\!p} = \frac{-2}{p}s\\
+\implies s = C e^{A(p)} \text{ unde } A \text{ este primitiva pentru } a(p) = \frac{-2}{p} \\
+\int \frac{-2}{p} \operatorname{d}\!p = -2 \ln |p| + C = \ln |p^{-2}|+ C = \ln \frac{1}{p^2} + C \\
+\implies s = C e^{ \ln \frac{1}{p^2} } \\
+\implies t = C \frac{1}{p^2} + \frac{2}{3}p \\
+\text{Solutia parametrica } t = C \frac{1}{p} + \frac{2}{3}p \\ x = 2tp-p^2 , C \in \mathbb{R}, p \text{ parametru}
+$$
+3. **tema**
+4. **tema**
+5. **tema**
 
 > **NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI**
 
 > Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie [direct pe GitHub](https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/EcuatiiDiferentialeSiCuDerivatePartiale) sau trimite un mail la <mailto:stiu-chestii@vladionescu.me>
+
+
 
 > Written with [StackEdit](https://stackedit.io/).
