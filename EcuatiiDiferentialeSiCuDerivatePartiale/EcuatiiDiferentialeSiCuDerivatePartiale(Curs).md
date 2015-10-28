@@ -327,7 +327,7 @@ $\implies \frac{\operatorname{d}\!x}{\operatorname{d}\!t} = \frac{\operatorname{
 Notam $x' = p = \frac{\operatorname{d}\!x}{\operatorname{d}\!t}$ $\implies$ $p = \frac{\partial g}{\partial t}(t,p) + \frac{\partial g}{\partial p}(t,p)p' \implies p' = \frac{p - \frac{\partial g}{\partial t}(t,p)}{\frac{\partial g}{\partial p}(t,p)} = \frac{\operatorname{d}\!p}{\operatorname{d}\!t} \implies p = p(t) \text{ sau } t = t(p) \implies $ solutia parametrica $$t = t(p) \\
 x = g(t,p)$$, $p$ parametru.
 
-###Ecuatia implicita $t = h(x,x')$.
+###Ecuatia implicita $t = h(x,x')$
 
 Se deriveaza in rasport cu $x$: $\frac{\operatorname{d}\!t}{\operatorname{d}\!x} = \frac{\operatorname{d}}{\operatorname{d}\!x}(h(x,x'))$.
 
@@ -355,12 +355,64 @@ Interpretare geometrica:
 Ipoteze: Pentru $f: \Omega \subset \mathbb{R}^2 \to \mathbb{R}$:
 1. $\exists a,b > 0 $ astfel incat $D = [t_0 - a, t_0 + a]\times[x_0 - b, x_0 + b] \subset \Omega$ aka exista un dreptungi in jururl lui $x_0, t_0$ care este in $\Omega$
 2. $f$ este cotinua in ambele variabile ( asta inseamna ca $\exists M \geq 0$ astfel incat $M = \sup \left|f(t,x)\right|, (t,x) \in D$
-3. $f$ este Lipschitz in a doua variabila adica $\exists L \geq 0$ astfel incat $\left|f(t,x_1) = f(t,x_2)\right| \leq L\left|x_1 - x_2\right|, \forall (t,x_1), (t,x_2) \in D$ **sau** $f$ este derivabila in raport cu $x$ si $\frac{\partial f}{\partial x}$ este continua pe $D$.
+3. $f$ este Lipschitz in a doua variabila adica $\exists L \geq 0$ astfel incat $\left|f(t,x_1) - f(t,x_2)\right| \leq L\left|x_1 - x_2\right|, \forall (t,x_1), (t,x_2) \in D$ **sau** $f$ este derivabila in raport cu $x$ si $\frac{\partial f}{\partial x}$ este continua pe $D$.
 
 **Tema:** Aratati ca daca $\frac{\partial f}{\partial x}$ este continua, atunci $f$ este Lipschitz in raport cu a doua variabila.
 
 In ipotezele de mai sus, rezulta ca:
-$\forall \alpha \leq \min\left\{{a, \frac{b}{M}}\right\}, \exists! \varphi: [t_0 - \alpha, t_0 + \alpha]\to[x_0 - b, x_0 + b]$ solutie a problemei Cauchy.
+$\forall \alpha \leq \min\left\{{a, \frac{b}{M}}\right\}, \exists! \varphi: [t_0 - \alpha, t_0 + \alpha]\to[x_0 - b, x_0 + b]$ solutie a problemei Cauchy, adica $\frac{d \varphi}{\operatorname{d}\!t}(t)=f(t, \varphi(t))$, $\forall t \in [t_0 - \alpha, t_0 + \alpha]$ si $\varphi(t_0)= x_0$.
+
+*Demonstratie*:
+
+Se defieneste sirul de functii $(\varphi_n)_{n \geq 0}$ definit prin $$\varphi_0(t) = x_0, \forall t \in [t_0 - \alpha, t_0 + \alpha] \\
+\varphi_{n+1}(t) = x_0 + \int_{t_0}^t f(s,\varphi_n(s))\operatorname{d}\!s$$
+
+Etapele demonstratiei:
+1. Aratam ca graficul $\Gamma_{\varphi_n} = \left\{(t,\varphi_n(t)) | t \in [t_0 - \alpha, t_0 + \alpha]\right\} \subseteq [x_0 - b, x_0 + b]$
+2. Aratam ca $(\varphi_n)_{n \geq 0}$ este sir Cauchy, deci converge uniform la o functie $\varphi : [t_0 - \alpha, t_0 + \alpha] \to [x_0 - b, x_0 + b]$, $\varphi(t)= \lim_{n \to \infty} \varphi_n(t)$, $\forall t \in [t_0 - \alpha, t_0 + \alpha]$
+3. Aratam ca $\varphi$ este solutia problemei Cauchy
+4. Aratam ca solutia gasita pentru problema Cauchy este unica(in sensul ca daca $\Psi : [t_0 - \alpha, t_0 + \alpha] \to \mathbb{R}$ solutie pentru ecuatia Cauchy, atunci $\Psi \equiv \varphi$)
+
+> **Demonstratiile de mai jos probabil au greseli si/sau sunt incomplete.**
+
+1.
+$$
+\text{Fie } n \geq 0 \text{. Avem }\\
+\Gamma_{\varphi_n} \subset [x_0 -b, x_0 +b] \iff \left|\varphi_n(t) -x_0\right| \leq b , \forall t \in [t_0 - \alpha, t_0 + \alpha] \\
+\text{Pentru } n = 0 \text{: } \varphi_0(t) = x_0 \implies \left|\varphi_0(t)-x_0\right| = 0 \leq b, \forall t \in [t_0 - \alpha, t_0 + \alpha]  \\
+\text{Pentru } n \geq 0 \text{: } \varphi_n(t) = x_0 + \int_{t_0}^t f\left(s, \varphi_{n-1}(s)\right) \operatorname{d}\!s \implies \varphi_n(t) - x_0 = \int_{t_0}^{t} f\left(s, \varphi_{n-1}(s)\right) \operatorname{d}\!s \implies \left|\varphi_n(t)-x_0\right| = \left|\int_{t_0}^t f(s, \varphi_{n-1}(s))\operatorname{d}\!s\right| \leq \int_{t_0}^t \left|f(s, \varphi_{n-1}(s))\right| \operatorname{d}\!s \implies \int_{t_0}^t M \operatorname{d}\!s = Ms_{t_0}^t = M(t-t_0) \leq M\alpha \leq M \frac{b}{M} = b \implies \Gamma_{\varphi_n} \subset [x_0-b, x_0 +b], \forall n \geq 0
+$$
+Tema: Demonstrati ca $|\varphi_n(t)-x_0| \leq b$, $\forall t < t_0$
+
+2.
+$$
+\text{Aratam ca } \forall n \geq 0 \text{ are loc inegalitatea: } \\
+\left|\varphi_{n+1}(t)-\varphi_n(t)\right| \leq \frac{M L^n(t-t_0)^{n+1}}{(n+1)!}, \forall t \geq t_0 \\
+\text{Demonstratie prin inductie dupa } n \text{: }\
+n = 0 \text{: } |\varphi_1(t)-\varphi_0(t)| = |x_0 + \int_{t_0}^t f(s, \varphi_0(s))\operatorname{d}\!s - x_0| = |\int_{t_0}^t f(s, \varphi_0(s))\operatorname{d}\!s| \leq \int_{t_0}^t |f(s, \varphi_0(s))|\operatorname{d}\!s \leq \int_{t_0}^t M \operatorname{d}\!s = M(t-t_0) = \frac{M L^0(t-t_0)^{n+2}}{(0 + 1)!} \\
+\text{Avem: }
+\left|\varphi_{n+2}(t) - \varphi_{n+1}\right| = \left|x_0 + \int_{t_0}^t f(s, \varphi_{n+1}(s))\operatorname{d}\!s - x_0 - \int_{t_0}^t f(s,\varphi_n(s))\operatorname{d}\!s\right| = \left|\int_{t_0}^t(f(s, \varphi_{n+1}(s)) - f(s, \varphi_n(s))) \operatorname{d}\!s\right| \leq \int_{t_0}^t \left|f(s, \varphi_{n+1}(s))-f(s, \varphi_n(s))\right|\operatorname{d}\!s \leq \int_{t_0}^t L\left|\varphi_{n-1}(s)-\varphi_n(s)\right|\operatorname{d}\!s \leq \int_{t_0}^t L \frac{ML^n(s-t_0)^{n+1}}{(n+1)!}\operatorname{d}\!s = \frac{ML^{n+1}}{(n+1)!} \int_{t_0}^{t} (s-t_0)^{n+1}\operatorname{d}\!s =  \frac{ML^{n+1}}{(n+1)!} \frac{(t-t_0)^{n+2}}{(n+2)} = \frac{ML^{n+1}(t-t_0)^{n+2}}{(n+2)!} \implies \text{ inegalitatea este adevarata. }\\
+\text{Aratam ca } \lim_{n \to \infty}\left|\varphi_{n+p}(t) - \varphi_n(t)\right| = 0 \\
+\text{Calculam } \left|\varphi_{n+p}(t) - \varphi_n(t)\right| = \left|\varphi_{n+p}(t) - \varphi_{n+p-1}(t)+ \varphi_{n+p-1}(t) - \varphi_{n+p-2}(t) + \dotsc + \varphi_{n+2}(t) - \varphi_{n+1}(t) + \varphi_{n+1}(t)-\varphi_n(t)\right| \leq \text{ suma modulelor }\leq \frac{ML^{n+p-1}(t-t_0)^{n+p}}{(n+p)!} + \frac{ML^{n+p-2}(t-t_0)^{n+p-1}}{(n+p-1)!} + \dotsc + \frac{ML^{n+1}(t-t_0)^{n+2}}{(n+2)!} + \frac{ML^{n}(t-t_0)^{n+1}}{(n+1)!} = \sum_{k=1}^p \frac{ML^{n+k-1}(t-t_0)^{n+k}}{(n+k)!} = \sum_{r=0}^{p-1} \frac{ML^{n+p-r-1}(t-t_0)^{n+p-r}}{(n+p-r)!} = M L^n(t-t_0)^n \sum_{r=0}^{p-1} \frac{L^{p-r-1}(t-t_0)^{p-r}}{(n+p-r)!} \leq \frac{ML^n(t-t_0)^n}{(n+1)!} \sum_{r=0}^{p-1} \frac{L^{p-r-1}(t-t_0)^{p-r}}{(p-r-1)!} \\\implies \left|\varphi_{n+p}(t)-\varphi_n(t)\right| \leq a_n C_p \\
+\lim_{n \to \infty} \frac{a_{n+1}}{a_n} = \lim_{n \to \infty} \frac{ML^{n+1}(t-t_0^{n-1})}{(n+2)!} \frac{(n+1)!}{M L^n(t-t_0)^n} = \lim_{n \to \infty} \frac{L(t-t_0)}{n+2} = 0\\  \implies lim_{n \to \infty} a_n = 0 \implies lim_{n \to \infty} \left|\varphi_{n+p}(t) - \varphi_n(t)\right| = 0 \implies (\varphi_n)_{n \geq 0} \text{ este sir Cauchy} \implies \\
+\exists \varphi \text{ astfel incat } \varphi(t) = lim_{n \to \infty} \varphi_n(t) \text{, congruenta fiind uniforma } \implies \varphi \text{ este continua si derivabila la fel si functiile din sirul } (\varphi_n)_{n \geq 0}
+$$
+
+3.
+$$
+\text{Aratam ca } \varphi \text{ este solutia problemei Cauchy.} \\
+\text{Demonstratie lipsa.} \\
+\text{Pentru a contribui vedeti inceputul sau sfarsitul documentului.}
+$$
+
+4. $$
+\text{Demonstratie lipsa.} \\
+\text{Pentru a contribui vedeti inceputul sau sfarsitul documentului.}
+$$
+
+***Tema***: Fie problema Cauchy: $$x' = x \\ x(0) = 1$$
+1. Aratati ca solutia problemei este $x(t) = e^t$
+2 Calculati sirul aproximatilor succesive si aratati ca $\varphi_n(t) = \sum_{k = 0}^n \frac{t^k}{k!}$
 
 Interpretare geometrica:
 ![Interpretarea geometrica](http://vladionescu.me/reprgrafica2.jpg "Interpretarea geometrica")
@@ -372,7 +424,7 @@ Fie $\varphi : I \subset \mathbb{R} \to \mathbb{R}$. Urmatoarele afirmatii sunt 
 x(t_0) = x_0$$
 2. $\forall t \in I \varphi(t) = x_0 + \int_{t_0}^{t} f(s,\varphi(s)) \operatorname{d}\!s$ ecuatie integrala
 
-*Demonstratie*:
+*Demonstratie lema*:
 
  - 1 $\implies$ 2
 Ipoteza: $\varphi$ solutie $\implies$ $$\varphi'(t) = f(t, \varphi(t)) \\
