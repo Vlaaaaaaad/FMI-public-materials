@@ -348,7 +348,7 @@ $$\varphi'(t) = f(t, \varphi(t)), \forall t \in I \\
 \varphi(t_0) = x_0$$
 
 Interpretare geometrica:
-![Interpretarea geometrica](http://vladionescu.me/reprgrafica1.jpg "Interpretarea geometrica")
+![Interpretarea geometrica](https://vladionescu.me/reprgrafica1.jpg "Interpretarea geometrica")
 
 ##Teorema de existenta si unicitate a solutiei problemei Cauchy
 
@@ -415,7 +415,7 @@ $$
 2 Calculati sirul aproximatilor succesive si aratati ca $\varphi_n(t) = \sum_{k = 0}^n \frac{t^k}{k!}$
 
 Interpretare geometrica:
-![Interpretarea geometrica](http://vladionescu.me/reprgrafica2.jpg "Interpretarea geometrica")
+![Interpretarea geometrica](https://vladionescu.me/reprgrafica2.jpg "Interpretarea geometrica")
 
 **Lema**( reprezentarea sub forma integrala a solutiei problemei Cauchy).
 
