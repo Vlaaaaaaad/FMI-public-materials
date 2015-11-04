@@ -1,6 +1,6 @@
 
 Ecuatii Diferentiale si cu Derivate Partiale
- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+============================================
 
 [TOC]
 
@@ -131,7 +131,8 @@ $\alpha C = C$
 
 *Rezolvari*:
 1. $$ \text{ Identificam } a(t) = \frac{1}{t^2 - 4} \text { si } b(x) = x^2 - 2x - 8 \\
- \text{ Rezolvam } b(x) = 0 \implies x^2 - 2x - 8 = 0 \implies x_1 = 4 \text{ si } x_2 = - 2 \text{ care sunt in domeniu } \implies \text{ avem solutiile } \varphi_1, \varphi_2 : (2, + \infty) \to \mathbb{R} \text{ cu } \varphi_1(t) = 4 \text{ si }\varphi_2(t) = - 2 \\
+ \text{ Rezolvam } b(x) = 0 \implies x^2 - 2x - 8 = 0 \implies x_1 = 4 \text{ si } x_2 = - 2 \text{ care sunt in domeniu }\\
+ \implies \text{ avem solutiile } \varphi_1, \varphi_2 : (2, + \infty) \to \mathbb{R} \text{ cu } \varphi_1(t) = 4 \text{ si }\varphi_2(t) = - 2 \\
  \text{ Pentru } x \in \mathbb{R} - \{ - 2, 4\} \text{ separam variabilele } \frac{\operatorname{d}\!x}{x^2 - 2x - 8} = \frac{\operatorname{d}\!t}{t^2 - 4} \\
  \int \frac{1}{x^2 - 2x - 8}\operatorname{d}\!x = \int \frac{1}{(x - 4)(x + 2)}\operatorname{d}\!x \\
  \text{Luam } \frac{1}{(x - 4)(x + 2)} = \frac{A}{x - 4} + \frac{B}{x + 2} \implies A = \frac{1}{6} \text{ si } B = - \frac{1}{6} \\
@@ -144,9 +145,11 @@ $\alpha C = C$
  B(x) = A(t) + C \\
  \frac{1}{6} \ln \left|\frac{x - 4}{x + 2}\right| = \frac{1}{4} \ln \left|\frac{t - 2}{t + 2}\right| \\
  \ln\left|\frac{x - 4}{x + 2}\right| + C = \ln\left|\frac{t - 2}{t + x}\right|^{\frac{3}{2}} + 6C \\
- = \frac{x - 4}{x + 2} = \pm \left(\frac{t - 2}{t + 2}\right)^{\frac{3}{2}} e^{6C} = \pm e^{6C}\sqrt{\frac{t - 2}{t + 2}^3} \implies x - 4 = (x - 2) e^{6C} \sqrt{\frac{t - 2}{t + 2}^3} \implies x\left(1 - e^{6C} \sqrt{\frac{t - 2}{t + 2}^3}\right) = 2 e^{6C} \sqrt{\frac{t - 2}{t + 2}^3} + 4 \\
+ = \frac{x - 4}{x + 2} = \pm \left(\frac{t - 2}{t + 2}\right)^{\frac{3}{2}} e^{6C} = \pm e^{6C}\sqrt{\frac{t - 2}{t + 2}^3} \implies x - 4 = (x - 2) e^{6C} \sqrt{\frac{t - 2}{t + 2}^3} \\
+ \implies x\left(1 - e^{6C} \sqrt{\frac{t - 2}{t + 2}^3}\right) = 2 e^{6C} \sqrt{\frac{t - 2}{t + 2}^3} + 4 \\
  \implies x = \frac{2 e^{6C} \sqrt{\frac{t - 2}{t + 2}^3} + 4}{1 - e^{6C} \sqrt{\frac{t - 2}{t + 2}^3}} \\
-\text{ Deci avem multimea solutiilor formata din } x = \frac{2 e^{6C} \sqrt{\frac{t - 2}{t + 2}^3} + 4}{1 - e^{6C} \sqrt{\frac{t - 2}{t + 2}^3}} \text{ si } \varphi_1, \varphi_2 : (2, + \infty) \to \mathbb{R} \text{ cu } \varphi_1(t) = 4 \text{ si }\varphi_2(t) = - 2$$
+\text{ Deci avem multimea solutiilor formata din } x = \frac{2 e^{6C} \sqrt{\frac{t - 2}{t + 2}^3} + 4}{1 - e^{6C} \sqrt{\frac{t - 2}{t + 2}^3}} \\
+\text{ si } \varphi_1, \varphi_2 : (2, + \infty) \to \mathbb{R} \text{ cu } \varphi_1(t) = 4 \text{ si }\varphi_2(t) = - 2$$
 2. **tema**
 3. **tema**
 4. **tema**
@@ -164,10 +167,12 @@ $\alpha C = C$
 1. $$ f(t,x) = \frac{2xt}{x^2 - t^2} \\
  f(\alpha t, \alpha x) = \frac{2\alpha^2xt}{\alpha^2x^2 - \alpha^2t^2} = \frac{2xt}{x^2 - t^2} = f(x, t) \implies \text{ ecuatia este omogena} \\
 \text{Facem schimbarea de variabila } y(t) = \frac{x(t)}{t} \implies x = ty \\
- \text{Ecuatia devine, deci } \frac{\operatorname{d}}{\operatorname{d}\!t}(ty) = \frac{2t^2y}{t^2y^2 - t^2} \implies y + t \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \frac{2y}{y - 1} \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \left(\frac{2y}{y^2 - 1} - y\right)\frac{1}{t} \text{ care este ecuatie cu variabile separabile} \\
+ \text{Ecuatia devine, deci } \frac{\operatorname{d}}{\operatorname{d}\!t}(ty) = \frac{2t^2y}{t^2y^2 - t^2} \\
+ \implies y + t \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \frac{2y}{y - 1} \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \left(\frac{2y}{y^2 - 1} - y\right)\frac{1}{t} \text{ care este ecuatie cu variabile separabile} \\
  = \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \left(\frac{3y - y^3}{y^2 - 1}\right)\frac{1}{t} \\
  \text{Avem } a(t) = \frac{1}{t} \text{ si } b(y) = \frac{3y - y^3}{y^2 - 1} \text{ unde } y \in \left( - \frac{1}{2}, \frac{1}{2}\right) \text{ si } t \in (2, 10) \\
-\frac{3y - y^3}{y^2 - 1} = 0 \implies y(3 - y^2) = 0 \implies \text{ Solutia stationara } y = 0 \implies \varphi_1 :(2, 10) \to \mathbb{R}, \varphi_1(t) = 0 \text{ solutie stationara pentru ecuatia in } y \implies x_1(t) = 0 \implies t = 0 \\
+\frac{3y - y^3}{y^2 - 1} = 0 \implies y(3 - y^2) = 0 \implies \text{ Solutia stationara } y = 0 \\
+\implies \varphi_1 :(2, 10) \to \mathbb{R}, \varphi_1(t) = 0 \text{ solutie stationara pentru ecuatia in } y \implies x_1(t) = 0 \implies t = 0 \\
 \text{Pentru } y \neq 0 \frac{y^2 - 1}{y(3 - y^2)}\operatorname{d}\!y = \frac{1}{t}\operatorname{d}\!t \\
  \int\frac{y^2 - 1}{ - y^3 + 3y}\operatorname{d}\!y \text{ integrala care o rezolvam prin schimbare de variabila } \\
  z = - y^3 + 3y \implies \operatorname{d}\!z = - 3(z^2 - 1)\operatorname{d}\!y \\
@@ -194,8 +199,11 @@ $\alpha C = C$
  \frac{d \bar{x}}{\operatorname{d}\!t} = \frac{2t}{t^2 + 1}\bar{x} \implies \bar{x}(t) = C e^{A(t)}\\
  \int \frac{2t}{t^2 + 1}\operatorname{d}\!t = \int \frac{(t^2 + 1)'}{t^2 + 1}\operatorname{d}\!t = \ln( t^2 + 1) + C \implies A(t) = \ln (t^2 + 1) \\
  \implies \bar{x} = C e^{\ln( t^2 + 1)} = C (t^2 + 1) \\
- \text{Aplicam metoda variatiei constantelor. Determinam } C: \mathbb{R} \to \mathbb{R} \text{ astfel incat } x(t) = C(t) (t^2 + 1) \text{ sa verifice ecuatia data initial} \\
- \frac{\operatorname{d}\ !C(t)(t^2 + 1)}{\operatorname{d}\!t} = \frac{2t}{t^2 + 1} (C(t)(t^2 + 1)) + 2t - 1\implies C(t)' (t^2 + 1) + C(t)(t^2 + 1)' = 2tC(t) = 2t - 1 \implies C(t)' = \frac{2t - 1}{t^2 - 1} \implies C(t) = \int \frac{2t - 1}{t^2 - 1}\operatorname{d}\!t = \ln(t^2 + 1) - \arctan(t) + C_1 \\
+ \text{Aplicam metoda variatiei constantelor.} \\
+ \text{Determinam } C: \mathbb{R} \to \mathbb{R} \text{ astfel incat } x(t) = C(t) (t^2 + 1) \text{ sa verifice ecuatia data initial} \\
+ \frac{\operatorname{d}\ !C(t)(t^2 + 1)}{\operatorname{d}\!t} = \frac{2t}{t^2 + 1} (C(t)(t^2 + 1)) + 2t - 1 \\
+ \implies C(t)' (t^2 + 1) + C(t)(t^2 + 1)' = 2tC(t) = 2t - 1 \implies C(t)' = \frac{2t - 1}{t^2 - 1} \\
+ \implies C(t) = \int \frac{2t - 1}{t^2 - 1}\operatorname{d}\!t = \ln(t^2 + 1) - \arctan(t) + C_1 \\
  \implies x(t) = \left(\ln(t^2 + 1) - \arctan(t) + C_1\right) (t^2 + 1)$$
 2. **tema**
 3. **tema**
@@ -212,15 +220,17 @@ $\alpha C = C$
 
 *Rezolvari*:
 1. **tema**
-2. $$\text{Suntem in cazul } d = 0 \implies \text{ alegem una din cele doua optiuni de schimbare de variabila. Am ales } 2t + x = y \text{ si } x = y - 2t \\
+2. $$\text{Suntem in cazul } d = 0 \implies \text{ alegem una din cele doua optiuni de schimbare de variabila.} \\
+\text{Am ales } 2t + x = y \text{ si } x = y - 2t \\
  \frac{\operatorname{d}}{\operatorname{d}\!t}(y - 2t) = \frac{2t + y - 2t - 1}{4t + 2y - 4t - 4} \\
  \frac{\operatorname{d}\!y}{\operatorname{d}\!t} - 2 = \frac{y - 1}{2y - 4} \\
  \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \frac{y - 1 + 4y - 8}{2y - 4}\\
 \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = \frac{5y - 9}{2y - 4} \text{ care este ecuatie cu variabile separabile } \\
  a_2(t) = 1 \text{ si } b_2(y) = \frac{5y - 9}{2y - 4} \\
- \text{Cautam solutii stationare } b2(y) = 0 \implies t = \frac{9}{5} \text{ Deci rezulta solutia stationara } y_1(t) = \frac{9}{5} x_1(t) = \frac{9}{5} - 2t \\
+ \text{Cautam solutii stationare } b2(y) = 0 \implies t = \frac{9}{5} \\
+ \text{ Deci rezulta solutia stationara } y_1(t) = \frac{9}{5} x_1(t) = \frac{9}{5} - 2t \\
  \text{Daca } y \neq \frac{9}{5} \text{ separam variabilele } \implies \frac{2y - 4}{5y - 9}\operatorname{d}\!y = 1 \operatorname{d}\!t \\
- \int \frac{2y - 4}{5y - 9}\operatorname{d}\!y = \frac{2}{5} \int \frac{y - 2}{y - \frac{9}{5}}\operatorname{d}\!y = \frac{2}{5} \int \frac{y - \frac{9}{5} + \frac{9}{5} - 2}{y - \frac{9}{5}} \operatorname{d}\!y = \frac{2}{5}\left( \int 1 \operatorname{d}\!y - \frac{1}{5}\int \frac{1}{y - \frac{9}{5}}\operatorname{d}\!y\right) = \frac{2}{5}y - \frac{2}{25} \ln \left|y - \frac{9}{5}\right| + C \\
+ \int \frac{2y - 4}{5y - 9}\operatorname{d}\!y = \frac{2}{5} \int \frac{y - 2}{y - \frac{9}{5}}\operatorname{d}\!y = \frac{2}{5} \int \frac{y - \frac{9}{5} + \frac{9}{5} - 2}{y - \frac{9}{5}} \operatorname{d}\!y = \\\frac{2}{5}\left( \int 1 \operatorname{d}\!y - \frac{1}{5}\int \frac{1}{y - \frac{9}{5}}\operatorname{d}\!y\right) = \frac{2}{5}y - \frac{2}{25} \ln \left|y - \frac{9}{5}\right| + C \\
  B_2 = \frac{2}{5} y - \frac{2}{25} \ln \left|y - \frac{9}{5}\right|, A_2(t) = t \\
  \implies \text{Solutia implicita a ecuatiei in } y \text{ este } B_2(y) = A_2(t) + C = \frac{2}{5} y - \frac{2}{25} \ln \left|y - \frac{9}{5}\right| = t + C \\
  \frac{2}{5} (x + 2t) - \frac{2}{25} \ln \left|x + 2t - \frac{9}{5}\right| = t + C$$
@@ -343,14 +353,57 @@ $$
 #Ecuatia implicita
 
 **Exercitii**:
-1. $t+x = \left(\frac{x'+1}{x'-1}\right)^2$
+1. $t+x = \left(\frac{x'+1}{x'-1}\right)^2$.
+            a. Precizati in cate moduri poate fi rezolvata ecuatia.
+        b. Determinati multimea solutilor considerand ecuatia ca fiind de forma $t = h\left(x, x'\right)$.
+        c. Determinati solutia ecuatiei care verifica $x(1) = -1$.
 2. $x = 2tx' - \left(x'\right)^2$
 3. $x = t\left(1 + x'\right) + \left(x'\right)^2$
 4. $x = \left(x'\right)^2 - x't + \frac{t^2}{2}$
-5. $\left(x'\right)^3 - 4txx' + 8x^2 =0 $
+5. $\left(x'\right)^3 - 4t x x' + 8x^2 =0 $
 
 *Rezolvari*:
-1. **tema**
+1.
+a. $$
+\text{Avem doua moduri de rezolvare: } \\
+t = \left(\frac{x'+1}{x'-1}\right)^2 - x  \text{ care se rezolva prin derivare in raport cu } x \\
+\text{sau} \\
+x = \left(\frac{x'+1}{x'-1}\right)^2 -t \text{ care se rezolva prin derivare in raport cu } t
+$$
+b. $$
+t = \left(\frac{x'+1}{x'-1}\right)^2 - x \\
+t = h\left(x, x'\right) \text{ unde } h\left(x, x'\right) = \left(\frac{x'+1}{x'-1}\right)^2 -x \\
+\frac{\operatorname{d}\!t}{\operatorname{d}\!x} = \frac{\operatorname{d}}{\operatorname{d}\!x}\left(h\left(x,x'\right)\right) \\
+\frac{\operatorname{d}\!t}{\operatorname{d}\!x} = \frac{\partial h}{\partial x} + \frac{\partial h}{\partial x'} \frac{\operatorname{d}\!x'}{\operatorname{d}\!x} \\
+\implies \frac{\operatorname{d}\!x}{\operatorname{d}\!t} = 2\left(\frac{x'+1}{x'-1}\right) \frac{\left(x'-1\right)\left(x'+1\right)}{\left(x'-1\right)^2} \frac{\operatorname{d}\!x'}{\operatorname{d}\!x} - 1 \\
+\frac{\operatorname{d}\!t}{\operatorname{d}\!x} = \frac{1}{\frac{\operatorname{d}\!x}{\operatorname{d}\!t}} \text{Notam } x' = \frac{\operatorname{d}\!x}{\operatorname{d}\!t} = p \\
+\implies \frac{1}{p} = 2\left(\frac{p+1}{p-1}\right) \frac{-2}{(p-1)^2} \frac{\operatorname{d}\!p}{\operatorname{d}\!x} - 1 \\
+\frac{1}{p} + 1 = \frac{-4 (p+1)}{(p-1)^2} \frac{\operatorname{d}\!p}{\operatorname{d}\!x} \\
+\frac{p+1}{p} = \frac{-4(p+1)}{(p-1)^3} \frac{\operatorname{d}\!p}{\operatorname{d}\!x} \\
+\text{Daca } p+1 = 0 \text{ atunci ecuatia este adevarata pentru ca imi da } 0 = 0 \implies x' = -1 \implies x = -t + C  \\
+\implies t = \left(\frac{-1+1}{-1-1}\right)^2 +t - C \implies C = 0 \implies x(t) = -t\\
+\text{Daca } p+1 \neq 0 \text{ simplificam } \implies \frac{1}{p} = \frac{-4}{(p-1)^3} \frac{\operatorname{d}\!p}{\operatorname{d}\!x} \\
+\implies \frac{\operatorname{d}\!p}{\operatorname{d}\!x} = \frac{(p-1)^3}{-4p} \text{ care este ecuatie cu variabile separabile in necunoscuta } p(x) \\
+\text{Rasturnam ecuatia } \frac{\operatorname{d}\!x}{\operatorname{d}\!p} = \frac{-4p}{(p-1)^3} \text{ care este ecuatie de tip primitiva } \\
+x(p) = \int \frac{-4p}{(p-1)^3} \operatorname{d}\!p \\
+\text{Notam } p - 1 = u \implies \operatorname{d}\!p = \operatorname{d}\!u \\
+\implies -4 \int \frac{u+1}{u^3} \operatorname{d}\!u \\
+= -4 \int \frac{u}{u^3}\operatorname{d}\!u - 4 \int \frac{1}{u^3}\operatorname{d}\!u \\
+\\ = 4 u^{-1} + 2 u^{-2}
+\\ = \frac{4}{u} + \frac{2}{u^2} \\
+\implies x(p) = \frac{4}{p-1} + \frac{2}{(p-1)^2} + C_1 \\
+\implies \text{Solutia parametrica este } x(p) = \frac{4}{p-1} + \frac{2}{(p-1)^2} + C_1 \text{ si } t = \left(\frac{p+1}{p-1}\right)^2 \\ \text{Deci multimea solutiilor este }x(t) = -t \text{ si } \\
+\text{ solutia parametrica formata din } x(p) = \frac{4}{p-1} + \frac{2}{(p-1)^2} + C_1 \text{ si } t = \left(\frac{p+1}{p-1}\right)^2
+-x
+$$
+c.
+$$
+\text{Daca } t = 1 \text{ si } x = -1 \implies -1 = \frac{4}{p-1} + \frac{2}{(p-1)^2} + C_1 \text{ si } 1 = \left(\frac{p + 1}{p-1}\right)^2 + 1 \\
+\implies p = -1 \implies -1 = \frac{4}{-2} + \frac{2}{4} + C_1 \\
+\implies C_1 = \frac{1}{2} \\
+\implies \text{Mai avem si solutia parametrica } x = \frac{4}{p-1} + \frac{2}{(p-1)^2} + \frac{1}{2} \implies t = \left(\frac{p+1}{p-1}\right)^2 -x
+$$
+
 2. $$
 x = 2tx' - \left(x'\right)^2 \text{ care este ecuatie de tip Lagrange} \\
 \text{Derivam ecuatia in raport cu } t \text{: } 2x' + 2t\left(x'\right)' - 2\left(x'\right)\left(x'\right)' = x' \\
@@ -375,6 +428,63 @@ $$
 3. **tema**
 4. **tema**
 5. **tema**
+
+
+
+#Aplicatii la Teorema de existenta si unicitate a solutiei problemei Cauchy(TEU)
+
+1. Fie problema Cauchy $\begin{cases} x' = 2 t \sin{x} \\ x(0) = \frac{\pi}{4} \end{cases}$, cu $(t,x) \in \mathbb{R}^2$.
+        a. Stabiliti daca problema data verifica ipotezele TEU.
+        b. Determinati primele 3 aproximatii din sirul aproximatiilor succesive.
+        c. Determinati solutia problemei.
+
+a.
+$$
+\begin{cases} \frac{\operatorname{d}\!x}{\operatorname{d}\!t} = f(t,x)\\ x(t_0) = x_0 \end{cases} \\
+f: \Omega \subset \mathbb{R}^2 \to \mathbb{R}, (t_0, x_0) \in \Omega \\
+\text{Sa scriem intai ipotezele: } \\
+\text{1. } \exists a,b > 0 \text{ astfel incat } D = \left[t_0-a, t_0+a\right] \times \left[t_0-b, t_0+b]\right] \subset \mathbb{R} \\
+\text{2. } f \text{ este continua in ambele variabile pe } D \\
+M = \sup \left\{\left|f(t,x)\right|, (t,x) \in D\right\} \\
+\text{3. } f \text{ este Lipschitz in a doua variabila AKA in } x \text{ adica este suficient ca } \frac{\partial f}{\partial x} \text{ sa fie continua pe } D \\
+\text{Avem } \\
+f(t,x) = 2 t \sin x \text{ cu } t_0 = 0, x_0 = \frac{\pi}{4}, \Omega = \mathbb{R}^2 \\
+\exists a,b > 0 \text{ astfel incat } D \subset \mathbb{R}^2 \\
+\text{Alegem } b = \frac{\pi}{4} \text{ si } a = 1 \\
+\implies D = \left[-1,1\right] \times \left[0,\frac{\pi}{2}\right]  \\
+\text{2. } f \text{ este continua in ambele argumete ca produs de functii elementare } \\
+M = \sup \left\{\left|2 t \sin x\right|, |t| \leq 1, x \in \left[0,\frac{\pi}{2}\right]\right\} \implies M = 2 \\
+\text{3. } \frac{\partial f}{\partial x} = \frac{\partial(2 t \sin x)}{\partial x} = 2 t \cos \text{ care este continua pe } D \\
+\text{Observatie: constanta din definitia formulei Lipschitz este } L = \sup \left\{\left|\frac{\partial f}{\partial x}(t,x)\right| | (t,x) \in D\right\} \\
+\implies \text{Sunt indeplinite conditiile TEU } \\
+\implies \forall \alpha \leq \min\left(a, \frac{b}{m}\right) \text{ care in cazul nostru } = \frac{\pi}{4} \\
+\exists! \varphi: \left[0 - \alpha, 0 + \alpha\right] \to \left[0, \frac{\pi}{2}\right] \text{ solutia problemei Cauchy date}
+$$
+
+b.
+$$
+\text{In general sirul aproximatiilor succesive este } \varphi_0(t) = x_0 \text{ si } \varphi_{(i+1)} = x_0 + \int_{t_0}^t\left(f\left(s, \varphi_i(s)\right)\right) \operatorname{d}\!s \\
+\text{In cazul nostru } \varphi_0(t) = \frac{\pi}{4} \\
+\varphi_1(t) = \frac{\pi}{4} + \int_0^t f\left(s, \frac{\pi}{4}\right) \operatorname{d}\!s \\
+= \frac{\pi}{4} + \int_0^t 2s \sin \frac{\pi}{4}\operatorname{d}\!s \\
+= \frac{\pi}{4} + \frac{\sqrt{2}}{2} \left[t^2 - 0^2\right] \\
+\implies \varphi_1(t) = \frac{\pi}{4} + \frac{\sqrt{2}}{2} t^2 \\
+\varphi_2(t) = \frac{\pi}{4} \int_0^t f\left(s, \varphi_1(s)\right)\operatorname{d}\!s \\
+= \frac{\pi}{4} + \int_0^t 2s \sin\left(\frac{\pi}{4} + \frac{\sqrt{2}}{2} s^2\right)\operatorname{d}\!s \\
+\text{Notam } \frac{\pi}{4} + \frac{\sqrt{2}}{2} s^2 = u \implies \operatorname{d}\!u = \sqrt{2} s \operatorname{d}\!s \\
+s = 0 \implies u = \frac{\pi}{4}; s = t \implies u =  \frac{\pi}{4} + \frac{\sqrt{2}}{2} t^2 \\
+=  \frac{\pi}{4} + \sqrt{2} \int_{ \frac{\pi}{4}}^{ \frac{\pi}{4} + \frac{\sqrt{2}}{2} t^2} \sin{u} \operatorname{d}\!u \\
+= \frac{\pi}{4} + \text{ chestia de mai sus rezolvata care e lunga }
+$$
+
+c. **tema**
+
+2. Fie problema Cauchy $\begin{cases} x' = 3 \sqrt[3]{x^2} \\ x(t_0) = x_0 \end{cases}$, cu $(t,x) \in \mathbb{R}^2$.
+        a. Stabiliti daca problema data verifica ipotezele TEU.
+        b. Determinati cateva aproximatii din sirul aproximatiilor succesive pentru $x_0 \neq 0$.
+        c. Aratati ca pentru $x_0 = 0 $ problema are mai multe solutii.
+
+
 
 > **NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI**
 
