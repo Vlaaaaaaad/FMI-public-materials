@@ -1,5 +1,5 @@
 Ecuatii Diferentiale si cu Derivate Partiale
- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+============================================
 
 [TOC]
 
@@ -95,7 +95,8 @@ x\in (0, \pi) - \varnothing = (0, \pi) \implies \text{ separam variabilele } \fr
 \int t {\operatorname{d}\!t} = \frac{t^2}{2} + C \implies A(t) = \frac{t^2}{2}
  \end{aligned}
  \right\}
- \qquad \implies \text{ solutia implicita: } - \cot x = \frac{t^2}{2} + C, C \in \mathbb{R} \implies \cot x = - \left(\frac{t^2}{2} + C\right) \implies \text{solutia explicita }x = \text{arccot}\left( - \frac{t^2}{2} - C\right), C \in \mathbb{R}
+ \qquad \implies \text{ solutia implicita: } - \cot x = \frac{t^2}{2} + C, C \in \mathbb{R} \\
+ \implies \cot x = - \left(\frac{t^2}{2} + C\right) \implies \text{solutia explicita }x = \text{arccot}\left( - \frac{t^2}{2} - C\right), C \in \mathbb{R}
 $$
 
 Alte 2 exemple ce raman ca tema:
@@ -204,7 +205,9 @@ Pentru cazul $|c| + |a| > 0$ calculam $d = ab_1 - b a_1$ si avem
  - daca $d \neq 0$ atunci prin schimbarea de variabila $(t,x) \to (s,y)$ daca prin $s = t - t_0$ si $y = x - x_0$ unde $(t_0, x_0)$ este solutia sistemului algebric liniar $at + bx + c = 0 \\
 a_1t + b_1x + c_1 = 0$, transforma ecuatia intro ecuatie omogena.
 Demonstratie:
-i. $d = 0 \implies ab_1 - ba_1 = 0 \implies a_b1 = ba_1 \implies \frac{a}{a_1} = \frac{b}{b_1}$. Stim ca $b$ sau $b1$ sunt nenule si presupunem ca $b \neq 0$. Atunci schimbarea de variabila este $y = at + bx \iff x = \frac{y - at}{b}$. Ecuatia devine $\frac{\operatorname{d}}{\operatorname{d}\!t}\left(\frac{y - at}{b}\right) = g\left(\frac{at + b \frac{(y - at)}{b} + c}{a_1 t + b_1 \frac{y - at}{b} + c_1}\right) \implies \frac{1}{b} \left(\frac{\operatorname{d}\!y}{\operatorname{d}\!t} - a\right) = g \left(\frac{at + y - at + c}{\frac{(ba_1 - b_1a)t + b_1y + bc_1}{b}}\right) \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = bg\left(\frac{(y + c)b}{b_1y + bc_1}\right) + a \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = h(y)$ care este o ecuatie cu variabile separabile.
+i. $d = 0 \implies ab_1 - ba_1 = 0 \implies a_b1 = ba_1 \implies \frac{a}{a_1} = \frac{b}{b_1}$. Stim ca $b$ sau $b1$ sunt nenule si presupunem ca $b \neq 0$. Atunci schimbarea de variabila este $y = at + bx \iff x = \frac{y - at}{b}$. Ecuatia devine $$\frac{\operatorname{d}}{\operatorname{d}\!t}\left(\frac{y - at}{b}\right) = g\left(\frac{at + b \frac{(y - at)}{b} + c}{a_1 t + b_1 \frac{y - at}{b} + c_1}\right) \\
+\implies \frac{1}{b} \left(\frac{\operatorname{d}\!y}{\operatorname{d}\!t} - a\right) = g \left(\frac{at + y - at + c}{\frac{(ba_1 - b_1a)t + b_1y + bc_1}{b}}\right) \\
+\implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = bg\left(\frac{(y + c)b}{b_1y + bc_1}\right) + a \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = h(y) \text{ care este o ecuatie cu variabile separabile.}$$
 
 ii. $at + bx = - c \\
 a_1 t + b_1x = - c_1 \implies$ sistemul $at + bx + c = 0 \\
@@ -229,7 +232,8 @@ Observatii:
 $$
 \frac{\operatorname{d}}{\operatorname{d}\!t}(C(t)e^{A(t)}) = a(t) C(t) e^{A(t)} + b(t)\left(C(t) e^{A(t)}\right)^\alpha \implies \\
 \frac{dC}{\operatorname{d}\!t} e^{A(t)} + C(t) e^{A(t)} A'(t) = \\
- = a(t) C(t) e^{A(t)} + b(t) C^\alpha e^{\alpha A(t)} \implies \frac{dC}{\operatorname{d}\!t} e^{A(t)} = b(t) C^\alpha e^{\alpha A(t)} \implies \frac{dC}{\operatorname{d}\!t} = \left(b(t) e^{(\alpha - 1)A(t)}\right)C^\alpha \implies \frac{dC}{\operatorname{d}\!t} = a_1(t)C^\alpha
+ = a(t) C(t) e^{A(t)} + b(t) C^\alpha e^{\alpha A(t)} \implies \frac{dC}{\operatorname{d}\!t} e^{A(t)} = b(t) C^\alpha e^{\alpha A(t)} \\
+ \implies \frac{dC}{\operatorname{d}\!t} = \left(b(t) e^{(\alpha - 1)A(t)}\right)C^\alpha \implies \frac{dC}{\operatorname{d}\!t} = a_1(t)C^\alpha
 $$ care este acuatie cu variabile separabile pentru functia $C$.
 Observatie: Daca $\alpha > 0$ atunci ecuatia are solutie stationara $C = 0.$ Altfel, pentru $\alpha < 0$, ecuatia nu are solutii stationare.
 
@@ -238,7 +242,12 @@ $(t,x) \to (t,y)$ prin $y = x^{1 - \alpha} \iff x = y^{\frac{1}{1 - \alpha}}$, $
 
 Prin schimbarea de variabila $y = x^{1 - \alpha}$ ecuatia Bernoulli devine o ecuatie liniara neomogena.
 
-Demonstartie: $y = x^{1 - \alpha} \implies \frac{\operatorname{d}}{\operatorname{d}\!t}(y^{\frac{1}{1 - \alpha}}) = a(t) y^{\frac{1}{1 - \alpha}} + b(t) \left(y^{\frac{1}{1 - \alpha}}\right)^\alpha \implies \frac{1}{1 - \alpha} y^{\frac{1}{1 - \alpha} - 1} \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = a(t) y^{\frac{1}{1 - \alpha}} + b(t) y^{\frac{\alpha}{1 - \alpha}} \implies \frac{1}{1 - \alpha} y^{\frac{\alpha}{1 - \alpha}} \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = a(t) y^{\frac{1}{1 - \alpha}} + b(t) y^{\frac{\alpha}{1 - \alpha}} \implies \frac{1}{1 - \alpha} \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = a(t) y^{\frac{1}{1 - \alpha} - \frac{\alpha}{1 - \alpha}} + b(t) \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = (1 - \alpha)a(t)y + (1 - \alpha)b(t)$ care este o ecuatie liniara in $y$.
+Demonstartie: $$y = x^{1 - \alpha} \implies \frac{\operatorname{d}}{\operatorname{d}\!t}(y^{\frac{1}{1 - \alpha}}) = a(t) y^{\frac{1}{1 - \alpha}} + b(t) \left(y^{\frac{1}{1 - \alpha}}\right)^\alpha \\
+\implies \frac{1}{1 - \alpha} y^{\frac{1}{1 - \alpha} - 1} \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = a(t) y^{\frac{1}{1 - \alpha}} + b(t) y^{\frac{\alpha}{1 - \alpha}} \\
+\implies \frac{1}{1 - \alpha} y^{\frac{\alpha}{1 - \alpha}} \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = a(t) y^{\frac{1}{1 - \alpha}} + b(t) y^{\frac{\alpha}{1 - \alpha}} \\
+\implies \frac{1}{1 - \alpha} \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = a(t) y^{\frac{1}{1 - \alpha} - \frac{\alpha}{1 - \alpha}} + b(t) \\
+\implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = (1 - \alpha)a(t)y + (1 - \alpha)b(t)\\
+\text{ care este ecuatie liniara in } y$$
 
 
 ##Ecuatia Riccati
@@ -253,7 +262,10 @@ Cazuri particulare:
 Daca $\varphi_0 : I \to \mathbb{R}$ este solutie a ecuatiei, adica $\frac{\operatorname{d}\!\varphi_0}{\operatorname{d}\!t}(t) = a(t) \varphi_0^2(t) + b(t)\varphi_0(t) + c(t), \forall t \in I$ atunci prin schimbarea de variabila $ y = x - \varphi_0$ ecuatia devine o ecuatie Bernoulli cu $\alpha = 2$.
 Demonstratie:
 $x = x - \varphi_0 \iff x = y + \varphi_0$ $x(t) = y(t) + \varphi_0(t)$.
-Ecuatia devine $\frac{\operatorname{d}}{\operatorname{d}\!t}(y + \varphi_0(t)) = a(t)(y + \varphi_0(t))^2 + b(t)(y + \varphi_0(t)) + c(t) \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} + \frac{\operatorname{d}\!\varphi_0}{\operatorname{d}\!t}(t) = a(t) y^2 + a(t) 2y \varphi_0(t) + a(t)\varphi_0^2(t) + b(t)y + b(t)\varphi_0(t) + c(t) \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = [ 2a(t)\varphi_0(t) - b(t)]y + a(t)y^2 \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = a_1(t)y + b_1(t)y^2$ ecuatie Bernoulli cu $\alpha = 2$.
+Ecuatia devine $$\frac{\operatorname{d}}{\operatorname{d}\!t}(y + \varphi_0(t)) = a(t)(y + \varphi_0(t))^2 + b(t)(y + \varphi_0(t)) + c(t)\\
+ \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} + \frac{\operatorname{d}\!\varphi_0}{\operatorname{d}\!t}(t) = a(t) y^2 + a(t) 2y \varphi_0(t) + a(t)\varphi_0^2(t) + b(t)y + b(t)\varphi_0(t) + c(t) \\
+ \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = [ 2a(t)\varphi_0(t) - b(t)]y + a(t)y^2 \\
+ \implies \frac{\operatorname{d}\!y}{\operatorname{d}\!t} = a_1(t)y + b_1(t)y^2 \text{ care este o ecuatie Bernoulli cu } \alpha = 2$$
 
  - - - -
 
@@ -270,8 +282,11 @@ $F(t,x,x') = 0$
 $x = t\varphi(x') + \Psi(x')$ unde $\varphi, \Psi : I \subset \mathbb{R} \to \mathbb{R}$ functii derivabile.
 
 Pentru integrare derivam $x = t\varphi(x') + \Psi(x')$ in raport cu $t$:
-$x' = 1 \varphi(x') + t \varphi'(x')(x') + \Psi'(x')(x')'$. Notam $x' = p \implies (x')' = p' = \frac{\operatorname{d}\!p}{\operatorname{d}\!t}$. Adica $p = \varphi(p) + t \varphi'(p) \frac{\operatorname{d}\!p}{\operatorname{d}\!t} + \Psi(p) \frac{\operatorname{d}\!p}{\operatorname{d}\!t} \implies p - \varphi(p) = (t\varphi'(p) + \Psi'(p))\frac{\operatorname{d}\!p}{\operatorname{d}\!t} \implies \frac{\operatorname{d}\!p}{\operatorname{d}\!t} = \frac{p - \varphi(p)}{t\varphi'(p) + \Psi'(p)} \implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = \frac{t\varphi'(p) + \Psi'(p)}{p - \varphi(p)} \implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = \left(\frac{\varphi'(p)}{p - \varphi(p)}\right)t + \left(\frac{\Psi'(p)}{p - \varphi(p)}\right)$ ecuatie liniara neomogena $\implies$ $t = t(p)$ solutie paramentrica a ecuatiei Lagrange $t = t(p) \\
-x = t\varphi(p) + \Psi(p)$. Daca in solutia parametrica se elimina $p$ atunci se obtine solutia explicita.
+$x' = 1 \varphi(x') + t \varphi'(x')(x') + \Psi'(x')(x')'$. Notam $x' = p \implies (x')' = p' = \frac{\operatorname{d}\!p}{\operatorname{d}\!t}$. Adica $$p = \varphi(p) + t \varphi'(p) \frac{\operatorname{d}\!p}{\operatorname{d}\!t} + \Psi(p) \frac{\operatorname{d}\!p}{\operatorname{d}\!t} \\
+\implies p - \varphi(p) = (t\varphi'(p) + \Psi'(p))\frac{\operatorname{d}\!p}{\operatorname{d}\!t} \\
+\implies \frac{\operatorname{d}\!p}{\operatorname{d}\!t} = \frac{p - \varphi(p)}{t\varphi'(p) + \Psi'(p)} \\
+\implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = \frac{t\varphi'(p) + \Psi'(p)}{p - \varphi(p)} \\
+\implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = \left(\frac{\varphi'(p)}{p - \varphi(p)}\right)t + \left(\frac{\Psi'(p)}{p - \varphi(p)}\right)$$ ecuatie liniara neomogena $\implies$ $t = t(p)$ solutie paramentrica a ecuatiei Lagrange $\begin{cases}t = t(p) \\ x = t\varphi(p) + \Psi(p) \end{cases}$. Daca in solutia parametrica se elimina $p$ atunci se obtine solutia explicita.
 
 **Exemplu**: Fie ecuatia Lagrange $x = t(1 + x') + (x')^2$. Se cere multimea solutiilro ecuatiei.
 
@@ -279,7 +294,9 @@ Identificam $\varphi(x') = 1 + x'$ si $\Psi(x') = (x')^2$ derivabile. $\varphi(u
 Se deriveaza ecuatia $$x' = (t(1 + x'))' + ((x')^2)' \\x' = 1(1 + x') + t(0 + (x')') + s(x')^{2 - 1}(x')' \\
  = 1 + x' + t(x')' + 2x'(x')'.$$.
 
-Notam $x' = p \implies p = 1 + p + tp' + 2pp' \implies - 1 = '(t + 2p) \implies p' = \frac{ - 1}{t + 2p} \implies \frac{\operatorname{d}\!p}{\operatorname{d}\!t} = \frac{ - 1}{t - 2p} \implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = \frac{t + 2p}{ - 1} \implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = - t - 2p$.
+Notam $$x' = p \implies p = 1 + p + tp' + 2pp' \implies - 1 = '(t + 2p) \implies p' = \frac{ - 1}{t + 2p} \\
+\implies \frac{\operatorname{d}\!p}{\operatorname{d}\!t} = \frac{ - 1}{t - 2p} \implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = \frac{t + 2p}{ - 1} \\
+\implies \frac{\operatorname{d}\!t}{\operatorname{d}\!p} = - t - 2p$$
 Ecuatia liniara $\frac{\operatorname{d}\!t}{\operatorname{d}\!p} = a(p) t + b(p)$ cu $a(p) = - 1$si $b(p) = - 2p$.
 Ecuati aliniara omogena atasata $$\frac{\operatorname{d}\!\bar{t}}{\operatorname{d}\!p} = - \bar{t} \implies \bar{t}(p) = C e^{A(p)} \\
 \int ( - 1)\operatorname{d}\!p = - p + C \implies A(p) = - p \\
@@ -371,7 +388,7 @@ Etapele demonstratiei:
 1. Aratam ca graficul $\Gamma_{\varphi_n} = \left\{(t,\varphi_n(t)) | t \in [t_0 - \alpha, t_0 + \alpha]\right\} \subseteq [x_0 - b, x_0 + b]$
 2. Aratam ca $(\varphi_n)_{n \geq 0}$ este sir Cauchy, deci converge uniform la o functie $\varphi : [t_0 - \alpha, t_0 + \alpha] \to [x_0 - b, x_0 + b]$, $\varphi(t)= \lim_{n \to \infty} \varphi_n(t)$, $\forall t \in [t_0 - \alpha, t_0 + \alpha]$
 3. Aratam ca $\varphi$ este solutia problemei Cauchy
-4. Aratam ca solutia gasita pentru problema Cauchy este unica(in sensul ca daca $\Psi : [t_0 - \alpha, t_0 + \alpha] \to \mathbb{R}$ solutie pentru ecuatia Cauchy, atunci $\Psi \equiv \varphi$)
+4. Aratam ca solutia gasita pentru problema Cauchy este unica(in sensul ca daca $\Psi : [t_0 - \alpha, t_0 + \alpha] \to \mathbb{R}$ solutie pentru ecuatia Cauchy, atunci $\Psi \equiv \varphi$.
 
 > **Demonstratiile de mai jos probabil au greseli si/sau sunt incomplete.**
 
@@ -380,7 +397,11 @@ $$
 \text{Fie } n \geq 0 \text{. Avem }\\
 \Gamma_{\varphi_n} \subset [x_0 -b, x_0 +b] \iff \left|\varphi_n(t) -x_0\right| \leq b , \forall t \in [t_0 - \alpha, t_0 + \alpha] \\
 \text{Pentru } n = 0 \text{: } \varphi_0(t) = x_0 \implies \left|\varphi_0(t)-x_0\right| = 0 \leq b, \forall t \in [t_0 - \alpha, t_0 + \alpha]  \\
-\text{Pentru } n \geq 0 \text{: } \varphi_n(t) = x_0 + \int_{t_0}^t f\left(s, \varphi_{n-1}(s)\right) \operatorname{d}\!s \implies \varphi_n(t) - x_0 = \int_{t_0}^{t} f\left(s, \varphi_{n-1}(s)\right) \operatorname{d}\!s \implies \left|\varphi_n(t)-x_0\right| = \left|\int_{t_0}^t f(s, \varphi_{n-1}(s))\operatorname{d}\!s\right| \leq \int_{t_0}^t \left|f(s, \varphi_{n-1}(s))\right| \operatorname{d}\!s \implies \int_{t_0}^t M \operatorname{d}\!s = Ms_{t_0}^t = M(t-t_0) \leq M\alpha \leq M \frac{b}{M} = b \implies \Gamma_{\varphi_n} \subset [x_0-b, x_0 +b], \forall n \geq 0
+\text{Pentru } n \geq 0 \text{: } \varphi_n(t) = x_0 + \int_{t_0}^t f\left(s, \varphi_{n-1}(s)\right) \operatorname{d}\!s \\
+\implies \varphi_n(t) - x_0 = \int_{t_0}^{t} f\left(s, \varphi_{n-1}(s)\right) \operatorname{d}\!s \\
+\implies \left|\varphi_n(t)-x_0\right| = \left|\int_{t_0}^t f(s, \varphi_{n-1}(s))\operatorname{d}\!s\right| \leq \int_{t_0}^t \left|f(s, \varphi_{n-1}(s))\right| \operatorname{d}\!s \\
+\implies \int_{t_0}^t M \operatorname{d}\!s = Ms_{t_0}^t = M(t-t_0) \leq M\alpha \leq M \frac{b}{M} = b \\
+\implies \Gamma_{\varphi_n} \subset [x_0-b, x_0 +b], \forall n \geq 0
 $$
 Tema: Demonstrati ca $|\varphi_n(t)-x_0| \leq b$, $\forall t < t_0$
 
@@ -388,12 +409,24 @@ Tema: Demonstrati ca $|\varphi_n(t)-x_0| \leq b$, $\forall t < t_0$
 $$
 \text{Aratam ca } \forall n \geq 0 \text{ are loc inegalitatea: } \\
 \left|\varphi_{n+1}(t)-\varphi_n(t)\right| \leq \frac{M L^n(t-t_0)^{n+1}}{(n+1)!}, \forall t \geq t_0 \\
-\text{Demonstratie prin inductie dupa } n \text{: }\
-n = 0 \text{: } |\varphi_1(t)-\varphi_0(t)| = |x_0 + \int_{t_0}^t f(s, \varphi_0(s))\operatorname{d}\!s - x_0| = |\int_{t_0}^t f(s, \varphi_0(s))\operatorname{d}\!s| \leq \int_{t_0}^t |f(s, \varphi_0(s))|\operatorname{d}\!s \leq \int_{t_0}^t M \operatorname{d}\!s = M(t-t_0) = \frac{M L^0(t-t_0)^{n+2}}{(0 + 1)!} \\
+\text{Demonstratie prin inductie dupa } n \text{: }\ \\
+n = 0 \text{: } |\varphi_1(t)-\varphi_0(t)| = |x_0 + \int_{t_0}^t f(s, \varphi_0(s))\operatorname{d}\!s - x_0| \\
+= |\int_{t_0}^t f(s, \varphi_0(s))\operatorname{d}\!s| \leq \int_{t_0}^t |f(s, \varphi_0(s))|\operatorname{d}\!s \leq \int_{t_0}^t M \operatorname{d}\!s \\
+= M(t-t_0) = \frac{M L^0(t-t_0)^{n+2}}{(0 + 1)!} \\
 \text{Avem: }
-\left|\varphi_{n+2}(t) - \varphi_{n+1}\right| = \left|x_0 + \int_{t_0}^t f(s, \varphi_{n+1}(s))\operatorname{d}\!s - x_0 - \int_{t_0}^t f(s,\varphi_n(s))\operatorname{d}\!s\right| = \left|\int_{t_0}^t(f(s, \varphi_{n+1}(s)) - f(s, \varphi_n(s))) \operatorname{d}\!s\right| \leq \int_{t_0}^t \left|f(s, \varphi_{n+1}(s))-f(s, \varphi_n(s))\right|\operatorname{d}\!s \leq \int_{t_0}^t L\left|\varphi_{n-1}(s)-\varphi_n(s)\right|\operatorname{d}\!s \leq \int_{t_0}^t L \frac{ML^n(s-t_0)^{n+1}}{(n+1)!}\operatorname{d}\!s = \frac{ML^{n+1}}{(n+1)!} \int_{t_0}^{t} (s-t_0)^{n+1}\operatorname{d}\!s =  \frac{ML^{n+1}}{(n+1)!} \frac{(t-t_0)^{n+2}}{(n+2)} = \frac{ML^{n+1}(t-t_0)^{n+2}}{(n+2)!} \implies \text{ inegalitatea este adevarata. }\\
+\left|\varphi_{n+2}(t) - \varphi_{n+1}\right| = \\
+\left|x_0 + \int_{t_0}^t f(s, \varphi_{n+1}(s))\operatorname{d}\!s - x_0 - \int_{t_0}^t f(s,\varphi_n(s))\operatorname{d}\!s\right| \\
+= \left|\int_{t_0}^t(f(s, \varphi_{n+1}(s)) - f(s, \varphi_n(s))) \operatorname{d}\!s\right| \leq \int_{t_0}^t \left|f(s, \varphi_{n+1}(s))-f(s, \varphi_n(s))\right|\operatorname{d}\!s \\
+\leq \int_{t_0}^t L\left|\varphi_{n-1}(s)-\varphi_n(s)\right|\operatorname{d}\!s \leq \int_{t_0}^t L \frac{ML^n(s-t_0)^{n+1}}{(n+1)!}\operatorname{d}\!s = \frac{ML^{n+1}}{(n+1)!} \int_{t_0}^{t} (s-t_0)^{n+1}\operatorname{d}\!s \\
+=  \frac{ML^{n+1}}{(n+1)!} \frac{(t-t_0)^{n+2}}{(n+2)} = \frac{ML^{n+1}(t-t_0)^{n+2}}{(n+2)!} \\
+\implies \text{ inegalitatea este adevarata. }\\
 \text{Aratam ca } \lim_{n \to \infty}\left|\varphi_{n+p}(t) - \varphi_n(t)\right| = 0 \\
-\text{Calculam } \left|\varphi_{n+p}(t) - \varphi_n(t)\right| = \left|\varphi_{n+p}(t) - \varphi_{n+p-1}(t)+ \varphi_{n+p-1}(t) - \varphi_{n+p-2}(t) + \dotsc + \varphi_{n+2}(t) - \varphi_{n+1}(t) + \varphi_{n+1}(t)-\varphi_n(t)\right| \leq \text{ suma modulelor }\leq \frac{ML^{n+p-1}(t-t_0)^{n+p}}{(n+p)!} + \frac{ML^{n+p-2}(t-t_0)^{n+p-1}}{(n+p-1)!} + \dotsc + \frac{ML^{n+1}(t-t_0)^{n+2}}{(n+2)!} + \frac{ML^{n}(t-t_0)^{n+1}}{(n+1)!} = \sum_{k=1}^p \frac{ML^{n+k-1}(t-t_0)^{n+k}}{(n+k)!} = \sum_{r=0}^{p-1} \frac{ML^{n+p-r-1}(t-t_0)^{n+p-r}}{(n+p-r)!} = M L^n(t-t_0)^n \sum_{r=0}^{p-1} \frac{L^{p-r-1}(t-t_0)^{p-r}}{(n+p-r)!} \leq \frac{ML^n(t-t_0)^n}{(n+1)!} \sum_{r=0}^{p-1} \frac{L^{p-r-1}(t-t_0)^{p-r}}{(p-r-1)!} \\\implies \left|\varphi_{n+p}(t)-\varphi_n(t)\right| \leq a_n C_p \\
+\text{Calculam } \left|\varphi_{n+p}(t) - \varphi_n(t)\right| = \\
+\left|\varphi_{n+p}(t) - \varphi_{n+p-1}(t)+ \varphi_{n+p-1}(t) - \varphi_{n+p-2}(t) + \dotsc + \varphi_{n+2}(t) - \varphi_{n+1}(t) + \varphi_{n+1}(t)-\varphi_n(t)\right| \\
+\leq \text{ suma modulelor }\\
+\leq \frac{ML^{n+p-1}(t-t_0)^{n+p}}{(n+p)!} + \frac{ML^{n+p-2}(t-t_0)^{n+p-1}}{(n+p-1)!} + \dotsc + \frac{ML^{n+1}(t-t_0)^{n+2}}{(n+2)!} + \frac{ML^{n}(t-t_0)^{n+1}}{(n+1)!} = \\
+\sum_{k=1}^p \frac{ML^{n+k-1}(t-t_0)^{n+k}}{(n+k)!} = \sum_{r=0}^{p-1} \frac{ML^{n+p-r-1}(t-t_0)^{n+p-r}}{(n+p-r)!} \\
+= M L^n(t-t_0)^n \sum_{r=0}^{p-1} \frac{L^{p-r-1}(t-t_0)^{p-r}}{(n+p-r)!} \leq \frac{ML^n(t-t_0)^n}{(n+1)!} \sum_{r=0}^{p-1} \frac{L^{p-r-1}(t-t_0)^{p-r}}{(p-r-1)!} \\\implies \left|\varphi_{n+p}(t)-\varphi_n(t)\right| \leq a_n C_p \\
 \lim_{n \to \infty} \frac{a_{n+1}}{a_n} = \lim_{n \to \infty} \frac{ML^{n+1}(t-t_0^{n-1})}{(n+2)!} \frac{(n+1)!}{M L^n(t-t_0)^n} = \lim_{n \to \infty} \frac{L(t-t_0)}{n+2} = 0\\  \implies lim_{n \to \infty} a_n = 0 \implies lim_{n \to \infty} \left|\varphi_{n+p}(t) - \varphi_n(t)\right| = 0 \implies (\varphi_n)_{n \geq 0} \text{ este sir Cauchy} \implies \\
 \exists \varphi \text{ astfel incat } \varphi(t) = lim_{n \to \infty} \varphi_n(t) \text{, congruenta fiind uniforma } \implies \varphi \text{ este continua si derivabila la fel si functiile din sirul } (\varphi_n)_{n \geq 0}
 $$
