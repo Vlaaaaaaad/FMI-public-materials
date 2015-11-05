@@ -473,6 +473,113 @@ G \text{ primitiva pentru }g \text{ si } G'(s) = g(s) \\
 
 **Tema**: Aratati ca daca $g: I \subset \mathbb{R} \to \mathbb{R}$ continua si $u,v : I \to \mathbb{R}$ derivabile, atunci $\frac{\operatorname{d}}{\operatorname{d}\!t}\left(\int_{u(t)}^{v(t)}g(s)\operatorname{d}\!s\right) = g(v(t))v'(t) - g(u(t))u'(t)$.
 
+
+
+##Aproximarea numerica a solutiei problemei Cauchy pentru ecuatii diferentiale de ordin I
+
+Fie probema Cauchy $\begin{cases}x' = f(t, x') \\ x(t_0) = x_0\end{cases}$.
+
+Presupunem ca sunt indeplinite conditiile din teorema de exitenta si unicitate a solutiei problemei date.
+
+**Tema**: Aratati ca daca $\frac{\partial f}{\partial x}$ este continua, atunci $f$ este Lipschitz in raport cu variabila $x$, constanta fiind $L = \sup \left\{\frac{\partial f}{\partial x}(t,x) \right\}$.
+
+Din TEU(Teorema de Existenta si Unicitate a solutiei) avem ca:
+$\forall \alpha \leq \left\{a, \frac{b}{M}\right\}, \exists! \varphi : [t_0 - \alpha, t_0 + \alpha] \to [t_0 - b, t_0 + b]$ $\varphi$ solutie a problemei Cauchy.
+
+In cazul in care $\varphi$ nu poate fi determinat prin cuadraturi se poate aproxima discret( adica pentru $N+1$ puncte notate $t_0 < t_1 < \dotsc < t_N \leq t_0 + \alpha$ se calcuelaza aproximari pentru $\varphi(t_0), \varphi(t_1), \dotsc, \varphi(t_N)$ notate $x_0, x_1, \dotsc, x_N$ astfel incat pentru $N$ cat mai mare aproximarile  $x_0, x_1, \dotsc, x_N$ sa fie cat mai apropiate de solutia $\varphi$.
+
+![Cum arata aproximarile pe grafic](https://www.vladionescu.me/aproximari.jpg)
+
+Consideram o diviziune $\Delta_N$ a intervalului $[t_0, t_0 + \alpha]$
+$$\Delta_N = (t_0 < t_1 < \dotsc < t_N = t_0 + \alpha)$$
+
+Pentru $n$ de la $0$ la $N-1$ avem $\varphi(t_{n+1}) - \varphi(t_n) = \int_{t_n}^{t_{n+1}}f\left(t,\varphi(t)\right) \operatorname{d}\!t \simeq \int_{t_n}^{t_{n+1}} f(t_n, \varphi(t_n)) \operatorname{d}\!t = f(t_n, \varphi(t_n)) (t_{n+1} -t_n)$
+
+Vom considera diviziune echidistanta $h = \frac{t_0 + \alpha - t_0}{N} = \frac{\alpha}{N}$ si $t_n = t_{n-1}+h = t_0 + (n-1)h$, cu $n$ de la $0$ la $N$.
+
+Aproximarile se calculeaza astfel: $$x_{n+1}-x_n = f(t_n, x_n)h$$
+
+Se obtine schema Euler explicita:
+$$\begin{cases}x_0 \\ x_{n+1} = x_n + h f(t_n, x_n), \forall n \in \overline{0, N-1} \end{cases}$$
+
+**Teorema de aproximare in metoda Euler**
+
+Daca avem problema Cauchy care indeplineste conditiile teoremei de existenta si unicitate a solutiei si $\varphi$ solutia unica a problemei, in ipoteza ca $f$ este functie Lipschitz si in prima variabila, avem ca
+$\exists A > 0$ astfel incat $\left|\varphi(t_n)-x_n\right| \leq Ah$, $\forall n \in \overline{0, N}$ unde $x_0, \dotsc, x_N$ sunt din schema numerica.
+
+*Consecinta*:
+DIn existenta lui $A$ rezulta ca $\lim_{h \to 0} |\varphi(t_n) -x_n| = 0$ adica cand $h \to 0$ sirul de aproximatii converge catre solutia problemei.
+
+**Lema 1**: In conditiile teoremei de aproximare avem $|x_n - x_0| \leq M n h$, $\forall n \in \overline{0, N}$ unde $M = \sup|f(t,x)|$, $(t,x) \in D$.
+
+*Demonstratie*:
+$$
+n = 0: |x_0 -x_0| = 0 = M 0 h \\
+n = 1: |x_1-x_0| = |x_0 + h f(t_0, x_0) -x_0| = h |f(t_0, x_0)| \leq h M = h M 1 \\
+\text{Presupunem adevarat pentru } n \text{ si demonstram pentru } n + 1: \\
+|x_{n+1} - x_0| = |x_n = h f(t_n, x_n) - x_0| \leq |x_n - x_0| + |h f(t_n, x_n)| \leq Mnh + hM = hM(n+1)
+$$
+
+**Lema 2**: Daca notam $L_1$ si $L_2$ constantele Lipschitz ale functiei $f$ in raport cu prima, respectiv a doua variabila, atunci $\exists B > 0$ astfel incat $\left|\int_{t_n}^{t_{n+1}} f(t, \varphi(t)) \operatorname{d}\!t - h f(t_n, \varphi(t_n))\right| \leq B h^2$, $\forall n = \overline{0, N-1}$
+
+*Demonstratie*: Prin aplicarea unei teoreme de medie pe $[t_n, t_{n+1}]$ $\implies$ $\exists t_* \in [t_n, t_{n+1}]$ astfel incat $\int_{t_n}^{t_{n+1}} f(t_*, \varphi(t_*)) \operatorname{d}\!t = f(t_*, \varphi(t_*)) (t_{n+1} - t_n) \implies \int_{t_n}^{t_{n+1}} f(t, \varphi(t)) \operatorname{d}\!t = f(t_*, \varphi(t_*)) h$.
+
+Avem $$\left|\int_{t_n}^{t_{n+1}} f(t, \varphi(t))\operatorname{d}\!t - h f(t_n, \varphi(t_n))\right| \\
+= \left|h f(t_*, \varphi(t_*)) - h f(t_n, \varphi(t_n)))\right| \\
+= |h| \left|f(t_*, \varphi(t_*)) - f(t_n, \varphi(t_n)) + f(t_*, \varphi(t_n)) - f(t_n, \varphi(t_n))\right| \leq h (L_2 |f(t_*, \varphi(t_*))| + L_1 |t_* -t_n|) \\
+\implies \left|\int_{t_n}^{t_{n+1}} f(t, \varphi(t)) \operatorname{d}\!t - h f(t_n, \varphi(t_n)\right| \leq h (L_2 M(t_*-t_n) + L_1(t_*-t_n) = (L_2 M + L_1) h^2 = B h^2$$
+
+*Demonstratia teoremei de aproximare*:
+
+Notam $E_n = |\varphi(t_n) - x_n|$, $n = \overline{0, N}$.
+
+Etapa 1: Gasim o relatie de recurenta intre $E_n$ si $E_{n+1}$.
+
+$$
+E_{n+1} = \left|\varphi(t_{n+1}) - x_{n+1}\right| \\
+x_{n+1} = x_n + h f(t_n, x_n) \\
+\varphi(t_{n+1}) - \varphi(t_n) = \int_{t_n}^{t_{n+1}} \varphi'(t) \operatorname{d}\!t = \int_{t_n}^{t_{n+1}} f(t, \varphi(t)) \operatorname{d}\!t \\
+\implies E_{n+1} = \left|\varphi(t_n) + \int_{t_n}^{t_{n+1}} f(t, \varphi(t)) \operatorname{d}\!t - x_n - h f(t_n, x_n)\right| \\
+\leq \left|\varphi(t_n) - x_n\right| +\left|\int_{t_n}^{t_{n+1}} f(t, \varphi(t)) \operatorname{d}\!t - h f (t_n, \varphi(t_n)) + h f(t_n, \varphi(t_n)) - h f (t_n, x_n)\right| \\
+\leq E_n + \left|\int_{t_n}^{t_{n+1}} f(t, \varphi(t)) \operatorname{d}\!t - h f(t_n, \varphi(t_n))\right| + h |f(t_n, \varphi(t_n)) - f(t_n, x_n)| \\
+\implies E_{n+1} \leq E_n + B h^2 + h L_2 E_n \\
+\implies E_{n+1} \leq (1 + h L_2)E_n + B h^2, n = \overline{0, N-1}
+$$
+
+Etapa 2: Demonstram prin inductie ca $E_n \leq \frac{(1+h L_2)^n -1}{h L_2}B h^2$, $n = \overline{0, N}$.
+
+$n = 0 : E_0 = |\varphi(t_0) -x_0| = |x_0 -x_0| = 0 = \frac{(1 + hL_2)^0 -1}{h L_2}Bh^2$
+
+Presupunem adevarat pentru $n$ si demonstram pentru $n+1$.
+
+$$
+E_{n+1} \leq (1 + h L_2) E_n + Bh^2 \leq (1+h L_2) \frac{(1+ hL_2)^n}{hL_2} B h^2 \\
+= \left(\frac{(1+hL_2)^{n+1}-1-hL_2}{hL_2} + 1\right)Bh^2 \\
+= \frac{(1+hL_2)^{n+1}-1}{hL_2}Bh^2
+$$
+
+Etapa 3: Demonstam ca $E_n \leq Ah$ cu $A$ independent de $h$.
+
+Folosim inegalitatea $e^x > 1 + x$, $\forall x \in \mathbb{R}^*$ in care $x = hL_2$ $\implies$ $1 +hL_2 < e^{h L_2}$ $\implies$
+$$
+\begin{cases}
+\begin{cases}
+E_n \leq \frac{(e^{hL_2})^n-1}{hL_2} B h^2 = \frac{e^{nhL_2}-1}{L_2}Bh \\
+\text{Dar } nh \leq Nh = N \frac{\alpha}{N} \implies nh \leq \alpha
+\end{cases}
+\implies E_n \frac{e^{\alpha L_2}-1}{L_2}Bh \\
+\text{Pentru } A = \frac{e^{\alpha L_2}-1}{L_2}(L_2M +L_1) \\
+\end{cases}
+\implies E_n\leq Ah, \forall n = \overline{0,N}
+$$
+
+**Aplicatie**: Fie problema Cauchy $\begin{cases}x'=x \\ x(0) =1\end{cases}$. Pentru $[t_0, t_0 + \alpha] = [0, 3]$ si $N=2$ calculati aproximatile $x_1, x_2$ in $t_1, t_2$ folosind Euler. Evaluati diferenta $|\varphi(t_2)-x_2|$ unde $\varphi$ este solutia problemei date.
+
+*Observatie*: exista si metoda Euler implicita cu aproximare mai buna decat metoda Euler explicita:
+$\begin{cases}x_0\\ x_{n+1} = x_n + h f(t_{n+1}, x_{n+1})\end{cases}$
+
+**Tema**: Pentru problema din aplicatia de mai sus aplicati metoda Euler implicita.
+
 > **NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI**
 
 > Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie [direct pe GitHub](https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/EcuatiiDiferentialeSiCuDerivatePartiale) sau trimite un mail la <mailto:stiu-chestii@vladionescu.me>
