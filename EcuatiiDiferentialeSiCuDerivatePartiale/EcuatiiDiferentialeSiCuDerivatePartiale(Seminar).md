@@ -486,6 +486,122 @@ c. **tema**
 
 
 
+3. Fie problema Cauchy $\begin{cases} x' = 3 \sqrt[3]{x^2} \\ x(2) = 1 \end{cases}$.
+                a. Solutia $\varphi$ a problemei.
+                b. Determinati aproximarile $x_0, x_1, x_2$ pentru $N = 2$, folosind metoda Euler explicita, pe intervalul $[2, 4]$.
+                    Calculati $\left|\varphi(t_2) - x_2\right|$ si comparati cu majorarea din teorema de aproximare.
+
+*Rezolvare*:
+
+a.
+$$
+\text{Ecuatia este cu variabile separabile.} \\
+x' = 3 \sqrt[3]{x^2} \\
+a(t) = 1 \\
+b(x) = 0 \implies x = 0  \text{ solutie stationara a ecuatiei} \\
+\frac{\operatorname{d}\!x}{\operatorname{d}\!t} = 3 \sqrt[3]{x^2} \iff \frac{1}{ 3 \sqrt[3]{x^2}}\operatorname{d}\!x = 1 \operatorname{d}\!t \\
+\int \frac{1}{ 3 \sqrt[3]{x^2}} \operatorname{d}\!x = \frac{1}{3} \int x^{\frac{-2}{3}} = \\
+= x^{\frac{1}{3}} + C \\
+B(x) = \sqrt[3]{x^2} \\
+A(t) = t \\
+B(x) = A(t) + C \\
+\iff  \sqrt[3]{x^2} = t + C \implies x = (t + C)^3 \\
+x(2) = 1 \\
+x(2) = (2 + C)^3 = 1 \implies C = -1 \\
+\varphi(t) = (t-1)^3
+$$
+
+b.
+$$
+f(t,x) = 3 \sqrt[3]{x^2} \\
+[t_0, t_0 + \alpha] = [2,4] \\
+N = 2 \\
+\implies t_0 = 2, h = 1, \\
+t_1 = t_0 + h \implies t_1 = 2. \\
+t_2 = t_0 + 2h \implies t_2 = 4 \\
+x_0 = 1 \\
+x_1 = x_0 + h f(t_0, x_0) \implies x_1 = 4 \\
+x_2 = x_1 + h f(t_1, x_1) \implies x_2 = 4 + 6 \sqrt[3]{2} \\
+\varphi(t_1) = \varphi(3) = (3-1)^3 = 8 \\
+\varphi(t_2) = \varphi(4) = (4-1)^3 = 27 \\
+\left|\varphi(t_1) - x_1\right| = 4 \\
+\left|\varphi(t_2) - x_2\right| = 23 - 6 \sqrt[3]{2} \\
+\text{ Din teorema de aproximare avem ca } \varphi(t_n) < Ah \text{ unde } A > 0 \text{ si } \\
+A = \frac{e^{\alpha L_2} -1}{L_2} B \\
+\text{ unde } B = M L_2 + L_1 \\
+\text{ unde } L_1 \text{ este constanta Lipschitz a functiei } f \text{ in raport cu } t \\
+\text{ si } L_2 \text{ este constanta Lipschitz a functiei } f \text{ in raport cu } x \\
+\text{iar } M \text{ este marginea superioara pentru } f(t,x) \text{ pe intervalul pe care construim solutia} \\
+\\
+f(t,x) = 3 \sqrt[3]{x^2} \text{ cu } t \in [2, 4] \\
+\implies M = \sup \left|f(t,x)\right|, t \in [2, 4], x \in [1, 27] \\
+\implies M = 3 \sqrt[3]{27^2} = 27  \\
+\text{ Lipschitz in raport cu prima variabila inseamna ca } \left|f(t_1,x) - f(t_2,x)\right| \leq L_1 \left|t_1-t_2\right| \forall (t_1,x), (t_2,x) \in [2,4] \times [1,27] \\
+\implies 0 \leq L_1 \left|t_1-t_2\right| \implies L_1 \text{ poate fi ales orice constanta pozitiva. Sa zicem ca alegem } L_1 = \frac{1}{2} \\
+\text{ Lipschitz in raport cu a doua variabila inseamna ca } \left|f(t, a) - f(t, b)\right| \leq L_2 \left|a - b\right| \forall (t,a), (t,b) \in [2,4] \times [1,27] \\
+\left|3 \sqrt[3]{a^2} - 3 \sqrt[3]{b^2}\right| = 3 \left| \frac{a^2 - b^2}{\sqrt[3]{a^4} + \sqrt[3]{b^4} + \sqrt[3]{a^2 b^2}}\right| \leq 3 \left|\frac{(a-b)(a+b)}{1+1+1}\right| = 54 \left|a-b\right| \\
+L_1 = \frac{1}{2}
+L_2 = 54 \\
+M = 27 \\
+\implies B = 27 \cdot 54 + \frac{1}{2}\\
+A = \frac{e^{54 \cdot 2}-1}{54}\left(27 \cdot 54 + \frac{1}{2}\right) \approx 2.16 \cdot 10^{48} \text{ conform Wolfram Alpha}
+$$
+
+#Sisteme de ecuatii diferentiale
+
+1. Fie sistemul $\begin{cases} x_1' = f_1(t,(x_1, x_2))\\ x_2'= f_2(t, (x_1, x_2))\end{cases}$, x = $ \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$, $\begin{cases} f_1(t,(x_1, x_2)) = 2tx_1 + x_2 \\ f_2(t,(x_1, x_2)) = x_1 + 2tx_2\end{cases}$.
+                a. Stabiliti daca sistemul dat verifica conditiile teoremei de existenta si unicitate daca adaugam sistemului conditia $x(t_0) = x_0 = \begin{pmatrix} x_{01} \\ x_{02} \end{pmatrix} \in \mathbb{R}^2$
+                b. Demonstrati ca $F (t, (x_1, x_2)) = (x_1-x_2)e^{t-t^2}$ este integrala prima a sistemului.
+                c. Determinati multimea solutiilor sistemului dat folosind integrala prima.
+
+*Rezolvare*:
+
+a.
+$$
+i) \exists a, b_1, b_2 > 0 \text{ astfel incat } D = [t_0-a, t_0 +a] \times [x_{01}-b_1, x_{01}+b_1] \times [x_{02}-b_2, x_{02}+b_2] \in \Omega \\
+ii) f \text{ continua in } t \text{ si } x \\
+M = \sup \left|f(t,x)\right|, (t,x) \in D \\
+iii) \frac{Df}{\operatorname{d}\!x} = \frac{D(f_1,f_2)}{D(x_1,x_2)} = \left(\begin{array}{nume1} \frac{\partial f_1}{\partial x_1} & \frac{\partial f_2}{\partial x_1} \\ \frac{\partial f_1}{\partial x_2} & \frac{\partial f_2}{\partial x_2} \end{array} \right)= \left(\begin{array}{nume2} 2t & 1 \\ 1 & 2t\end{array} \right) \text{ continua pe } D \\
+\implies \forall \alpha \leq \min\left\{1, \frac{b_1}{M},\frac{b_2}{M}\right\} \exists! \varphi : [t_0-\alpha, t_0 + \alpha] \to D_1 \subseteq \mathbb{R}^3 \text{ solutie pentru problema Cauchy}
+$$
+
+b.
+$$
+\text{O functie } F : \Omega \to \mathbb{R} \text{ este integrala prima pentru } x' = f(t,x) \text{ daca } \\
+\forall \varphi:I_\varphi \to \mathbb{R}^n \text{ solutie pentru } x' = f(t,x), \\
+\exists C_\varphi \in \mathbb{R} \text{ astfel incat } F\left(t, \varphi(t)\right) = C_\varphi, \forall t \in I_\varphi \\
+\text{Criteriu de recunoastere a integralelor prime: }
+F \text{ este integrala prima pentru } x' = f(t,x) \iff \\
+\iff \frac{\partial F}{\partial t} (t,x) + \sum_{i = 0}^n \frac{\partial F}{\partial x_i}(t,x) f_i(t,x) = 0, \forall(t,x) \in \mathbb{R} \\
+\frac{\partial F}{\partial t}(t,x) + \frac{dF}{\partial x_1} (t,x) f_1(t,x)+ \frac{\partial F}{\partial x_2} (t,x) f_2(t,x) =\\
+=(x_1 -x_2) e^{t-t^2}(1-2t) +  e^{t-t^2} (2tx_1 + x_2) -  e^{t-t^2} (x_1 -2tx_1 -x_2 =2tx_2 +2tx_1 +x_2 -x_1 -2tx_2) =\\
+= 0 \implies F \text{ este integrala prima a sistemului.}
+$$
+
+c.
+$$
+F \text{ este integrala prima } \implies F(t,x) = C_1, C_1 \in \mathbb{R} \\
+\implies (x_1 - x_2) e^{t-t^2} = C_1 \\
+\implies x_1 = \frac{C_1}{e^{t-t^2}} + x_2 = C_1 e^{t-t^2} + x_2 \\
+x_2' = x_2 + C_1 e^{t-t^2} + 2 t x_2 \\
+\implies x_2' = x_2(1+2t) + C_1 e^{t-t^2} \text{ care este o ecuatie liniara ne-omogena in } x_2 \\
+\overline{x_2'} = \overline{x_2}(1+2t) \\
+x_2 = C e^{A(t)}\\
+\int (1+2t)\operatorname{d}\!t = t + t^2 \implies \overline{x_2} = C e^{t^2 + t} \\
+x_2(t) = C(t) e^{t^2 + t} \text{ solutia ecuatiei liniare ne-omogene} \\
+C' e^{t^2 + t} + C (2t+1) e^{t^2 + t} = C e^{t^2 + t}(1 + 2t) + C e^{t^2 + t} \\
+C' = C_1 e^{-2t} \text{ care este ecuatie de tip primitiva} \\
+\implies C = \int C_1 e^{-2t} \operatorname{d}\!t = C_1 \frac{e^{-2t}}{-2} + C_2 \\
+\implies \begin{cases}x_2(t) = C_1 \frac{e^{-2t}}{-2} + C_2 \\
+x_1(t) = C_1 e^{t^2-t} + C_1 \frac{e^{-2t}}{-2} + C_2 e^{t^2 + t} \end{cases} C_1, C_2 \in \mathbb{R}
+$$
+
+**Tema**:
+2. Fie sistemul $\begin{cases} x_1' = f_1(t,(x_1, x_2))\\ x_2'= f_2(t, (x_1, x_2))\end{cases}$, x = $ \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$, $\begin{cases} f_1(t,(x_1, x_2)) = -x_1(x_1^2 + x_2^2) \\ f_2(t,(x_1, x_2)) = x_2(x_1^2 + x_2^2)\end{cases}$.
+        a. Stabiliti daca sistemul dat verifica conditiile teoremei de existenta si unicitate daca adaugam sistemului conditia $x(t_0) = x_0 = \begin{pmatrix} x_{01} \\ x_{02} \end{pmatrix} \in \mathbb{R}^2$
+        b. Demonstrati ca $F (t, (x_1, x_2)) = 2t - \left(x_1^2 + x_2^2\right)$ este integrala prima a sistemului.
+        c. Determinati multimea solutiilor sistemului dat folosind integrala prima.
+
 > **NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI**
 
 > Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie [direct pe GitHub](https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/EcuatiiDiferentialeSiCuDerivatePartiale) sau trimite un mail la <mailto:stiu-chestii@vladionescu.me>
