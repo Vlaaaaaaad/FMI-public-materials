@@ -55,7 +55,7 @@ $\alpha C = C$
  = \int 2^x \operatorname{d}\!x - 2 \int (\frac{1}{3})^x \operatorname{d}\!x \\
  = \frac{2^x}{\ln2} - 2 \frac{(\frac{1}{3})^x}{\ln\frac{1}{3}} + C $$
 
-3. $$ F(x) = \int(4 \sin{x} - cos{x}) \operatorname{d}\!x = \\
+3. $$ F(x) = \int(4 \sin{x} - \cos{x}) \operatorname{d}\!x = \\
  = 4 \int \sin{x} \operatorname{d}\!x - \int \cos{x} \operatorname{d}\!x \\
  = 4 \cos{x} - \sin{x} + C$$
 
