@@ -597,10 +597,105 @@ x_1(t) = C_1 e^{t^2-t} + C_1 \frac{e^{-2t}}{-2} + C_2 e^{t^2 + t} \end{cases} C_
 $$
 
 **Tema**:
-2. Fie sistemul $\begin{cases} x_1' = f_1(t,(x_1, x_2))\\ x_2'= f_2(t, (x_1, x_2))\end{cases}$, x = $ \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$, $\begin{cases} f_1(t,(x_1, x_2)) = -x_1(x_1^2 + x_2^2) \\ f_2(t,(x_1, x_2)) = x_2(x_1^2 + x_2^2)\end{cases}$.
+2. Fie sistemul $\begin{cases} x_1' = f_1(t,(x_1, x_2))\\ x_2'= f_2(t, (x_1, x_2))\end{cases}$, x = $ \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$, $\begin{cases} f_1(t,(x_1, x_2)) = -x_1(x_1^2 + x_2^2) \\ f_2(t,(x_1, x_2)) = -x_2(x_1^2 + x_2^2)\end{cases}$.
         a. Stabiliti daca sistemul dat verifica conditiile teoremei de existenta si unicitate daca adaugam sistemului conditia $x(t_0) = x_0 = \begin{pmatrix} x_{01} \\ x_{02} \end{pmatrix} \in \mathbb{R}^2$
         b. Demonstrati ca $F (t, (x_1, x_2)) = 2t - \left(x_1^2 + x_2^2\right)$ este integrala prima a sistemului.
         c. Determinati multimea solutiilor sistemului dat folosind integrala prima.
+
+#Sisteme liniare de ecuatii diferentiale
+
+##Cazul omogen
+
+$x' = A(t) x$ unde $A: I \subset \mathbb{R} \to \mathscr{M}_n(\mathbb{R})$ si $x = $
+
+Multimea solutiilor sistemului este spatiu vectorial real de dimensiune $n$, notat $S_A$. Se numeste sistem fundamental de solutii o baza in $S_A$. Adica $S_A = <\varphi_1, \dots, \varphi_n>$
+
+###Cazul omogen cu coeficienti constanti
+ Adica cazul in care $A(t) = \text{ constant } = A \in \mathscr{M}_n(\mathbb{R})$.
+ $x' = Ax$
+
+ Pasi de determinare a unui sistem fundamental de solutii:
+ 1. Se determina valorile proprii ale matricei $A$ si multiplicitatile lor.
+ $\sigma(A) = \{\lambda_1, \dots, \lambda_p\}$ cu $1 \leq p \leq n$,
+$m_1 + \dots + m_p = n$,
+$\det(A - \lambda I_n) = 0$
+ 2. Pentru fiecare $\lambda_k \in \sigma(A)$ se determina $m_p$ solutii ale sistemului $x' = A x$ care sunt introduse in sistemul fundamental de solutii.
+
+**Exercitiu**: Pentru urmatoarele sisteme scrieti forma matriceala si apoi determinati un sistem fundamental de solutii.
+1. $\begin{cases}x_1' = 2x_1 + 2x_2 \\ x_2' = 8x_1 + 2x_2\end{cases}$
+2. $\begin{cases}x_1'=2x_1 + 2x_2 \\ x_2' = -x_1 + 2x_2\end{cases}$
+3. $\begin{cases}x_1' = 3x_1 -2 x_2\\ x_2' = 2x_1 -x_2\end{cases}$
+4. $\begin{cases}x_1' = x_2 + x_3 \\ x_2' = x_1 + x_3 \\ x_3' = x_1 + x_2\end{cases}$
+5. $\begin{cases}x_1' = 2x_1 - x_2 - x_3 \\ x_2' = 2x_1 - x_2 - 2x_3 \\ x_3' = 2x_3 - x_1 + x_2\end{cases}$
+6. $\begin{cases}x_1' = 2x_1 + 2x_3 - x_2 \\ x_2' = x_1 + 2x_3 \\ x_3' = x_2 -2x_1 -x_3\end{cases}$
+
+*Rezolvari*:
+1. $$
+A = \left(\begin{array}{nume1}2 & 2 \\ 8 & 2\end{array}\right) \\
+A - \lambda I_2 =  \left(\begin{array}{nume1}2 & 2 \\ 8 & 2\end{array}\right) - \left(\begin{array}{nume1} \lambda & 0 \\ 0 & \lambda \end{array}\right) = \left(\begin{array}{nume1} 2 - \lambda & 2 \\ 8 & 2 - \lambda \end{array}\right) \\
+\det(A - \lambda I_2 ) = (2 - \lambda)^2 - 16 \implies \lambda_1 = -2 \text{ si } \lambda_2 = 6 \\
+m_1 = 1, m_2 = 1 \\
+\\
+\lambda_1 = -2 \text{ cu multiplicitatea } m_1 = 1 \\
+\text{ Se determina } u \in \mathbb{R}^2 \neq 0_{\mathbb{R}^2} \text{ astfel incat } (A - \lambda_1 I_2) u = 0_{\mathbb{R}^2} \\
+(A - \lambda_1 I_2) u = \left(\begin{array}{nume}0 \\ 0 \end{array}\right) = \left(\begin{array}{nume}4 & 2 \\ 8 & 4\end{array} \right) \left(\begin{array}{nume}u_1 \\ u_2\end{array}\right) = \left(\begin{array}{nume}0 \\ 0\end{array}\right) \\
+\begin{cases}4 u_1 + 2u_2 = 0 \\ 8u_1 +4u_2 = 0\end{cases} \implies u_2 = -2u_1 \implies u = \left(\begin{array}{nume}u_1 \\ -2u_1\end{array}\right) = \left(\begin{array}{nume}1 \\ -2\end{array}\right) u_1, \text{ cu } u_1 \in \mathbb{R}\\
+\text{Pentru } u = \left(\begin{array}{nume}1 \\ -2\end{array}\right) \implies \varphi_1(t) = u e^{\lambda_1 t} = \left(\begin{array}{nume}1 \\ -2\end{array}\right) e^{-2t} \implies \varphi_1 = \left(\begin{array}{nume}e^{-2t} \\ -2e^{-2t}\end{array}\right) \\
+\\
+\lambda_2 = 6 \text{ cu multiplicitatea } m_2 = 1 \\
+u \in \mathbb{R}^2 \neq 0_{\mathbb{R}^2} \\
+(A - \lambda_2 I_2) u = \left(\begin{array}{nume}0 \\ 0\end{array}\right)\\
+\left(\begin{array}{nume}-4 & 2 \\ 8 & -4\end{array}\right) \left(\begin{array}{nume}u_1 \\ u_2\end{array}\right) = \left(\begin{array}{nume}0 \\ 0 \end{array}\right) \\
+\begin{cases}-4 u_1 + 2u_2 = 0 \\ 8 u_1-4u_2 = 0 \end{cases} \implies u_2 = 2u_2 \implies u = \left(\begin{array}{nume}1 \\ 2\end{array}\right) u_1 \\
+u = \left(\begin{array}{nume}1 \\ 2\end{array}\right) \implies \varphi_2(t) = \left(\begin{array}{nume}1 \\ 2\end{array} \right) e^{\lambda_2 t} = \left(\begin{array}{nume}1 \\ 2\end{array}\right) e^{6 \lambda} \implies \varphi_2(t) = \left(\begin{array}{nume}e^{6t} \\ 2e^{6t}\end{array}\right) \\
+S_A = \left\{\varphi(t) = C_1 \varphi_1(t) + C_2 \varphi_2(t) | C_1, C_2 \in \mathbb{R}\right\} \\
+\text{ sau } \\
+S_A = \left\{x_1(t) = C_1 e^{-2t} + C_2 e^{6t}, x_2(t) = C_1 (-2e^{-2t}) + C_2 2e^{6t} | C_1, C_2 \in \mathbb{R}\right\} \\
+\text{ sau } \\
+\Phi(t) = \left(\begin{array}{nume}e^{-2t} & e^{6t} \\ -2e^{-2t} & 2e^{6t}\end{array}\right) \implies S_A= \left\{\varphi(t) = \Phi(t) C | C = \left(\begin{array}{nume}C_1 \\ C_2 \end{array}\right) \in \mathbb{R}^2\right\}
+$$
+2. **tema**
+3. **tema**
+4. $$ \left(\begin{array}{nume}   \end{array}\right)
+A = \left(\begin{array}{nume} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{array}\right) \\
+\det(A - \lambda I_3) = -\lambda^3 + 3 \lambda + 2 \\
+-\lambda^3 + 3 \lambda + 2 = 0 \\
+\implies \lambda_1 = \lambda_3 = -1 \text{ cu multiplicitatea } m_1 = 2 \\
+\implies \lambda_2 = 2 \text{ cu multiplicitatea } m_2 = 1 \\
+\implies \sigma(A) = \{-1, 2\} \\
+\lambda_1 = -1, m_1 = 2 > 1 \\
+\text{ Se determina} m \text{ vectori } (v_0, \dots, v_{m_1-1}) \text{, nu toti nuli, in } \mathbb{R}^3 \text{astfel incat } \\
+\varphi(t) = (v_0 + v_1 t + v_2 t^2 + \dots + v_{m_1-1} t^{m_1-1}) \text{ sa fie solutie a sistemului } x'=Ax \\
+\text{Pentru } m_1 = 2 \implies \text{ determinam } v_0 \text{ si } v_1 \in \mathbb{R}^3 \text{ nu amandoi nuli, astfel incat } \\
+\varphi(t) = (v_0 + v_1 t)e^{-t} \text{ sa fie solutie a sistemului } x' = Ax \\
+((v_0 + v_1t)e^{-t}) = A (v_0 + v_1 t) e^{-t} \iff \\
+v_1 e^{-t} -(v_0 + v_1 t)e^{-t} = A (v_0 v_1t)e^{-t} \iff \\
+v_1 - v_0 - v_1 t = A v_0 + A v_2 t \\
+\begin{cases}-v_1 = A v_1 \\ v_1 -v_0 = A v_0 \end{cases} \iff \begin{cases} A v_1 + v_1 = 0 \\ A v_0 + v_0 = v_1\end{cases} \iff \begin{cases} (A + I_3)v_1 = 0 \\ (A + I_3)v_0 = v_1\end{cases} \implies \\
+\implies (A+ I_3)^2 v_0 = 0 \implies
+(A + I_3)^2 = \left(\begin{array}{nume} 3 & 3 & 3 \\ 3 & 3 & 3 \\ 3 & 3 & 3\end{array}\right) \implies v_0 \in \ker\left((A+I_3)^2\right) \subseteq \mathbb{R}^3 \\
+\text{Pentru } v_0 \text{ este suficient sa consideram valorile unei baze din } \ker\left((A+I_3)^2\right) \\
+(A + I_3)^2 u = \left(\begin{array}{nume} 0 \\ 0 \\ 0  \end{array}\right) \iff \left(\begin{array}{nume}  3 & 3 & 3 \\ 3 & 3 & 3 \\ 3 & 3 & 3 \end{array}\right) \left(\begin{array}{nume}  u_1 \\ u_2 \\ u_3 \\ \end{array}\right) = \left(\begin{array}{nume}   0 \\0 \\ 0 \end{array}\right) \\
+\implies u_1 = -u_2 -u_3 \\
+\implies \forall u \in \ker\left((A+I_3)^2\right) \implies u = \left(\begin{array}{nume} -u_2 -u_3 \\ u_2 \\ u_3  \end{array}\right) \\
+\implies u = \left(\begin{array}{nume}  -1 \\ 1 \\ 0  \end{array}\right) u_2 + \left(\begin{array}{nume}  -1 \\ 0 \\ 1 \end{array}\right) u_3 \implies \text{ o baza in } \ker\left((A+I_3)^2\right) \text{ este } \left(\begin{array}{nume}  -1 \\ 1 \\ 0  \end{array}\right), \left(\begin{array}{nume}  -1 \\ 0 \\ 1 \end{array}\right) \\
+v_0 = \left(\begin{array}{nume}  -1 \\ 1 \\ 0  \end{array}\right) \implies v_1 = (A + I_3) v_0 \implies v_1 = \left(\begin{array}{nume} 0 \\ 0 \\ 0  \end{array}\right) \implies \varphi_1(t) =\left( \left(\begin{array}{nume}  -1 \\ 1 \\ 0 \end{array}\right) + \left(\begin{array}{nume}  0 \\ 0 \\ 0\end{array}\right) t\right)e^{-t} = \left(\begin{array}{nume}  -e^{-t} \\ e^{-t} \\ 0 \end{array}\right) \\
+v_0 = \left(\begin{array}{nume}  -1 \\ 0 \\ 1 \end{array}\right) \implies v_1 = \left(\begin{array}{nume}  0 \\ 0 \\0\end{array}\right) \implies \varphi_2(t) = \left(\begin{array}{nume} -e^{-t} \\ 0 \\ e^{-t}  \end{array}\right) \\
+\\
+\lambda_2 = 2 \text{ cu multiplicitatea } m_2 = 1 \\
+\text{Determinam } u \in \mathbb{R}^3 \neq \left(\begin{array}{nume} 0 \\ 0 \\ 0  \end{array}\right) \text{ astfel incat } \left(A - \lambda_2 I_3\right) u = \left(\begin{array}{nume} 0 \\ 0 \\ 0  \end{array}\right) \\
+\left(\begin{array}{nume} -2 & 1 & 1 \\ 1 & -2 & 1 \\ 1 & 1 & -2  \end{array}\right) \left(\begin{array}{nume} u_1 \\ u_2 \\ u_3    \end{array}\right) = \left(\begin{array}{nume} 0 \\ 0 \\ 0  \end{array}\right) \\
+\implies u_2 = u_3 \text{ si } u_1 = u_3 \\
+\implies u = \left(\begin{array}{nume}  1 \\ 1 \\ 1 \end{array}\right) u_3 \\
+\implies \varphi_3(t) = u e^{\lambda_2 t} = \left(\begin{array}{nume}  1 \\ 1 \\ 1 \end{array}\right) e^{2t} \implies \varphi_3(t) = \left(\begin{array}{nume} e^{2t} \\ e^{2t} \\ e^{2t}   \end{array}\right) \\
+S_A = \{\varphi(t) = C_1 \varphi_1(t +  C_2 \varphi_2(t) +  C_3 \varphi_3(t)) | C_1, C_2, C_3 \in \mathbb{R}\} \\
+\text{ sau } \\
+S_A = \begin{cases}x_1(t) = -C_1 e^{-t} + C_2 e^{-t} + C_3 e^{2t} \\ x_2(t) = C_1 e^{-t} + C_3 e^{2t} \\ x_3(t) = C_2 e^{-t} + C_3 e^{2t}  \end{cases} \\
+\text{ sau } \\
+\phi(t) = \left(\begin{array}{nume} e^{-t} & e^{-t} & e^{2t} \\ e^{-t} & 0 & e^{2t} \\ 0 & e^{-t} & e^{2t}  \end{array}\right) S_A = \left\{\varphi(t) = \phi(t) C | C \in \mathbb{R}^3\right\}
+$$
+5. **tema**
+6. **tema**
 
 > **NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI**
 
