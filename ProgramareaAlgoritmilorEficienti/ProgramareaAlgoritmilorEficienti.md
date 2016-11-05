@@ -87,7 +87,7 @@ Vrem sa inmultim $x$ cu $y$. Impart numerele in 2 jumatati. $x_\text{left}$ si $
 
 $x = 2^{\frac{n}{2}} \cdot x_\text{left} + x_\text{right}$. A se nota ca x e reprezentat in binar.
 
-$x  y = 2^n \cdot x_\text{left} \cdot y_\text{left} + 2^{\frac{n}{2}}(x_\text{left} \cdot y_\text{right} + x_\text{right} \cdot y_\text{left}) + x_\text{right} \cdot y_\text{right}$
+$x \cdot y = 2^n \cdot x_\text{left} \cdot y_\text{left} + 2^{\frac{n}{2}}(x_\text{left} \cdot y_\text{right} + x_\text{right} \cdot y_\text{left}) + x_\text{right} \cdot y_\text{right}$
 
 
 Deci, putem scrie un program de genul pentru a le inmulti:
@@ -107,7 +107,7 @@ Cost total:                                                   $T(n) = 4 \cdot T\
 
 Dar am calculat si asta e echivalenta cu $O\left(n^2\right)$ care e echivalenta cu algoritmul direct. Nu e de bine. Vrem sa ne gandim la o solutie mai buna, cu 3 apeluri recursive. Daca reduc numarul de apeluri la 3 obtin o solutie sub-patratica, mai buna.
 
-Putem sa optimizam ecuatia aia cu $x \times y$.
+Putem sa optimizam ecuatia aia cu $x \cdot y$.
 $$\\
 (x_\text{left} \cdot y_\text{right} + x_{\text{right}} \cdot y_\text{left}) \to \\
 (x_\text{left} + x_\text{right})(y_\text{left} + y_\text{right}) = x_\text{left} \cdot y_\text{left} + x_\text{right} \cdot y_\text{right} + (x_\text{left} \cdot y_\text{right} + x_\text{right} \cdot y_\text{left})
@@ -185,10 +185,210 @@ Dar $E[1 \text{ zar}] = \frac{7}{2}$ si $E[\text{Chestie 1} + \text{Chestie 2}] 
 Nu am scris mai detaliat ca am iesit la tabla.
 
 
+#Curs2
+
+> **Lipsa, se accepta donatii.**
+
+#Seminar2
+
+##B-arbori
+
+###Numarul minim de chei dintr-un B-arbore
+
+**Teorema**: Intr-un B-arbore cu $n$ chei( chei, nu noduri) de grad minim $t$ si inaltime $h$ avem urmatoarea limita superioara pentru inaltime: $h \le \log_t \frac{n+1}{2}$.
+
+**Demonstratie**:
+
+Demonstram plecand de la o inegalitate de tipul $n \ge \text{ numarul minim de chei la grad } t \text{ si inaltime } h$.
+O sa imi construiesc un B-arbore de grad $t$, o sa ii pun inaltimea $h$ si o sa incarc fiecare nod cu un numar minim de chei. In radacina $1$ cheie, in celelalte noduri cate $t-1$ chei si $\implies$ numarul minim de chei pe tot arborele.
+
+| Nivelul | Numar de noduri | Numar de chei |
+|---------|-----------------|---------------|
+|   $0$   |      $1$        |      $1$      |
+|   $1$   |      $2$        |     $2t-1$    |
+|   $2$   |      $2t$       |    $2t(t-1)$  |
+|   $3$   |      $2t^2$     |   $2t^2(t-1)$ |
+|   ...   |      ...        |       ...     |
+|   $h$   |      $2t^{h-1}$ |$2t^{h-1}(t-1)$|
+
+Deci numarul minim de chei pentru tot arborele este:
+$$\\
+1 + 2t-1 + 2t^2(t-1) + \cdots + 2t^{h-1}(t-1)\\
+= 1 + 2(t-1)\left( 1 + t + t^2 + \cdots + t^{h-1} \right) \\
+= 1 + 2(t-1) \cdot \frac{t^h-1}{t-1} \\
+= 1 + 2 (t^h - 1) \\
+= 2t^h - 1 \\
+$$
+
+Dar eu vreau ca $n$ sa fie mai mare decat numarul minim de chei.
+
+$$\\
+n \ge 2t^h-1 \\
+2t^h \le 1 + n \\
+t^h \le \frac{1+n}{2} \\
+h \le \log_t \frac{n+1}{2} \\
+$$
+
+###Numarul maxim de chei dintr-un B-arbore
+
+De data asta incarc la maxim nodurile. Iau un nod radacina, ii pun maximul posibil de chei, adica $2t-1$. O sa am $2t$ copii, fiecare cu $2t-1$ chei. Fiecare are la randul lui $2t$ copii cu $2t-1$ chei.
+
+| Nivelul | Numar de noduri | Numar de chei |
+|---------|-----------------|---------------|
+|    0    | 1               | $2t-1$        |
+|    1    | $2t$            | $2t(2t-1)$    |
+|    2    | $(2t)^2$        | $(2t)^2(2t-1)$|
+|   ...   |        ...      |      ...      |
+|    h    | $(2t)^h$        | $(2t)^h(2t-1)$|
+
+Deci numarul maxim de chei pentru tot arborele este:
+$$\\
+(2t-1)\left( 1 + 2t + (2t)^2 + \cdots + (2t)^h \right) \\
+= (2t-1) \frac{(2t)^{h+1}-1}{2t-1} \\
+= (2t)^{h+1}-1 \\
+$$
+
+Deci daca scriu inegalitate $n$ $\le$ numarul maxim de chei $\implies$:
+$$\\
+n \le (2t)^{h+1}-1 \\
+\log_{2t}(n+1) \le h+1 \\
+h \ge \log_{2t}(n+1)-1 \\
+$$
+
+###Exercitii
+1. Construiti B-arborele:
+$t = 3$, $2 \le n(x) \le 5$
+Cheile care se insereaza: `F`, `S`, `Q`, `K`, `C`, `L`, `H`, `T`, `V`, `W`, `M`, `R`, `N`, `P`, `A`, `B`, `X`, `Y`, `D`, `Z`, `E`.
+
+Plecam cu un nod gol, asa ca punem chei. Cat timp n-am ajuns la 5 chei, pun acolo. Cheile se pun in ordine crescatoare. Cheile sunt separatori pentru cheile din copii. Ca la arbore binar de cautare.
+
+Radacina: Punem 5 litere. `FSQKC`, dar ordonate alfabetic. Deci punem in radacina `CFKQS`.
+
+Trebuie sa il bagam pe `L`, dar nu mai avem loc. Cries. Spargem nodul plin in jurul cheii mediane. Ia cheia mediana, o ridica un nivel mai sus si separa cei 2 copii.
+
+Facem split dupa nodul de mijloc. `K`. `K` se ridica ca radacina care o sa aiba un fiu stang si un fiu drept.
+In nodul stang am `CF` si in nodul drept `QS`. Vrem sa il bagam pe `L`.
+Il bagam in dreapta ca e mai mare ca `K`, `LQS`.
+![Seminar 2, poza 1 - Inseram L](https://www.vladionescu.me/PAE-Seminar-2-1.png)
+
+Vrem sa il bagam pe `H`. E mai mic ca `K`, se duce in stanga. Stanga devine `CFH`.
+![Seminar 2, poza 2 - Inseram H](https://www.vladionescu.me/PAE-Seminar-2-2.png)
+
+Vrem sa il bagam pe `T`. E mai mare ca `K`, merge in dreapta. Dreapta devine `LQST`.
+![Seminar 2, poza 3 - Inseram T](https://www.vladionescu.me/PAE-Seminar-2-3.png)
+
+Inseram pe `V`.
+![Seminar 2, poza 4 - Inseram V](https://www.vladionescu.me/PAE-Seminar-2-4.png)
+
+Vrem sa il bagam pe `W`. E mai mare ca `K`, merge in dreapta. Nodul din dreapta in schimb e plin. Spargem nodul din dreapta deci. `S` e cheia mediana si o ridicam ca radacina, langa `K`. Deci radacina e acum `KS`. Radacina are 3 copii. In stanga am nodul care era acolo, `CFH`. In mijloc am `LQ`. In dreapta am `TV` unde adaugam pe `W` asa ca devine `TVW`.
+![Seminar 2, poza 5 - Inseram W](https://www.vladionescu.me/PAE-Seminar-2-5.png)
+
+Inseram `M`.
+![Seminar 2, poza 6 - Inseram M](https://www.vladionescu.me/PAE-Seminar-2-6.png)
+
+Inseram `R`.
+![Seminar 2, poza 7 - Inseram R](https://www.vladionescu.me/PAE-Seminar-2-7.png)
+
+Inseram `N`.
+![Seminar 2, poza 8 - Inseram N](https://www.vladionescu.me/PAE-Seminar-2-8.png)
+
+Cand vrem sa il adaugam pe `P` care e intre `K` si `S` vrem sa il adaugam in mijloc. Dar nodul din mijloc e plin. Asa ca il spargem. `N` se duce in radacina care acum e `KNS`. In stanga am `CFH`, langa ea `LM`( primul spart), langa `QR` ( al doilea spart) si in dreapta `TVW`. Il punem pe `P` in al 3-lea, deci `PQR`.
+![Seminar 2, poza 9 - Inseram P](https://www.vladionescu.me/PAE-Seminar-2-9.png)
+
+Inseram `A`.
+![Seminar 2, poza 10 - Inseram A](https://www.vladionescu.me/PAE-Seminar-2-10.png)
+
+Inseram `B`.
+![Seminar 2, poza 11 - Inseram B](https://www.vladionescu.me/PAE-Seminar-2-11.png)
+
+Inseram `X`.
+![Seminar 2, poza 12 - Inseram X](https://www.vladionescu.me/PAE-Seminar-2-12.png)
+
+Inseram `Y`.
+![Seminar 2, poza 13 - Inseram Y](https://www.vladionescu.me/PAE-Seminar-2-13.png)
+
+Vrem sa il bagam pe `D` care e mai mic ca `K`, deci vrem sa il punem in stanga. Dar in stanga avem care e plin. Trebuie spart si el. `C` urca in radacina unde avem acum `CKNS`. Ca noduri avem acum: `AB`( primul spart), `FH`( al doilea spart), `LM`, `PQR`, `TVWXY`.
+![Seminar 2, poza 14 - Inseram D](https://www.vladionescu.me/PAE-Seminar-2-14.png)
+
+Vrem sa il bagam pe `Z` care e mai mare ca `S` deci trebuie sa fie maxim in dreapta unde avem `TVWXY`. Il spargem. `W` urca in radacina unde avem `CNKSW` acum. Avem 6 copii. `AB`, `DFH`, `LM`, `PQR`, `TV`( primul spart), `XYZ`( al doilea spart).
+![Seminar 2, poza 15 - Inseram Z](https://www.vladionescu.me/PAE-Seminar-2-15.png)
+
+Vrem sa il bagam pe `E`. Dar radacina e plina. **Nu trecem niciodata peste un nod plin ca nu stim daca mai jos are loc**. Spargem.
+![Seminar 2, poza 16 - Inseram E](https://www.vladionescu.me/PAE-Seminar-2-16.png)
+
+Radacina este `N`. Ca copii avem `CK`, `SW`.
+`CK` are si el copii. `AB`, `DEFH`, `LM`.
+`SW` are si el copii. `PQR`, `TV`, `XYZ`.
+
+2. Stergere.
+Din arborele rezultat mai sus sa il stergem pe `R`:
+
+Plec din radacina si ma duc la `R`. Adica in dreapta ca e mai mare. Mergem in `SW` si constatam ca e incarcat la minim( 2). Nu am voie sa trec peste el. Are frati care sunt incarcati tot la minim. Cobor o cheie din parinte si unesc fratii incarcati la minim si fac merge. Invers pentru spart.
+Avem ca radacina `CKNSW`.
+Intre `K` si `N` avem un nod. `LM`.
+Intre `N` si `S` avem un nod. `PQR`.
+Intre `C` si `K` avem un nod. `DEFH`.
+Mai mic ca `C` avem nod. `AB`.
+Intre `SW` avem `TV`.
+Mai mare ca `W` avem nod. `XYZ`.
+
+Deci copii pentru radacina `AB`, `DEFH`, `LM`, `PQ*R*`, `TV`, `XYZ`. Stergem `R` si avem ca copii `AB`, `DEFH`, `LM`, `PQ`, `TV`, `XYZ`.
+![Seminar 2, poza 17 - Stergem R](https://www.vladionescu.me/PAE-Seminar-2-17.png)
+
+Din arborele asta vrem sa il stergem pe `W`.
+Cheia aia separa 2 fii. Trebuie sa gasesc in fii pe cine urca ca separator. Are fii destul de bogati, pe `XYZ`. O sa urce `X`.
+
+Radacina devine deci `CKNSX`.
+Ca copii avem `AB`, `DEFH`, `LM`, `PQ`, `TV`, `YZ`.
+![Seminar 2, poza 18 - Stergem W](https://www.vladionescu.me/PAE-Seminar-2-18.png)
+
+Vrem sa il stergem pe `B`.
+
+
+Are numar minim de chei nodul lui `B`( adica `AB`). Ne uitam la frati. Din fratele lui vrem sa urce din frate cineva la `C`, `C` cobora in `AB`. `DEFH`( fratele) poate sa ne dea separator. Ne da pe `D`.
+
+Radacina devine `DKNSX`.
+Copii: `AC`, `EFH`, `LM`, `PQ`, `TV`, `YZ`.
+![Seminar 2, poza 19 - Stergem B](https://www.vladionescu.me/PAE-Seminar-2-19.png)
+
+Vrem sa il stergem pe `S`. Nasol momentu'.
+E intr-un nod interior deci trebuie sa ridic din fii separator, dar amandoi fii sunt saraci( au 2 chestii). Deci cobor pe `S` si unesc cei 2 fii si din nodul nou format sterg.
+
+Radacina devine `DKNX`.
+Copii: `AC`, `EFH`, `LM`, `PQSTV`, `YZ`.
+Stergem `S`, deci avem copii `AC`, `EFH`, `LM`, `PQTV`, `YZ`.
+![Seminar 2, poza 19 - Stergem S](https://www.vladionescu.me/PAE-Seminar-2-20.png)
+
+3. Sa constuim toti B-arborii de grad $t=2$ care eu cheile `1`, `2`, `3`, `4`, `5`. Trebuie sa luam toate permutarile.
+
+Deci la gradul $t=2$ avem $ 1 \ge n(x) \le 3$( e formula pentru asta - a se vedea mai sus si teoria).
+Deci avem voie sa avem 1, 2 sau 3 chei.
+
+E la fel ca la alfabet, dar de data asta avem numere. Yey, nu trebuie sa stim alfabetul.
+
+ 3.1. Inseram `1`, `2`, `3`, `4`, `5`( prima permutare)
+
+Radacina `123`.
+
+Vrem sa il bagam pe `4`. Vad radacina plina asa ca ii facem split. Se ridica `2` ca radacina.
+
+Deci avem ca radacina `2`.
+Copii: `1`, `345`.
+
+3.2. Vrem sa trecem la urmatoarea permutare. Ne gandim ca avem $5!$ permutari si ca e nasol. Ca $5! = 120$. Dar in radacina o sa am intotdeauna 3 chei in ordine crescatoare. Cand inseram al patrulea element spargem radacina. Cheia din mijloc se ridica sus. Cheie din mijloc putem avea deci 2, 3 sau 4.
+
+Deci ies 3 arbori repede:
+
+Radacina: `2`. Copii: `1`, `345`.
+Radacina: `3`. Copii: `12`, `45`.
+Radacina: `4`. Copii: `123`, `5`.
+
+Alte optiuni nu avem, deci gata. Yey, nu a trebuit sa ne plimbam prin 120 permutari.
+
 > **NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI**
 
 > Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie [direct pe GitHub](https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/) sau trimite un mail la <mailto:stiu-chestii@vladionescu.me>
 
- -------
+-------
 
 > Written with [StackEdit](https://stackedit.io/).
