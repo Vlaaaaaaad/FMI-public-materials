@@ -12,6 +12,8 @@ Progrmarea algoritmilor eficienti
 
 > Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie [direct pe GitHub](https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/) sau trimite un mail la <mailto:stiu-chestii@vladionescu.me>
 
+
+
 #Curs 1
 
 > Poate o sa am timp sa scriu si cursurile frumos ca cele de jos, dar nu garantez.
@@ -25,6 +27,8 @@ Progrmarea algoritmilor eficienti
 ![Curs 1, poza 4](https://www.vladionescu.me/PAE-Curs-1-4.JPG)
 
 > Poate o sa am timp sa scriu si cursurile frumos ca cele de jos, dar nu garantez.
+
+
 
 #Seminar 1
 
@@ -185,9 +189,12 @@ Dar $E[1 \text{ zar}] = \frac{7}{2}$ si $E[\text{Chestie 1} + \text{Chestie 2}] 
 Nu am scris mai detaliat ca am iesit la tabla.
 
 
+
 #Curs2
 
 > **Lipsa, se accepta donatii.**
+
+
 
 #Seminar2
 
@@ -384,6 +391,238 @@ Radacina: `3`. Copii: `12`, `45`.
 Radacina: `4`. Copii: `123`, `5`.
 
 Alte optiuni nu avem, deci gata. Yey, nu a trebuit sa ne plimbam prin 120 permutari.
+
+
+
+#Curs 3
+
+> **Lipsa, se accepta donatii.**
+
+
+
+#Seminar 3
+
+##Arbori binomiali
+
+1. Demonstrati ca $\forall$ $k$, $B_k$ sunt adeavare urmatoarele afirmatii:
+
+a. $B_k$ are $2^k$ noduri, adica $|B_h| = 2^k$
+b. inaltimea lui $B_k$ e $k$, adica $h(B_k) = k$
+c. la nivelul $i$ in $B_k$ avem $C_k^i$ noduri
+d. gradul radadcinii lui $B_k$ este $k$ si este cel mai mare grad dintre toate nodurile din $B_k$ si daca copii radacinii sunt numerotati de la dreapta la stanga, atunci avem ca si copii ai radacinii $B_0, B_1, B_2, \ldots B_{k-1}$, adica
+$\text{deg}(\text{root}(B_k)) = k$
+
+Se face inductie si se demonstreaza toate proprietatile pentru $B_0$ si dupa se face ipoteza de inductie.
+
+Demonstratii:
+
+a.
+
+Pentru $B_0$ avem ca:
+a. $B_0$: $|B_0| = 1 = 2^0$
+b. $h(B_0) = 0$
+c. la nivelul $i$ in $B_0$ avem $C_0^0 = 1$ care e adevarat
+d. $\text{deg}(\text{root}(B_k)) = 0$ ca nu are nici un fiu
+
+Inductie: $B_{k-1}$ verifica toate cellalte proprietati.
+
+Il luam pe $B_k$ si veirificam.
+
+a. $|B_k| = |B_{k-1}| + |B_{k-1}| = 2^{k-1} + 2^{k-1} = 2^k$
+b. $h(B_k) = h(B_{k-1}) + 1 = k - 1 + 1 = k$
+c. $$D(k,i) = \text{numarul de noduri in } B_k \text{ la nivelul } i \\
+= D(k-1, i-1) + D(k-1, i) \\
+= C_{k-1}^{i-1} + C_{k-1}^i \\
+= \frac{(k-1)!}{(i-1)! (k-1)!} + \frac{(k-1!)}{i! (k-i-1)!} \\
+= C_k^i$$
+d. $\text{deg}(\text{root}(B_k)) = \text{deg}(\text{root}(B_{k-1})) + 1 = k - 1 + 1 = k$
+
+Partea a 2-a se rezolva cu desen care iese din regulile de constructie.
+
+##Heap binomial
+
+Colectii de arbori binomiali:
+a. fiecare arbore este min-heap
+b. pentru fiecare grad am in heap un singur arbore de acel grad lista de radacini, credcator grade.
+
+1. Reuniti $H_1$ cu $H_2$.
+
+Ne apucam sa parcurgem si sa legam.
+
+Trebuie sa legam 12 cu 18 si sa fie min-heap. Ca sa fie min, 12 e radacina si 18 e fiu, deci am ceva de grad 1. Asa ca am 2 abori de grad 1: 12, 7 si 3. Il las pe loc pe primul si ii leg pe urmatorii 2.
+
+**text lipsa**
+
+![Seminar 3, poza 1 - H1 U H2 = H3](https://www.vladionescu.me/PAE-Seminar-3-1.JPG)
+
+![Seminar 3, poza 2 - H1 U H2 = H3, continuare I guess](https://www.vladionescu.me/PAE-Seminar-3-2.JPG)
+
+2. Extragere de minim. ( Evident, minimul se afla printre lista nodurilor radacina. )
+Cum il extragem e 1? Il taiem pe 1 si dupa reunim ce a ramas. **text lipsa**
+Parcurgem lista de radacini si unim intre ei 2 cate 2 cei care au acelasi grad. Facem asta pana ramanem pentru fiecare grad cu un arbore. Gata extragerea de minim.
+
+![Seminar 3, poza 3 - Extragere de minim](https://www.vladionescu.me/PAE-Seminar-3-3.JPG)
+
+3. Descresterea unei chei. Vreau sa il descres pe 26 de la 26 la 5. Adica vreau sa pun 5 in loc de 26. Daca descresc o cheie se strica proprietatea de min-heap, deci trebuie sa verific. 16 nu e mai mic ca 5, deci il scad pe 16 si il urc pe 5. Dupa compar pe 5 cu 10. 10 nu e mai mic ca 5, deci le interschimb.
+
+![Seminar 3, poza 4 - Descrestere](https://www.vladionescu.me/PAE-Seminar-3-4.JPG)
+
+4. Stergerea unui nod.
+
+Se sterge in 2 pasi: iau nodul de sters, si il descresc cheia pana la -\infinity, urca in radacina si intregului ansamblu ii aplic o extragere de minim.
+
+Vreau sa il sterg pe $23$. Il fac pe $23$ $-\infty$. $-\infty$ e mai mic ca $10$, deci il mut. $-\infty$ e mai mic ca $5$, deci il mut. $-\infty$ ajunge radacina. $-\infty$ e radacina, il extragem. Gata stergerea nodului. Stim sa il stergem pe $-\infty$.
+
+![Seminar 3, poza 5 - Stergere de nod](https://www.vladionescu.me/PAE-Seminar-3-5.JPG)
+
+
+#Curs 4
+
+> **Lipsa, se accepta donatii.**
+
+
+
+#Seminar 4
+
+##Heapuri fibbonaci
+
+1. Extrageti minimul din arborele de mai jos.
+
+Dispare cheia, toti fii se leaga in lista de radacini si de la urmatorul nod fac parcurgere cu consolidare.
+
+** Explicatie pe lung lipsa. **
+
+2. Din heap-ul rezultat de la exercitiul precedent( cu nodurile 26, 18 si 19 marcate) sa se descreasca cheia nodului 46 la 15( vreau sa pun 15 in loc de 46). 15 nu e in relatie buna cu 24( nu e mai mare 15 ca 24) deci il marcheaza pe 24 si se duce in lista de radacini.
+
+3. Acum mai facem o descrestere de cheie. Vrem sa il descrestem pe 35 la 5. Il taiem pe 35. Tatal e deja marcat. Deci il tai de la tata si il pun in lista de radacini si il pun si pe tata in lista de radacini ca e marcat. E si tatal tatalui marcat( 24), deci il punem si pe el( 24) in lista de radacini. Noul minim e 5.
+
+> See cascading cut in Cormen.
+
+4. Vrem sa stergem nodul. Descrestem cheia la $-\infty$ si facem extragere de minim. Trebuie facuta si consolidare.
+
+
+##Arborbi binomiali
+
+$\forall k, B_k $cu nodurile etichetate in postordine, in binar. Pentru fiecare nod $x \in B_k$:
+a. Numarul de 0 din eticheta imi da nivelul nodului
+b. Gradul nodului este dat de numar de 1 din dreapta celui mai din dreapta 0 al etichetei.
+
+
+
+#Curs 5
+
+> **Lipsa, se accepta donatii.**
+
+
+
+#Seminar 5
+
+##[Retele de sortare](https://en.wikipedia.org/wiki/Sorting_network)
+
+1. Retelele din poza sunt retele de sortare sau nu?
+
+![Seminar 5 poza 1 - Retele](https://www.vladionescu.me/PAE-Seminar-5-1.JPG)
+
+Demonstratie:
+Dupa primii doi pasi pe primul fir o sa am minus. Simetric, pe firul 4 o sa am maximul dupa 2 pasi.
+La pasul 3 compar ce a mai ramas la mijloc si le asez in ordinea care trebuie.
+
+Alte retele aici. Gave up.
+
+Brad = bubble sort. Reteaua e paralela. Dar bubble sort nu e. Deci reteaua imi spune ca il pot paraleliza pe bubble sort.
+
+![Seminar 5, poza 2 - Bubble sort](https://www.vladionescu.me/PAE-Seminar-5-2.JPG)
+
+
+#Curs 6
+
+> **Lipsa, se accepta donatii.**
+
+
+
+#Seminar 6
+
+> **Lipsa, se accepta donatii.**
+
+
+
+#Curs 7
+
+> **Lipsa, se accepta donatii.**
+
+
+
+#Seminar 7
+
+##Algoritmi paraleli pe liste
+
+Presupunem ca fiecare nod al listei asignat cate un procesor.
+
+###List ranking
+
+Vreau sa gasesc pentru fieacre nod al listei cate noduri mai sunt pana la sfarsit. Rangul ultimului nod va fi 0, in mod evident.
+
+Initializam cu 0 ultimul nod si cu 1 toate celelalte noduri.
+
+Programul paralel care va fi ``exclusiveReadexclusiveWrite(EREW)``.
+
+```
+for fiecare procesor i in paralel
+	do if next[i] == nil
+		then d[i] = 0
+		else d[i] = 1
+// gata initalizarea
+
+while exista i astfel incat next[i] != nil
+	do for fiecare i in paralel
+		do if next[i] != nil
+			then d[i] = d[i] + d[next[i]]
+			     next[i] = next[next[i]]
+```
+
+Timpul de rulare e $\log(n)$ datorita saririi pointerilor.
+
+![Seminar 7, poza 1 - List ranking](https://www.vladionescu.me/PAE-Seminar-7-1.JPG)
+
+###Calculul unor prefixe paralele
+
+Avem o operatie binara asociativa. Presupunem ca e adunare. Ni se dau numere $x_1, x_2, \dotsc, x_n$. Vreau sa calculex $y_1 = x_1, y_2 = x_1 + x_2, \dotsc, y_k = x_1 + x_k$. Vreau sa calculez toate aceste sume partiale. Folosesc notatia $x_i + \dotsc + x_j = [i,j]$ si $x_i = [i,i]$.
+
+O sa am urmatoarea aritmetica $[i,j] + [j+1, k] = [i, k]$.
+
+``ListPrefix(EREW)``
+```
+for fiecare i in paralel
+	do y[i] = x[i]
+
+// gata initializarea
+
+while exista i astfel incat next[i] != nil
+	do for fircare i in paralel
+		do if next[i] != nil
+			then y[next[i]] = y[i] + y[next[i]]
+			     next[i] = next[next[i]]
+```
+Din nou avem pointer-jumping. E foare asemanator cu programul precedent.
+
+![Seminar 7, poza 2 - ListPrefix](https://www.vladionescu.me/PAE-Seminar-7-2.JPG)
+
+---
+
+O sa folosim algoritmi pe liste ca sa rezolvam probleme pe arbori, spre exemplu arbori binari. Vreau intrun arbore binar sa aflu inaltimea fiecarui nod. 0 radacina, 1 la nodurile de la nivelul 1 si tot asa.
+
+Vreau sa pun pe arborele meu o structura de lista simplu inlantuita. Pe arborele meu vreau sa pun o structura de tur oriler. E un drum care parcurge fiecare arc o singura data. Deci prin fiecare arc trec 1 singura data, dar printrun varf pot sa trec d emai multe ori. O sa vreau pe arborele meu sa pun o structura deasta ca sa pun o structura care e o lista simplu inlantuita. Pleaca din radacina si parcurge tot arborele o singura data si iese tot prin radacina.
+
+Asignez fiecarui nod cate 3 procesoare: A, B si C. Si leg printro sageata procesorul A al unui nod de procesarul A al fiului sau stang; daca nu am fiu stang A merge in B-ul din acelasi nod. Din B ma duc in A-ul filui drept, daca exista. Am ametit si pierdut firul, a se vedea poza.
+
+Pe lista simplu inlantuita rezultata pot sa fac programe de liste. De exemplu sa calculez List Prefix de mai sus. Trebuie sa ma gandesc sa fac in mod inteligent initializarea procesoarelor astfel incat calculul ``ListPrfeix`` sa imi dea rezultatul dorit.
+
+In toate A pun 1, in B pun 0 si in C pun -1. Cu aceste 3 valori cu ``ListPrefix`` aflam in procesorul C nivelul fiecarui nod, in timp $\log(3n)$.
+
+![Seminar 7, poza 3 - Arborele inainte sa fie completat](https://www.vladionescu.me/PAE-Seminar-7-3.JPG)
+
+![Seminar 7, poza 4 - Arborele completat](https://www.vladionescu.me/PAE-Seminar-7-4.JPG)
+
 
 > **NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI**
 
