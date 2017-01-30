@@ -78,10 +78,100 @@ Prin operatia de conversie pe care o efectueaza, prolog transforma automat regul
 
 #Analiza sintactica top-down. Algoritm de analiza sintactica top-down si implementarea lui in Prolog
 
+```
+parseaza(Constituent, [Cuvant|S], S) :- 
+	regula_lexicala(Constituent, Cuvant).
+
+parseaza(Constituent, S1, S) :- 
+	regula_gramatica(Constituent, ListaConstituentiRescriere),
+	parseaza_lista(ListaConstituentiRescriere, S1, S).
+
+parseaza_lista([C|Constituenti], S1, S) :-
+	parseaza(C, S1, S2, A),
+	parseaza_lista(Constituenti, S2, S).
+parseaza_lista([], S, S).
+
+%Reguli gramatica
+regula_gramatica(s, [np, vp]).
+regula_gramatica(np, [n]).
+regula_gramatica(vp, [v, np]).
+regula_gramatica(vp, [v]).
+
+%Reguli lexicale
+regula_lexicala(n, omul).
+regula_lexicala(n, hainele).
+regula_lexicala(v, face).
+regula_lexicala(v, fac).
+```
+
 #Analiza sintactica bottom-up. Algoritm de analiza sintactica bottom-up si implementarea lui in Prolog
+```
+parse(S, Rezultat):- depl_red(S,[],Rezultat).
 
+depl_red(S, Stiva, Rezultat):- deplasare(Stiva, S, StivaNoua, S1),
+                               reducere(StivaNoua, StivaRedusa),
+                               depl_reducere(S1, StivaRedusa, Rezultat).
+depl_red([], Rez, Rez).
+
+deplasare(Stiva, [H|S1], [H|StivaNoua], S1).
+
+reducere(Stiva, StivaRedusa):- iregula(Stiva, Stiva1),
+                               reducere(Stiva1, StivaRedusa).
+reducere(Stiva, Stiva).
+
+iregula([vp, np|X], [s|X]).
+iregula([v|X], [vp|X]).
+iregula([np,v|X], [vp|X]).
+iregula([Cuvant|X], [Cat|X]):- cuvant(Cat, Cuvant).
+
+%adaugati voi cuvinte
+cuvant....
+```
 #Analiza sintactica din coltul stang. Descriere si implementare in Prolog (cu si fara legaturi)
+```
+parseaza(C, [Cuvant|SirulRamas], S) :- 
+	regula_lexicala(W, Cuvant),
+	completeaza(W, C, SirulRamas, S).
 
+completeaza(W, W, S, S).
+
+completeaza(W, Constituent, SirulRamas, S) :-
+	regula_gramatica(Parent, [W | Rest]),
+	parse_lista(Rest, SirulRamas, S1),
+	completeaza(Parent, Constituent, S1, S).
+
+parse_lista([C|Constituenti], S1, S) :-
+	parseaza(C, S1, S2),
+	parse_lista(Constituenti, S2, S).
+	
+parse_lista([], S, S).
+
+
+regula_gramatica(s, [np, vp]).
+regula_gramatica(np, [det, n]).
+regula_gramatica(np, [np, conj, np]).
+regula_gramatica(vp, [v, np]).
+regula_gramatica(vp, [v, np, pp]).
+regula_gramatica(pp, [p, np]).
+
+regula_lexicala(det, the).
+regula_lexicala(det, all).
+regula_lexicala(det, every).
+regula_lexicala(p, near).
+regula_lexicala(conj, and).
+regula_lexicala(n, dog).
+regula_lexicala(n, dogs).
+regula_lexicala(n, cat).
+regula_lexicala(n, cats).
+regula_lexicala(n, elephant).
+regula_lexicala(n, elephants).
+regula_lexicala(v, chase).
+regula_lexicala(v, chases).
+regula_lexicala(v, see).
+regula_lexicala(v, sees).
+regula_lexicala(v, amuse).
+regula_lexicala(v, amuses).
+```
 #Parser-ul BUP
 
 Cea mai cunoscuta implementare in Prolog a analizei sintactice din coltul stang o reprezinta implementarea BUP( bottom-up parser) care transforma fiecare regula PS intro clauza Prolog al carei cap nu este dat de nodul parinte ci de fiul cel mai mare din stanga. Astfel, regula ``NP -> Det N PP`` se transforma in clauza Prolog ``det( C, S1, S ) :- parse( n, S1, S2 ), parse( pp, S2, S3 ), np( C, S3, S ).``.
@@ -90,6 +180,29 @@ Aceasta clauza prolog spune ca "daca tocmai sa completat un constituent de tip D
 Pe langa cate o clauza Prolog corespunzand fiecareia dintre regulile PS, implementarea BUP necesita si o clauza de terminare pentru fiecare tip de constituent.
 
 Implementarea BUP este extrem de eficienta datorita faptulu ca partea foarte delicata a procesului de cautare, aceea care urmeaza dupa completarea unui fiu aflat cel mai in stanga, este rezolvata de cel mai rapid mecanism de cautare al Prolgului, si anume mecanismul de gasire a unei clauze fiind dat de predicatul corespunzator.
+
+```
+parse(C,S1,S):- cuvant(W, S1, S2),
+                P=..(W,C,S2,S),
+                Call(P).
+                
+np(C, S1, S):- parse(vp, S1, S2), s(C, S2, S).
+np(np, X, X).
+
+det(C, S1, S):- parse(n, S1, S2), np(C, S2, S).
+det(det, X, X).
+
+v(C, S1, S):- parse(np, S1, S2), vp(C, S2, S).
+v(v, X, X).
+
+s(s, X, X).
+vp(vp, X, X).
+pp(pp, X, X).
+n(n, X, X).
+
+%adaugati voi cuvinte
+cuvant...
+```
 
 #Descrierea si implementarea unui parser bottom-up cu harta
 ```prolog
