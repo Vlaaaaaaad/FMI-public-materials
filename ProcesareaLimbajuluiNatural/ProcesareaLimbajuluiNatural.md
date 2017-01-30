@@ -92,6 +92,18 @@ Pe langa cate o clauza Prolog corespunzand fiecareia dintre regulile PS, impleme
 Implementarea BUP este extrem de eficienta datorita faptulu ca partea foarte delicata a procesului de cautare, aceea care urmeaza dupa completarea unui fiu aflat cel mai in stanga, este rezolvata de cel mai rapid mecanism de cautare al Prolgului, si anume mecanismul de gasire a unei clauze fiind dat de predicatul corespunzator.
 
 #Descrierea si implementarea unui parser bottom-up cu harta
+
+Predicatul `init_harta` realizeaza initializarea hartii prin introducerea muchiilor inactive corespunzator fiecarui cuvant din sirul de intrare.
+
+Predicatul `pentru_fiecare` are rolul de a executa un proces de backtracking in cautarea tuturor modalitatior de satisfacere a primului sau argument.
+
+Predicatul `adauga_muchie`, pe langa faptul ca afirma existenta muchiei pe care o introduce in baza de date, determina ce alte muchii trebuie incluse pe harta ca consecinta a acestei adaugari.
+
+Predicatul `parse` indeplineste urmatoarele atributii:
+- specifica varful initial
+- afiseaza toate rezultatele analizei
+- inlatura toate muchiile create in timpul analizei
+
 ```prolog
 init_harta(V0, V0, []).
 init_harta(V0, Vn, [Cuvant | Cuvinte]) :-
@@ -129,6 +141,23 @@ parse( Cat, Sir) :-
 
 
 #Descrierea si implementarea unui parser top-down cu harta
+
+Predicatul `parse` realizeaza
+- initializarea hartii cu muchii lexicale inactive
+- stabileste categoria simbolului considerat ca fiind initial sau de start
+- adauga la inceputul hartii muchii active vide etichetate cu aceasta categorie.
+
+Predicatul `init_harta` realizeaza initializarea hartii prin introducerea muchiilor inactive corespunzator fiecarui cuvant din sirul de intrare.
+
+Predicatul `init_activ(Varf, Categorie)` stipuleaza ca pentru fiecare regula care extinde `Categorie` creeaza o muchie activa vida, in `Varf` bazata pe acea regula.
+
+Predicatul `adauga_muchie` adauga pe harta o muchie activa sau inactiva, facand diferenta intre acestea, avand in vedere regula fundamentala cat si regula top-down.
+
+Predicatul `test(Sir)` are rolul de a:
+- specifica varful initial
+- afisa rezultatele analizei
+- inlatura toate muchiile create
+
 ```prolog
 parse( V0, Vn, Sir) :-
         init_hart(V0, Vn, Sir),
@@ -169,6 +198,16 @@ test(Sir) :- V0 is 1,
 ```
 
 #Descrierea si implementarea unui parser bottom-up cu harta si agenda
+
+Predicatul `init_agenda(Sir, Varf, Agenda` creeaza o agenda initiala ce contine muchii lexicale, fiind dat sirul de intrare `Sir` care incepe de la nodul `Varf`. Se izoleaza primul cuvant, se consulta lexiconul si se plazeaza intro agenda toate muchiile inactive care acopera cuvantul. Aceasta agenda se adauga in fara agendei obtinute ca urmare a consultarii lexiconului relativ la celelalte cuvinte.
+
+Predicatul `extinde_muchii(Agenda, InHarta, OutHarta)` este folosit pentru adaugarea muchiilor din `Agenda` unei harti initiale `InHarta`, adaugare ce ia in consideratie atat regula fundamentala cat si regula bottom-up. Aceste actiuni au ca rezultate crearea unei noi harti numita `OutHarta`.
+
+Predicatul `muchii_noi(Muchie, Harta, Muchii)` care face corespondenta dintre `Muchie` si `Harta` si o multime de noi muchii `Muchii`, aparuta in urma adaugarii lui `Muchie` la `Harta`. Acest predicat are rolul de a adauga hartii muchiile active vide care declanseaza procesul de analiza sintactica. In definirea predicatului `muchii_noi` sunt luate in considerare cele doua cazuri posibile in inserarea pe harta a unei noi muchii( adaugarea unei muchii inactive sau adaugarea unei muchii active).
+
+Predicatul `parse( Cat, Sir)` este cel ce se foloseste penntru interogare si indeplineste atributiile de a:
+- specifica varful initial
+- verifica daca harta contine intradevar o muchie care acopera intreg sirul de intrare relativ la categoria specificata
 
 ```prolog
 init_agenda([], _ []).
@@ -213,6 +252,19 @@ parse(Cat, Sir) :-
 ```
 
 #Descrierea si implementarea unui parser top-down cu harta si agenda
+
+Predicatul `init_agenda` creeaza o agenda initializata cu muchii lexicale si e considerata si ca fiind harta initiala.
+
+Predicatul `init_activ( Categorie, Varf, Muchii)` introduce pe harta initiala muchii active. Pentru fiecare regula care extinde `Categorie` creeaza, la `Varf` o muchie activa vida bazata pe regula respectiva. Muchia este apoi introdusa in lista `Muchii`.
+
+Regula fundamentala a analizei sintactice cu harta, precum si regula top-down vor fi incorporate in predicatul `muchii_noi( Muchie, Harta, Muchii)` care face corespondenta intre `Muchie` si `Harta` si o multime de muchii noi numita `Muchii`, care ia nastere prin adaugarea lui `Muchie` la `Harta`. In definirea predicatului `muchii_noi` sunt luate in considerare cele doua cazuri posibile in inserarea pe harta a unei noi muchii( adaugarea unei muchii inactive sau adaugarea unei muchii active).
+
+Interogarea se realizeaza prin intermediul predicatului `parse(Cat, Sir)` care:
+- initializeaza harta
+- creeaza, la inceputul hartii, muchia( muchiile) activa vida corespunzatoare categoriei analizate
+- apeleaza `extinde_muchii` care realizeaza efectiv analiza sintactica a sirului de intrare `Sir` relativ la categoria specificata `Cat`
+- elaboreaa harta pana la final efectuand o verificare a sfarsitului sirului de intrare
+- verifica daca sa inregsitrat success in analiza sirului de intrare
 
 ```prolog
 init_agenda([], _, []).
