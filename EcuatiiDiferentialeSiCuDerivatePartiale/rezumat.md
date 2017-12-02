@@ -34,7 +34,7 @@ $f\left(x\right) = 4 \sin x - \cos x$
 $F\left(x\right) = \int \left(4 \sin x - \cos x\right) \operatorname{d}\!x \\ = 4 \int \sin x \operatorname{d}\!x - \int \cos x \operatorname{d}\!x \\ = -4 \cos x - \sin x +C$
 
 ##Ecuatie cu variabile separabile
-$f\left(x, x\right) = a\left(t\right) \cdot b\left(x\right)$
+$f\left(t, x\right) = a\left(t\right) \cdot b\left(x\right)$
 $\frac{\operatorname{d}\!x}{\operatorname{d}\!t} = a\left(t\right) \cdot b\left(x\right)$
 
 1. Se rezolva $b\left(x\right) = 0$
