@@ -9,7 +9,7 @@ Ecuatii Diferentiale si cu Derivate Partiale
 
 #Bibliografia
  - Ioan Rosca, "Ecuatii diferentiale si cu derivate partiale", Editura Fundatiei 'Romania de Maine' 2000
- - Stefan Minica, "Ecuatii diferentiale", Editura Universitatii din Bucuresti, volumele 1 si 2
+ - Stefan Mirica, "Ecuatii diferentiale", Editura Universitatii din Bucuresti, volumele 1 si 2
  - Aurelian Cernea, "Ecuatii diferentiale", Editura Universitatii din Bucuresti
  - Ioan Rosca, "Ecuatii cu derivate partiale", Editura Universitatii din Bucuresti
 
