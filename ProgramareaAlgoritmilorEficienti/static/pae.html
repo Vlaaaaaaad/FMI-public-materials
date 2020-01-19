@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAE</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body><div class="container"><h1 id="progrmarea-algoritmilor-eficienti">Progrmarea algoritmilor eficienti</h1>
+
+<blockquote>
+  <p><strong>NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI</strong></p>
+
+  <p>Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie <a href="https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/">direct pe GitHub</a> sau trimite un mail la <a href="mailto:stiu-chestii@vladionescu.me">stiu-chestii@vladionescu.me</a></p>
+</blockquote>
+
+<p><div class="toc">
+<ul>
+<li><a href="#progrmarea-algoritmilor-eficienti">Progrmarea algoritmilor eficienti</a></li>
+<li><a href="#curs-1">Curs 1</a></li>
+<li><a href="#seminar-1">Seminar 1</a><ul>
+<li><a href="#teorema-master">Teorema Master</a></li>
+<li><a href="#algoritm-de-inmultire-a-2-numere-de-lungime-n">Algoritm de inmultire a 2 numere de lungime n</a></li>
+<li><a href="#comparatii">Comparatii</a></li>
+<li><a href="#probabilitati">Probabilitati</a></li>
+<li><a href="#variabile-aleatoare">Variabile aleatoare</a></li>
+</ul>
+</li>
+<li><a href="#curs2">Curs2</a></li>
+<li><a href="#seminar2">Seminar2</a><ul>
+<li><a href="#b-arbori">B-arbori</a><ul>
+<li><a href="#numarul-minim-de-chei-dintr-un-b-arbore">Numarul minim de chei dintr-un B-arbore</a></li>
+<li><a href="#numarul-maxim-de-chei-dintr-un-b-arbore">Numarul maxim de chei dintr-un B-arbore</a></li>
+<li><a href="#exercitii">Exercitii</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#curs-3">Curs 3</a></li>
+<li><a href="#seminar-3">Seminar 3</a><ul>
+<li><a href="#arbori-binomiali">Arbori binomiali</a></li>
+<li><a href="#heap-binomial">Heap binomial</a></li>
+</ul>
+</li>
+<li><a href="#curs-4">Curs 4</a></li>
+<li><a href="#seminar-4">Seminar 4</a><ul>
+<li><a href="#heapuri-fibbonaci">Heapuri fibbonaci</a></li>
+<li><a href="#arborbi-binomiali">Arborbi binomiali</a></li>
+</ul>
+</li>
+<li><a href="#curs-5">Curs 5</a></li>
+<li><a href="#seminar-5">Seminar 5</a><ul>
+<li><a href="#retele-de-sortare">Retele de sortare</a></li>
+</ul>
+</li>
+<li><a href="#curs-6">Curs 6</a></li>
+<li><a href="#seminar-6">Seminar 6</a></li>
+<li><a href="#curs-7">Curs 7</a></li>
+<li><a href="#seminar-7">Seminar 7</a><ul>
+<li><a href="#algoritmi-paraleli-pe-liste">Algoritmi paraleli pe liste</a><ul>
+<li><a href="#list-ranking">List ranking</a></li>
+<li><a href="#calculul-unor-prefixe-paralele">Calculul unor prefixe paralele</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</p>
+
+<blockquote>
+  <p><strong>NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI</strong></p>
+
+  <p>Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie <a href="https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/">direct pe GitHub</a> sau trimite un mail la <a href="mailto:stiu-chestii@vladionescu.me">stiu-chestii@vladionescu.me</a></p>
+</blockquote>
+
+
+
+<h1 id="curs-1">Curs 1</h1>
+
+<blockquote>
+  <p>Poate o sa am timp sa scriu si cursurile frumos ca cele de jos, dar nu garantez.</p>
+</blockquote>
+
+<p><img src="https://www.vladionescu.me/PAE-Curs-1-1.JPG" alt="Curs 1, poza 1" title=""></p>
+
+<p><img src="https://www.vladionescu.me/PAE-Curs-1-2.JPG" alt="Curs 1, poza 2" title=""></p>
+
+<p><img src="https://www.vladionescu.me/PAE-Curs-1-3.JPG" alt="Curs 1, poza 3" title=""></p>
+
+<p><img src="https://www.vladionescu.me/PAE-Curs-1-4.JPG" alt="Curs 1, poza 4" title=""></p>
+
+<blockquote>
+  <p>Poate o sa am timp sa scriu si cursurile frumos ca cele de jos, dar nu garantez.</p>
+</blockquote>
+
+
+
+<h1 id="seminar-1">Seminar 1</h1>
+
+
+
+<h2 id="teorema-master">Teorema Master</h2>
+
+<p>Exercitii: <br>
+1. <script type="math/tex" id="MathJax-Element-3">T(n) = T\left(\frac{n}{2}\right) + O(1)</script> <br>
+2. <script type="math/tex" id="MathJax-Element-4">T(n) = 2 \cdot T\left(\frac{n}{2}\right) + O(n)</script> <br>
+3. <script type="math/tex" id="MathJax-Element-5">T(n) = 4 \cdot T\left(\frac{n}{2}\right) + O(n)</script> <br>
+4. <script type="math/tex" id="MathJax-Element-6">T(n) = 3 \cdot T\left(\frac{n}{2}\right) + O(n)</script></p>
+
+<p>Rezolvari:</p>
+
+<p>1. <br>
+<script type="math/tex; mode=display" id="MathJax-Element-7">
+a = 1 \\
+b = 2 \\
+d = 0 \\
+b^d = 1 \\
+a = b^d \\
+T(n) = O\left( n^0 \log n \right) = O(\log n)
+</script></p>
+
+<p>2. <br>
+<script type="math/tex; mode=display" id="MathJax-Element-8">
+a = 2 \\
+b = 2 \\
+d = 1 \\
+b^d = 2 \\
+a = b^d \\
+T(n) = O(n \log n)
+</script></p>
+
+<p>3. <br>
+<script type="math/tex; mode=display" id="MathJax-Element-9">
+a = 4 \\
+b = 2 \\
+n = 1 \\
+b^d = 2 \\
+a \gt b^d \\
+T(n) = O\left(n^2\right)
+</script></p>
+
+<p>4. <br>
+<script type="math/tex; mode=display" id="MathJax-Element-10">
+a = 3 \\
+b = 2 \\
+d = 1 \\
+b^d = 2 \\
+a \gt b^d \\
+T(n) = O\left(n \log_2(3)\right)
+</script></p>
+
+
+
+<h2 id="algoritm-de-inmultire-a-2-numere-de-lungime-n">Algoritm de inmultire a 2 numere de lungime n</h2>
+
+<p>Algoritmul direct are complexitatea <script type="math/tex" id="MathJax-Element-11">O\left(n^2\right)</script>.</p>
+
+<p>Alt algoritm bazat pe paradigma Divide and Conquer. <br>
+Vrem sa inmultim <script type="math/tex" id="MathJax-Element-12">x</script> cu <script type="math/tex" id="MathJax-Element-13">y</script>. Impart numerele in 2 jumatati. <script type="math/tex" id="MathJax-Element-14">x_\text{left}</script> si <script type="math/tex" id="MathJax-Element-15">x_\text{right}</script> si <script type="math/tex" id="MathJax-Element-16">y_\text{left}</script> si <script type="math/tex" id="MathJax-Element-17">y_\text{right}</script>( fiecare de <script type="math/tex" id="MathJax-Element-18">\frac{n}{2}</script> biti). Incercam sa obtinem rezultatul inmultind jumatatile intre ele. Trebuie sa le scriem ca sume intre cele 2 bucati.</p>
+
+<p><script type="math/tex" id="MathJax-Element-19">x = 2^{\frac{n}{2}} \cdot x_\text{left} + x_\text{right}</script>. A se nota ca x e reprezentat in binar.</p>
+
+<p><script type="math/tex" id="MathJax-Element-20">x \cdot y = 2^n \cdot x_\text{left} \cdot y_\text{left} + 2^{\frac{n}{2}}(x_\text{left} \cdot y_\text{right} + x_\text{right} \cdot y_\text{left}) + x_\text{right} \cdot y_\text{right}</script></p>
+
+<p>Deci, putem scrie un program de genul pentru a le inmulti:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs coffeescript">Produs(n)
+    Imparte x, y <span class="hljs-keyword">in</span> <span class="hljs-number">2</span>                                     O(n)
+
+    <span class="hljs-function"><span class="hljs-params">(Apelez)</span><span class="hljs-title">Produs</span><span class="hljs-params">(n/<span class="hljs-number">2</span>)</span> -&gt;</span>(returneaza) x_left * y_left    O(n/<span class="hljs-number">2</span>)
+    <span class="hljs-function"><span class="hljs-params">(Apelez)</span><span class="hljs-title">Produs</span><span class="hljs-params">(n/<span class="hljs-number">2</span>)</span> -&gt;</span>(returneaza) x_right * y_right  O(n/<span class="hljs-number">2</span>)
+    <span class="hljs-function"><span class="hljs-params">(Apelez)</span><span class="hljs-title">Produs</span><span class="hljs-params">(n/<span class="hljs-number">2</span>)</span> -&gt;</span>(returneaza) x_left * y_right   O(n/<span class="hljs-number">2</span>)
+    <span class="hljs-function"><span class="hljs-params">(Apelez)</span><span class="hljs-title">Produs</span><span class="hljs-params">(n/<span class="hljs-number">2</span>)</span> -&gt;</span>(returneaza) x_right * y_left   O(n/<span class="hljs-number">2</span>)
+
+    Combina                                               O(n)</code></pre>
+
+<p>Cost total:                                                   <script type="math/tex" id="MathJax-Element-21">T(n) = 4 \cdot T\left(\frac{n}{2}\right) + O(n)</script></p>
+
+<p>Dar am calculat si asta e echivalenta cu <script type="math/tex" id="MathJax-Element-22">O\left(n^2\right)</script> care e echivalenta cu algoritmul direct. Nu e de bine. Vrem sa ne gandim la o solutie mai buna, cu 3 apeluri recursive. Daca reduc numarul de apeluri la 3 obtin o solutie sub-patratica, mai buna.</p>
+
+<p>Putem sa optimizam ecuatia aia cu <script type="math/tex" id="MathJax-Element-23">x \cdot y</script>. <br>
+<script type="math/tex; mode=display" id="MathJax-Element-24">\\
+(x_\text{left} \cdot y_\text{right} + x_{\text{right}} \cdot y_\text{left}) \to \\
+(x_\text{left} + x_\text{right})(y_\text{left} + y_\text{right}) = x_\text{left} \cdot y_\text{left} + x_\text{right} \cdot y_\text{right} + (x_\text{left} \cdot y_\text{right} + x_\text{right} \cdot y_\text{left})
+</script></p>
+
+<p>Deci, programul devine:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs coffeescript">Produs(n)
+    Imparte x, y <span class="hljs-keyword">in</span> <span class="hljs-number">2</span>                                                 O(n)
+
+    Produs<span class="hljs-function"><span class="hljs-params">(n/<span class="hljs-number">2</span>)</span> -&gt;</span>(returneaza) x_left * y_left                        O(n/<span class="hljs-number">2</span>)
+    Produs<span class="hljs-function"><span class="hljs-params">(n/<span class="hljs-number">2</span>)</span> -&gt;</span>(returneaza) x_right * y_right                      O(n/<span class="hljs-number">2</span>)
+    Produs<span class="hljs-function"><span class="hljs-params">(n/<span class="hljs-number">2</span>)</span> -&gt;</span>(returneaza) (x_left + x_right)*(y_left + y_right)  O(n/<span class="hljs-number">2</span>)
+    Reconstitui (x_left * y_right + x_right * y_left)                 O(<span class="hljs-number">1</span>)
+
+    Combina                                                           O(n)</code></pre>
+
+<p>Cost total:                                                               <script type="math/tex" id="MathJax-Element-25">T(n) = 3 \cdot T\left(\frac{n}{2}\right) + O(n) = T(n^{\log_2 3})</script> care e mai mic decat <script type="math/tex" id="MathJax-Element-26">O\left(n^2\right)</script>, deci mai bun.</p>
+
+
+
+<h2 id="comparatii">Comparatii</h2>
+
+<p><script type="math/tex; mode=display" id="MathJax-Element-27"> \\
+A_1: T(n) = 4 \cdot T\left(\frac{n}{2}\right) + O(n) \\
+A_2: T(n) = 3 \cdot T\left(\frac{n}{2}\right) + O(n) \\
+A_3: T(n) = 4 \cdot T\left(\frac{n}{2}\right) + O\left(n^2\right) \\
+A_4: T(n) = 3 \cdot T\left(\frac{n}{2}\right) + O\left(n^2\right) \\
+</script></p>
+
+<p>Sa se compare 2 cate 2 intre ei. Facem apel la Teorema Master numai daca nu avem un control.</p>
+
+<p><script type="math/tex" id="MathJax-Element-28">A_2</script> e mai bun decat <script type="math/tex" id="MathJax-Element-29">A_1</script>, in mod clar. Am 3 apeluri in loc de 4. <br>
+<script type="math/tex" id="MathJax-Element-30">A_4</script> e mai bun decat <script type="math/tex" id="MathJax-Element-31">A_3</script>, la fel.</p>
+
+<p><script type="math/tex" id="MathJax-Element-32">A_1</script> e mai bun decat <script type="math/tex" id="MathJax-Element-33">A_3</script>. <br>
+<script type="math/tex" id="MathJax-Element-34">A_2</script> e mai bun decat <script type="math/tex" id="MathJax-Element-35">A_4</script>.</p>
+
+<p><script type="math/tex" id="MathJax-Element-36">A_3</script> cu <script type="math/tex" id="MathJax-Element-37">A_2</script>. E clar ca nu mai trebuie comparati.</p>
+
+<p><script type="math/tex" id="MathJax-Element-38">A_1</script> cu <script type="math/tex" id="MathJax-Element-39">A_4</script> trebuie comparati. <br>
+Aplicam Teorema Master. <br>
+<script type="math/tex; mode=display" id="MathJax-Element-40">\\
+A_1: a = 4, b = 2, d =1 \\
+a \gt b^d \implies T(n) = O(n^{\log_2 4}) = O(n^2)\\
+</script></p>
+
+
+
+<p><script type="math/tex; mode=display" id="MathJax-Element-41">\\
+A_4: a = 3, b = 2, d = 2 \\
+a \lt b^d \implies T(n) = O(n^2) \\
+</script></p>
+
+<p>Deci, <script type="math/tex" id="MathJax-Element-42">A_1</script> e echivalent cu <script type="math/tex" id="MathJax-Element-43">A_4</script>.</p>
+
+
+
+<h2 id="probabilitati">Probabilitati</h2>
+
+<p>Arunc 2 zaruri. Cate evenimente avem? Ies <script type="math/tex" id="MathJax-Element-44">\{(i,j) | i,j = \overline{1,6}\} = 36</script>.</p>
+
+<p>Sa estimam probabilitatea ca suma celor 2 zaruri este egala cu 7, 4, 12.</p>
+
+<p><script type="math/tex" id="MathJax-Element-45">Pr\{\text{suma } = 7\} = Pr\{(1,6) \vee (2,5) \vee (3, 4) \vee (4,3) \vee (5,2) \vee  (6,1)\} = 6  \frac{1}{36}  = \frac{1}{6}</script> <br>
+<script type="math/tex" id="MathJax-Element-46">Pr\{\text{suma } = 4\} = Pr\{(1,3) \vee (2,2) \vee (3,1)\} = \frac{1}{12}</script> <br>
+<script type="math/tex" id="MathJax-Element-47">Pr\{\text{suma } = 12\} = Pr\{(6,6)\} = \frac{1}{36}</script></p>
+
+
+
+<h2 id="variabile-aleatoare">Variabile aleatoare</h2>
+
+<p>Suma de mai sus e o varibila aleatoare. <br>
+Vreau sa calculez media variabilei aleatoare Suma. <br>
+<script type="math/tex" id="MathJax-Element-48">E[\text{Suma}] = 7</script>.</p>
+
+<p>Dar <script type="math/tex" id="MathJax-Element-49">E[1 \text{ zar}] = \frac{7}{2}</script> si <script type="math/tex" id="MathJax-Element-50">E[\text{Chestie 1} + \text{Chestie 2}] = E[\text{Chestie 1}] + E[\text{Chestie 2}]</script>.</p>
+
+<p>Nu am scris mai detaliat ca am iesit la tabla.</p>
+
+
+
+<h1 id="curs2">Curs2</h1>
+
+<blockquote>
+  <p><strong>Lipsa, se accepta donatii.</strong></p>
+</blockquote>
+
+
+
+<h1 id="seminar2">Seminar2</h1>
+
+
+
+<h2 id="b-arbori">B-arbori</h2>
+
+
+
+<h3 id="numarul-minim-de-chei-dintr-un-b-arbore">Numarul minim de chei dintr-un B-arbore</h3>
+
+<p><strong>Teorema</strong>: Intr-un B-arbore cu <script type="math/tex" id="MathJax-Element-1342">n</script> chei( chei, nu noduri) de grad minim <script type="math/tex" id="MathJax-Element-1343">t</script> si inaltime <script type="math/tex" id="MathJax-Element-1344">h</script> avem urmatoarea limita superioara pentru inaltime: <script type="math/tex" id="MathJax-Element-1345">h \le \log_t \frac{n+1}{2}</script>.</p>
+
+<p><strong>Demonstratie</strong>:</p>
+
+<p>Demonstram plecand de la o inegalitate de tipul <script type="math/tex" id="MathJax-Element-1346">n \ge \text{ numarul minim de chei la grad } t \text{ si inaltime } h</script>. <br>
+O sa imi construiesc un B-arbore de grad <script type="math/tex" id="MathJax-Element-1347">t</script>, o sa ii pun inaltimea <script type="math/tex" id="MathJax-Element-1348">h</script> si o sa incarc fiecare nod cu un numar minim de chei. In radacina <script type="math/tex" id="MathJax-Element-1349">1</script> cheie, in celelalte noduri cate <script type="math/tex" id="MathJax-Element-1350">t-1</script> chei si <script type="math/tex" id="MathJax-Element-1351">\implies</script> numarul minim de chei pe tot arborele.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Nivelul</th>
+  <th>Numar de noduri</th>
+  <th>Numar de chei</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><script type="math/tex" id="MathJax-Element-1352">0</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1353">1</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1354">1</script></td>
+</tr>
+<tr>
+  <td><script type="math/tex" id="MathJax-Element-1355">1</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1356">2</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1357">2t-1</script></td>
+</tr>
+<tr>
+  <td><script type="math/tex" id="MathJax-Element-1358">2</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1359">2t</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1360">2t(t-1)</script></td>
+</tr>
+<tr>
+  <td><script type="math/tex" id="MathJax-Element-1361">3</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1362">2t^2</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1363">2t^2(t-1)</script></td>
+</tr>
+<tr>
+  <td>…</td>
+  <td>…</td>
+  <td>…</td>
+</tr>
+<tr>
+  <td><script type="math/tex" id="MathJax-Element-1364">h</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1365">2t^{h-1}</script></td>
+  <td><script type="math/tex" id="MathJax-Element-1366">2t^{h-1}(t-1)</script></td>
+</tr>
+</tbody></table>
+
+
+<p>Deci numarul minim de chei pentru tot arborele este: <br>
+<script type="math/tex; mode=display" id="MathJax-Element-1367">\\
+1 + 2t-1 + 2t^2(t-1) + \cdots + 2t^{h-1}(t-1)\\
+= 1 + 2(t-1)\left( 1 + t + t^2 + \cdots + t^{h-1} \right) \\
+= 1 + 2(t-1) \cdot \frac{t^h-1}{t-1} \\
+= 1 + 2 (t^h - 1) \\
+= 2t^h - 1 \\
+</script></p>
+
+<p>Dar eu vreau ca <script type="math/tex" id="MathJax-Element-1368">n</script> sa fie mai mare decat numarul minim de chei.</p>
+
+<p><script type="math/tex; mode=display" id="MathJax-Element-78">\\
+n \ge 2t^h-1 \\
+2t^h \le 1 + n \\
+t^h \le \frac{1+n}{2} \\
+h \le \log_t \frac{n+1}{2} \\
+</script></p>
+
+
+
+<h3 id="numarul-maxim-de-chei-dintr-un-b-arbore">Numarul maxim de chei dintr-un B-arbore</h3>
+
+<p>De data asta incarc la maxim nodurile. Iau un nod radacina, ii pun maximul posibil de chei, adica <script type="math/tex" id="MathJax-Element-79">2t-1</script>. O sa am <script type="math/tex" id="MathJax-Element-80">2t</script> copii, fiecare cu <script type="math/tex" id="MathJax-Element-81">2t-1</script> chei. Fiecare are la randul lui <script type="math/tex" id="MathJax-Element-82">2t</script> copii cu <script type="math/tex" id="MathJax-Element-83">2t-1</script> chei.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Nivelul</th>
+  <th>Numar de noduri</th>
+  <th>Numar de chei</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>0</td>
+  <td>1</td>
+  <td><script type="math/tex" id="MathJax-Element-84">2t-1</script></td>
+</tr>
+<tr>
+  <td>1</td>
+  <td><script type="math/tex" id="MathJax-Element-85">2t</script></td>
+  <td><script type="math/tex" id="MathJax-Element-86">2t(2t-1)</script></td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><script type="math/tex" id="MathJax-Element-87">(2t)^2</script></td>
+  <td><script type="math/tex" id="MathJax-Element-88">(2t)^2(2t-1)</script></td>
+</tr>
+<tr>
+  <td>…</td>
+  <td>…</td>
+  <td>…</td>
+</tr>
+<tr>
+  <td>h</td>
+  <td><script type="math/tex" id="MathJax-Element-89">(2t)^h</script></td>
+  <td><script type="math/tex" id="MathJax-Element-90">(2t)^h(2t-1)</script></td>
+</tr>
+</tbody></table>
+
+
+<p>Deci numarul maxim de chei pentru tot arborele este: <br>
+<script type="math/tex; mode=display" id="MathJax-Element-91">\\
+(2t-1)\left( 1 + 2t + (2t)^2 + \cdots + (2t)^h \right) \\
+= (2t-1) \frac{(2t)^{h+1}-1}{2t-1} \\
+= (2t)^{h+1}-1 \\
+</script></p>
+
+<p>Deci daca scriu inegalitate <script type="math/tex" id="MathJax-Element-92">n</script> <script type="math/tex" id="MathJax-Element-93">\le</script> numarul maxim de chei <script type="math/tex" id="MathJax-Element-94">\implies</script>: <br>
+<script type="math/tex; mode=display" id="MathJax-Element-95">\\
+n \le (2t)^{h+1}-1 \\
+\log_{2t}(n+1) \le h+1 \\
+h \ge \log_{2t}(n+1)-1 \\
+</script></p>
+
+
+
+<h3 id="exercitii">Exercitii</h3>
+
+<ol>
+<li>Construiti B-arborele: <br>
+<script type="math/tex" id="MathJax-Element-96">t = 3</script>, <script type="math/tex" id="MathJax-Element-97">2 \le n(x) \le 5</script> <br>
+Cheile care se insereaza: <code>F</code>, <code>S</code>, <code>Q</code>, <code>K</code>, <code>C</code>, <code>L</code>, <code>H</code>, <code>T</code>, <code>V</code>, <code>W</code>, <code>M</code>, <code>R</code>, <code>N</code>, <code>P</code>, <code>A</code>, <code>B</code>, <code>X</code>, <code>Y</code>, <code>D</code>, <code>Z</code>, <code>E</code>.</li>
+</ol>
+
+<p>Plecam cu un nod gol, asa ca punem chei. Cat timp n-am ajuns la 5 chei, pun acolo. Cheile se pun in ordine crescatoare. Cheile sunt separatori pentru cheile din copii. Ca la arbore binar de cautare.</p>
+
+<p>Radacina: Punem 5 litere. <code>FSQKC</code>, dar ordonate alfabetic. Deci punem in radacina <code>CFKQS</code>.</p>
+
+<p>Trebuie sa il bagam pe <code>L</code>, dar nu mai avem loc. Cries. Spargem nodul plin in jurul cheii mediane. Ia cheia mediana, o ridica un nivel mai sus si separa cei 2 copii.</p>
+
+<p>Facem split dupa nodul de mijloc. <code>K</code>. <code>K</code> se ridica ca radacina care o sa aiba un fiu stang si un fiu drept. <br>
+In nodul stang am <code>CF</code> si in nodul drept <code>QS</code>. Vrem sa il bagam pe <code>L</code>. <br>
+Il bagam in dreapta ca e mai mare ca <code>K</code>, <code>LQS</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-1.png" alt="Seminar 2, poza 1 - Inseram L" title=""></p>
+
+<p>Vrem sa il bagam pe <code>H</code>. E mai mic ca <code>K</code>, se duce in stanga. Stanga devine <code>CFH</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-2.png" alt="Seminar 2, poza 2 - Inseram H" title=""></p>
+
+<p>Vrem sa il bagam pe <code>T</code>. E mai mare ca <code>K</code>, merge in dreapta. Dreapta devine <code>LQST</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-3.png" alt="Seminar 2, poza 3 - Inseram T" title=""></p>
+
+<p>Inseram pe <code>V</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-4.png" alt="Seminar 2, poza 4 - Inseram V" title=""></p>
+
+<p>Vrem sa il bagam pe <code>W</code>. E mai mare ca <code>K</code>, merge in dreapta. Nodul din dreapta in schimb e plin. Spargem nodul din dreapta deci. <code>S</code> e cheia mediana si o ridicam ca radacina, langa <code>K</code>. Deci radacina e acum <code>KS</code>. Radacina are 3 copii. In stanga am nodul care era acolo, <code>CFH</code>. In mijloc am <code>LQ</code>. In dreapta am <code>TV</code> unde adaugam pe <code>W</code> asa ca devine <code>TVW</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-5.png" alt="Seminar 2, poza 5 - Inseram W" title=""></p>
+
+<p>Inseram <code>M</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-6.png" alt="Seminar 2, poza 6 - Inseram M" title=""></p>
+
+<p>Inseram <code>R</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-7.png" alt="Seminar 2, poza 7 - Inseram R" title=""></p>
+
+<p>Inseram <code>N</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-8.png" alt="Seminar 2, poza 8 - Inseram N" title=""></p>
+
+<p>Cand vrem sa il adaugam pe <code>P</code> care e intre <code>K</code> si <code>S</code> vrem sa il adaugam in mijloc. Dar nodul din mijloc e plin. Asa ca il spargem. <code>N</code> se duce in radacina care acum e <code>KNS</code>. In stanga am <code>CFH</code>, langa ea <code>LM</code>( primul spart), langa <code>QR</code> ( al doilea spart) si in dreapta <code>TVW</code>. Il punem pe <code>P</code> in al 3-lea, deci <code>PQR</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-9.png" alt="Seminar 2, poza 9 - Inseram P" title=""></p>
+
+<p>Inseram <code>A</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-10.png" alt="Seminar 2, poza 10 - Inseram A" title=""></p>
+
+<p>Inseram <code>B</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-11.png" alt="Seminar 2, poza 11 - Inseram B" title=""></p>
+
+<p>Inseram <code>X</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-12.png" alt="Seminar 2, poza 12 - Inseram X" title=""></p>
+
+<p>Inseram <code>Y</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-13.png" alt="Seminar 2, poza 13 - Inseram Y" title=""></p>
+
+<p>Vrem sa il bagam pe <code>D</code> care e mai mic ca <code>K</code>, deci vrem sa il punem in stanga. Dar in stanga avem care e plin. Trebuie spart si el. <code>C</code> urca in radacina unde avem acum <code>CKNS</code>. Ca noduri avem acum: <code>AB</code>( primul spart), <code>FH</code>( al doilea spart), <code>LM</code>, <code>PQR</code>, <code>TVWXY</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-14.png" alt="Seminar 2, poza 14 - Inseram D" title=""></p>
+
+<p>Vrem sa il bagam pe <code>Z</code> care e mai mare ca <code>S</code> deci trebuie sa fie maxim in dreapta unde avem <code>TVWXY</code>. Il spargem. <code>W</code> urca in radacina unde avem <code>CNKSW</code> acum. Avem 6 copii. <code>AB</code>, <code>DFH</code>, <code>LM</code>, <code>PQR</code>, <code>TV</code>( primul spart), <code>XYZ</code>( al doilea spart). <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-15.png" alt="Seminar 2, poza 15 - Inseram Z" title=""></p>
+
+<p>Vrem sa il bagam pe <code>E</code>. Dar radacina e plina. <strong>Nu trecem niciodata peste un nod plin ca nu stim daca mai jos are loc</strong>. Spargem. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-16.png" alt="Seminar 2, poza 16 - Inseram E" title=""></p>
+
+<p>Radacina este <code>N</code>. Ca copii avem <code>CK</code>, <code>SW</code>. <br>
+<code>CK</code> are si el copii. <code>AB</code>, <code>DEFH</code>, <code>LM</code>. <br>
+<code>SW</code> are si el copii. <code>PQR</code>, <code>TV</code>, <code>XYZ</code>.</p>
+
+<ol>
+<li>Stergere. <br>
+Din arborele rezultat mai sus sa il stergem pe <code>R</code>:</li>
+</ol>
+
+<p>Plec din radacina si ma duc la <code>R</code>. Adica in dreapta ca e mai mare. Mergem in <code>SW</code> si constatam ca e incarcat la minim( 2). Nu am voie sa trec peste el. Are frati care sunt incarcati tot la minim. Cobor o cheie din parinte si unesc fratii incarcati la minim si fac merge. Invers pentru spart. <br>
+Avem ca radacina <code>CKNSW</code>. <br>
+Intre <code>K</code> si <code>N</code> avem un nod. <code>LM</code>. <br>
+Intre <code>N</code> si <code>S</code> avem un nod. <code>PQR</code>. <br>
+Intre <code>C</code> si <code>K</code> avem un nod. <code>DEFH</code>. <br>
+Mai mic ca <code>C</code> avem nod. <code>AB</code>. <br>
+Intre <code>SW</code> avem <code>TV</code>. <br>
+Mai mare ca <code>W</code> avem nod. <code>XYZ</code>.</p>
+
+<p>Deci copii pentru radacina <code>AB</code>, <code>DEFH</code>, <code>LM</code>, <code>PQ*R*</code>, <code>TV</code>, <code>XYZ</code>. Stergem <code>R</code> si avem ca copii <code>AB</code>, <code>DEFH</code>, <code>LM</code>, <code>PQ</code>, <code>TV</code>, <code>XYZ</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-17.png" alt="Seminar 2, poza 17 - Stergem R" title=""></p>
+
+<p>Din arborele asta vrem sa il stergem pe <code>W</code>. <br>
+Cheia aia separa 2 fii. Trebuie sa gasesc in fii pe cine urca ca separator. Are fii destul de bogati, pe <code>XYZ</code>. O sa urce <code>X</code>.</p>
+
+<p>Radacina devine deci <code>CKNSX</code>. <br>
+Ca copii avem <code>AB</code>, <code>DEFH</code>, <code>LM</code>, <code>PQ</code>, <code>TV</code>, <code>YZ</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-18.png" alt="Seminar 2, poza 18 - Stergem W" title=""></p>
+
+<p>Vrem sa il stergem pe <code>B</code>.</p>
+
+<p>Are numar minim de chei nodul lui <code>B</code>( adica <code>AB</code>). Ne uitam la frati. Din fratele lui vrem sa urce din frate cineva la <code>C</code>, <code>C</code> cobora in <code>AB</code>. <code>DEFH</code>( fratele) poate sa ne dea separator. Ne da pe <code>D</code>.</p>
+
+<p>Radacina devine <code>DKNSX</code>. <br>
+Copii: <code>AC</code>, <code>EFH</code>, <code>LM</code>, <code>PQ</code>, <code>TV</code>, <code>YZ</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-19.png" alt="Seminar 2, poza 19 - Stergem B" title=""></p>
+
+<p>Vrem sa il stergem pe <code>S</code>. Nasol momentu’. <br>
+E intr-un nod interior deci trebuie sa ridic din fii separator, dar amandoi fii sunt saraci( au 2 chestii). Deci cobor pe <code>S</code> si unesc cei 2 fii si din nodul nou format sterg.</p>
+
+<p>Radacina devine <code>DKNX</code>. <br>
+Copii: <code>AC</code>, <code>EFH</code>, <code>LM</code>, <code>PQSTV</code>, <code>YZ</code>. <br>
+Stergem <code>S</code>, deci avem copii <code>AC</code>, <code>EFH</code>, <code>LM</code>, <code>PQTV</code>, <code>YZ</code>. <br>
+<img src="https://www.vladionescu.me/PAE-Seminar-2-20.png" alt="Seminar 2, poza 19 - Stergem S" title=""></p>
+
+<ol>
+<li>Sa constuim toti B-arborii de grad <script type="math/tex" id="MathJax-Element-98">t=2</script> care eu cheile <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>. Trebuie sa luam toate permutarile.</li>
+</ol>
+
+<p>Deci la gradul <script type="math/tex" id="MathJax-Element-99">t=2</script> avem <script type="math/tex" id="MathJax-Element-100"> 1 \ge n(x) \le 3</script>( e formula pentru asta - a se vedea mai sus si teoria). <br>
+Deci avem voie sa avem 1, 2 sau 3 chei.</p>
+
+<p>E la fel ca la alfabet, dar de data asta avem numere. Yey, nu trebuie sa stim alfabetul.</p>
+
+<p>3.1. Inseram <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>( prima permutare)</p>
+
+<p>Radacina <code>123</code>.</p>
+
+<p>Vrem sa il bagam pe <code>4</code>. Vad radacina plina asa ca ii facem split. Se ridica <code>2</code> ca radacina.</p>
+
+<p>Deci avem ca radacina <code>2</code>. <br>
+Copii: <code>1</code>, <code>345</code>.</p>
+
+<p>3.2. Vrem sa trecem la urmatoarea permutare. Ne gandim ca avem <script type="math/tex" id="MathJax-Element-101">5!</script> permutari si ca e nasol. Ca <script type="math/tex" id="MathJax-Element-102">5! = 120</script>. Dar in radacina o sa am intotdeauna 3 chei in ordine crescatoare. Cand inseram al patrulea element spargem radacina. Cheia din mijloc se ridica sus. Cheie din mijloc putem avea deci 2, 3 sau 4.</p>
+
+<p>Deci ies 3 arbori repede:</p>
+
+<p>Radacina: <code>2</code>. Copii: <code>1</code>, <code>345</code>. <br>
+Radacina: <code>3</code>. Copii: <code>12</code>, <code>45</code>. <br>
+Radacina: <code>4</code>. Copii: <code>123</code>, <code>5</code>.</p>
+
+<p>Alte optiuni nu avem, deci gata. Yey, nu a trebuit sa ne plimbam prin 120 permutari.</p>
+
+
+
+<h1 id="curs-3">Curs 3</h1>
+
+<blockquote>
+  <p><strong>Lipsa, se accepta donatii.</strong></p>
+</blockquote>
+
+
+
+<h1 id="seminar-3">Seminar 3</h1>
+
+
+
+<h2 id="arbori-binomiali">Arbori binomiali</h2>
+
+<ol>
+<li>Demonstrati ca <script type="math/tex" id="MathJax-Element-771">\forall</script> <script type="math/tex" id="MathJax-Element-772">k</script>, <script type="math/tex" id="MathJax-Element-773">B_k</script> sunt adeavare urmatoarele afirmatii:</li>
+</ol>
+
+<p>a. <script type="math/tex" id="MathJax-Element-774">B_k</script> are <script type="math/tex" id="MathJax-Element-775">2^k</script> noduri, adica <script type="math/tex" id="MathJax-Element-776">|B_h| = 2^k</script> <br>
+b. inaltimea lui <script type="math/tex" id="MathJax-Element-777">B_k</script> e <script type="math/tex" id="MathJax-Element-778">k</script>, adica <script type="math/tex" id="MathJax-Element-779">h(B_k) = k</script> <br>
+c. la nivelul <script type="math/tex" id="MathJax-Element-780">i</script> in <script type="math/tex" id="MathJax-Element-781">B_k</script> avem <script type="math/tex" id="MathJax-Element-782">C_k^i</script> noduri <br>
+d. gradul radadcinii lui <script type="math/tex" id="MathJax-Element-783">B_k</script> este <script type="math/tex" id="MathJax-Element-784">k</script> si este cel mai mare grad dintre toate nodurile din <script type="math/tex" id="MathJax-Element-785">B_k</script> si daca copii radacinii sunt numerotati de la dreapta la stanga, atunci avem ca si copii ai radacinii <script type="math/tex" id="MathJax-Element-786">B_0, B_1, B_2, \ldots B_{k-1}</script>, adica <br>
+<script type="math/tex" id="MathJax-Element-787">\text{deg}(\text{root}(B_k)) = k</script></p>
+
+<p>Se face inductie si se demonstreaza toate proprietatile pentru <script type="math/tex" id="MathJax-Element-788">B_0</script> si dupa se face ipoteza de inductie.</p>
+
+<p>Demonstratii:</p>
+
+<p>a.</p>
+
+<p>Pentru <script type="math/tex" id="MathJax-Element-789">B_0</script> avem ca: <br>
+a. <script type="math/tex" id="MathJax-Element-790">B_0</script>: <script type="math/tex" id="MathJax-Element-791">|B_0| = 1 = 2^0</script> <br>
+b. <script type="math/tex" id="MathJax-Element-792">h(B_0) = 0</script> <br>
+c. la nivelul <script type="math/tex" id="MathJax-Element-793">i</script> in <script type="math/tex" id="MathJax-Element-794">B_0</script> avem <script type="math/tex" id="MathJax-Element-795">C_0^0 = 1</script> care e adevarat <br>
+d. <script type="math/tex" id="MathJax-Element-796">\text{deg}(\text{root}(B_k)) = 0</script> ca nu are nici un fiu</p>
+
+<p>Inductie: <script type="math/tex" id="MathJax-Element-797">B_{k-1}</script> verifica toate cellalte proprietati.</p>
+
+<p>Il luam pe <script type="math/tex" id="MathJax-Element-798">B_k</script> si veirificam.</p>
+
+<p>a. <script type="math/tex" id="MathJax-Element-799">|B_k| = |B_{k-1}| + |B_{k-1}| = 2^{k-1} + 2^{k-1} = 2^k</script> <br>
+b. <script type="math/tex" id="MathJax-Element-800">h(B_k) = h(B_{k-1}) + 1 = k - 1 + 1 = k</script> <br>
+c. <script type="math/tex; mode=display" id="MathJax-Element-801">D(k,i) = \text{numarul de noduri in } B_k \text{ la nivelul } i \\
+= D(k-1, i-1) + D(k-1, i) \\
+= C_{k-1}^{i-1} + C_{k-1}^i \\
+= \frac{(k-1)!}{(i-1)! (k-1)!} + \frac{(k-1!)}{i! (k-i-1)!} \\
+= C_k^i</script> <br>
+d. <script type="math/tex" id="MathJax-Element-802">\text{deg}(\text{root}(B_k)) = \text{deg}(\text{root}(B_{k-1})) + 1 = k - 1 + 1 = k</script></p>
+
+<p>Partea a 2-a se rezolva cu desen care iese din regulile de constructie.</p>
+
+<h2 id="heap-binomial">Heap binomial</h2>
+
+<p>Colectii de arbori binomiali: <br>
+a. fiecare arbore este min-heap <br>
+b. pentru fiecare grad am in heap un singur arbore de acel grad lista de radacini, credcator grade.</p>
+
+<ol>
+<li>Reuniti <script type="math/tex" id="MathJax-Element-1369">H_1</script> cu <script type="math/tex" id="MathJax-Element-1370">H_2</script>.</li>
+</ol>
+
+<p>Ne apucam sa parcurgem si sa legam.</p>
+
+<p>Trebuie sa legam 12 cu 18 si sa fie min-heap. Ca sa fie min, 12 e radacina si 18 e fiu, deci am ceva de grad 1. Asa ca am 2 abori de grad 1: 12, 7 si 3. Il las pe loc pe primul si ii leg pe urmatorii 2.</p>
+
+<p><strong>text lipsa</strong></p>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-3-1.JPG" alt="Seminar 3, poza 1 - H1 U H2 = H3" title=""></p>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-3-2.JPG" alt="Seminar 3, poza 2 - H1 U H2 = H3, continuare I guess" title=""></p>
+
+<ol>
+<li>Extragere de minim. ( Evident, minimul se afla printre lista nodurilor radacina. ) <br>
+Cum il extragem e 1? Il taiem pe 1 si dupa reunim ce a ramas. <strong>text lipsa</strong> <br>
+Parcurgem lista de radacini si unim intre ei 2 cate 2 cei care au acelasi grad. Facem asta pana ramanem pentru fiecare grad cu un arbore. Gata extragerea de minim.</li>
+</ol>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-3-3.JPG" alt="Seminar 3, poza 3 - Extragere de minim" title=""></p>
+
+<ol>
+<li>Descresterea unei chei. Vreau sa il descres pe 26 de la 26 la 5. Adica vreau sa pun 5 in loc de 26. Daca descresc o cheie se strica proprietatea de min-heap, deci trebuie sa verific. 16 nu e mai mic ca 5, deci il scad pe 16 si il urc pe 5. Dupa compar pe 5 cu 10. 10 nu e mai mic ca 5, deci le interschimb.</li>
+</ol>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-3-4.JPG" alt="Seminar 3, poza 4 - Descrestere" title=""></p>
+
+<ol>
+<li>Stergerea unui nod.</li>
+</ol>
+
+<p>Se sterge in 2 pasi: iau nodul de sters, si il descresc cheia pana la -\infinity, urca in radacina si intregului ansamblu ii aplic o extragere de minim.</p>
+
+<p>Vreau sa il sterg pe <script type="math/tex" id="MathJax-Element-1371">23</script>. Il fac pe <script type="math/tex" id="MathJax-Element-1372">23</script> <script type="math/tex" id="MathJax-Element-1373">-\infty</script>. <script type="math/tex" id="MathJax-Element-1374">-\infty</script> e mai mic ca <script type="math/tex" id="MathJax-Element-1375">10</script>, deci il mut. <script type="math/tex" id="MathJax-Element-1376">-\infty</script> e mai mic ca <script type="math/tex" id="MathJax-Element-1377">5</script>, deci il mut. <script type="math/tex" id="MathJax-Element-1378">-\infty</script> ajunge radacina. <script type="math/tex" id="MathJax-Element-1379">-\infty</script> e radacina, il extragem. Gata stergerea nodului. Stim sa il stergem pe <script type="math/tex" id="MathJax-Element-1380">-\infty</script>.</p>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-3-5.JPG" alt="Seminar 3, poza 5 - Stergere de nod" title=""></p>
+
+<h1 id="curs-4">Curs 4</h1>
+
+<blockquote>
+  <p><strong>Lipsa, se accepta donatii.</strong></p>
+</blockquote>
+
+
+
+<h1 id="seminar-4">Seminar 4</h1>
+
+
+
+<h2 id="heapuri-fibbonaci">Heapuri fibbonaci</h2>
+
+<ol>
+<li>Extrageti minimul din arborele de mai jos.</li>
+</ol>
+
+<p>Dispare cheia, toti fii se leaga in lista de radacini si de la urmatorul nod fac parcurgere cu consolidare.</p>
+
+<p><em>* Explicatie pe lung lipsa. *</em></p>
+
+<ol>
+<li><p>Din heap-ul rezultat de la exercitiul precedent( cu nodurile 26, 18 si 19 marcate) sa se descreasca cheia nodului 46 la 15( vreau sa pun 15 in loc de 46). 15 nu e in relatie buna cu 24( nu e mai mare 15 ca 24) deci il marcheaza pe 24 si se duce in lista de radacini.</p></li>
+<li><p>Acum mai facem o descrestere de cheie. Vrem sa il descrestem pe 35 la 5. Il taiem pe 35. Tatal e deja marcat. Deci il tai de la tata si il pun in lista de radacini si il pun si pe tata in lista de radacini ca e marcat. E si tatal tatalui marcat( 24), deci il punem si pe el( 24) in lista de radacini. Noul minim e 5.</p></li>
+</ol>
+
+<blockquote>
+  <p>See cascading cut in Cormen.</p>
+</blockquote>
+
+<ol>
+<li>Vrem sa stergem nodul. Descrestem cheia la <script type="math/tex" id="MathJax-Element-1210">-\infty</script> si facem extragere de minim. Trebuie facuta si consolidare.</li>
+</ol>
+
+<h2 id="arborbi-binomiali">Arborbi binomiali</h2>
+
+<p><script type="math/tex" id="MathJax-Element-148">\forall k, B_k </script>cu nodurile etichetate in postordine, in binar. Pentru fiecare nod <script type="math/tex" id="MathJax-Element-149">x \in B_k</script>: <br>
+a. Numarul de 0 din eticheta imi da nivelul nodului <br>
+b. Gradul nodului este dat de numar de 1 din dreapta celui mai din dreapta 0 al etichetei.</p>
+
+
+
+<h1 id="curs-5">Curs 5</h1>
+
+<blockquote>
+  <p><strong>Lipsa, se accepta donatii.</strong></p>
+</blockquote>
+
+
+
+<h1 id="seminar-5">Seminar 5</h1>
+
+
+
+<h2 id="retele-de-sortare"><a href="https://en.wikipedia.org/wiki/Sorting_network">Retele de sortare</a></h2>
+
+<ol>
+<li>Retelele din poza sunt retele de sortare sau nu?</li>
+</ol>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-5-1.JPG" alt="Seminar 5 poza 1 - Retele" title=""></p>
+
+<p>Demonstratie: <br>
+Dupa primii doi pasi pe primul fir o sa am minus. Simetric, pe firul 4 o sa am maximul dupa 2 pasi. <br>
+La pasul 3 compar ce a mai ramas la mijloc si le asez in ordinea care trebuie.</p>
+
+<p>Alte retele aici. Gave up.</p>
+
+<p>Brad = bubble sort. Reteaua e paralela. Dar bubble sort nu e. Deci reteaua imi spune ca il pot paraleliza pe bubble sort.</p>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-5-2.JPG" alt="Seminar 5, poza 2 - Bubble sort" title=""></p>
+
+<h1 id="curs-6">Curs 6</h1>
+
+<blockquote>
+  <p><strong>Lipsa, se accepta donatii.</strong></p>
+</blockquote>
+
+
+
+<h1 id="seminar-6">Seminar 6</h1>
+
+<blockquote>
+  <p><strong>Lipsa, se accepta donatii.</strong></p>
+</blockquote>
+
+
+
+<h1 id="curs-7">Curs 7</h1>
+
+<blockquote>
+  <p><strong>Lipsa, se accepta donatii.</strong></p>
+</blockquote>
+
+
+
+<h1 id="seminar-7">Seminar 7</h1>
+
+
+
+<h2 id="algoritmi-paraleli-pe-liste">Algoritmi paraleli pe liste</h2>
+
+<p>Presupunem ca fiecare nod al listei asignat cate un procesor.</p>
+
+
+
+<h3 id="list-ranking">List ranking</h3>
+
+<p>Vreau sa gasesc pentru fieacre nod al listei cate noduri mai sunt pana la sfarsit. Rangul ultimului nod va fi 0, in mod evident.</p>
+
+<p>Initializam cu 0 ultimul nod si cu 1 toate celelalte noduri.</p>
+
+<p>Programul paralel care va fi <code>exclusiveReadexclusiveWrite(EREW)</code>.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs lua"><span class="hljs-keyword">for</span> fiecare procesor i <span class="hljs-keyword">in</span> paralel
+    <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">next</span>[i] == <span class="hljs-keyword">nil</span>
+        <span class="hljs-keyword">then</span> d[i] = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">else</span> d[i] = <span class="hljs-number">1</span>
+// gata initalizarea
+
+<span class="hljs-keyword">while</span> exista i astfel incat <span class="hljs-built_in">next</span>[i] != <span class="hljs-keyword">nil</span>
+    <span class="hljs-keyword">do</span> <span class="hljs-keyword">for</span> fiecare i <span class="hljs-keyword">in</span> paralel
+        <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">next</span>[i] != <span class="hljs-keyword">nil</span>
+            <span class="hljs-keyword">then</span> d[i] = d[i] + d[<span class="hljs-built_in">next</span>[i]]
+                 <span class="hljs-built_in">next</span>[i] = <span class="hljs-built_in">next</span>[<span class="hljs-built_in">next</span>[i]]</code></pre>
+
+<p>Timpul de rulare e <script type="math/tex" id="MathJax-Element-1381">\log(n)</script> datorita saririi pointerilor.</p>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-7-1.JPG" alt="Seminar 7, poza 1 - List ranking" title=""></p>
+
+<h3 id="calculul-unor-prefixe-paralele">Calculul unor prefixe paralele</h3>
+
+<p>Avem o operatie binara asociativa. Presupunem ca e adunare. Ni se dau numere <script type="math/tex" id="MathJax-Element-151">x_1, x_2, \dotsc, x_n</script>. Vreau sa calculex <script type="math/tex" id="MathJax-Element-152">y_1 = x_1, y_2 = x_1 + x_2, \dotsc, y_k = x_1 + x_k</script>. Vreau sa calculez toate aceste sume partiale. Folosesc notatia <script type="math/tex" id="MathJax-Element-153">x_i + \dotsc + x_j = [i,j]</script> si <script type="math/tex" id="MathJax-Element-154">x_i = [i,i]</script>.</p>
+
+<p>O sa am urmatoarea aritmetica <script type="math/tex" id="MathJax-Element-155">[i,j] + [j+1, k] = [i, k]</script>.</p>
+
+<p><code>ListPrefix(EREW)</code></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs lua"><span class="hljs-keyword">for</span> fiecare i <span class="hljs-keyword">in</span> paralel
+    <span class="hljs-keyword">do</span> y[i] = x[i]
+
+// gata initializarea
+
+<span class="hljs-keyword">while</span> exista i astfel incat <span class="hljs-built_in">next</span>[i] != <span class="hljs-keyword">nil</span>
+    <span class="hljs-keyword">do</span> <span class="hljs-keyword">for</span> fircare i <span class="hljs-keyword">in</span> paralel
+        <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">next</span>[i] != <span class="hljs-keyword">nil</span>
+            <span class="hljs-keyword">then</span> y[<span class="hljs-built_in">next</span>[i]] = y[i] + y[<span class="hljs-built_in">next</span>[i]]
+                 <span class="hljs-built_in">next</span>[i] = <span class="hljs-built_in">next</span>[<span class="hljs-built_in">next</span>[i]]</code></pre>
+
+<p>Din nou avem pointer-jumping. E foare asemanator cu programul precedent.</p>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-7-2.JPG" alt="Seminar 7, poza 2 - ListPrefix" title=""></p>
+
+<hr>
+
+<p>O sa folosim algoritmi pe liste ca sa rezolvam probleme pe arbori, spre exemplu arbori binari. Vreau intrun arbore binar sa aflu inaltimea fiecarui nod. 0 radacina, 1 la nodurile de la nivelul 1 si tot asa.</p>
+
+<p>Vreau sa pun pe arborele meu o structura de lista simplu inlantuita. Pe arborele meu vreau sa pun o structura de tur oriler. E un drum care parcurge fiecare arc o singura data. Deci prin fiecare arc trec 1 singura data, dar printrun varf pot sa trec d emai multe ori. O sa vreau pe arborele meu sa pun o structura deasta ca sa pun o structura care e o lista simplu inlantuita. Pleaca din radacina si parcurge tot arborele o singura data si iese tot prin radacina.</p>
+
+<p>Asignez fiecarui nod cate 3 procesoare: A, B si C. Si leg printro sageata procesorul A al unui nod de procesarul A al fiului sau stang; daca nu am fiu stang A merge in B-ul din acelasi nod. Din B ma duc in A-ul filui drept, daca exista. Am ametit si pierdut firul, a se vedea poza.</p>
+
+<p>Pe lista simplu inlantuita rezultata pot sa fac programe de liste. De exemplu sa calculez List Prefix de mai sus. Trebuie sa ma gandesc sa fac in mod inteligent initializarea procesoarelor astfel incat calculul <code>ListPrfeix</code> sa imi dea rezultatul dorit.</p>
+
+<p>In toate A pun 1, in B pun 0 si in C pun -1. Cu aceste 3 valori cu <code>ListPrefix</code> aflam in procesorul C nivelul fiecarui nod, in timp <script type="math/tex" id="MathJax-Element-1382">\log(3n)</script>.</p>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-7-3.JPG" alt="Seminar 7, poza 3 - Arborele inainte sa fie completat" title=""></p>
+
+<p><img src="https://www.vladionescu.me/PAE-Seminar-7-4.JPG" alt="Seminar 7, poza 4 - Arborele completat" title=""></p>
+
+<blockquote>
+  <p><strong>NU SE GARANETAZA CORECTITUDINEA SAU COMPLETITUDINEA INFORMATIILOR DE AICI</strong></p>
+
+  <p>Ai descoperit o greseala? Ai facut o tema si vrei sa o dai si colegilor? Stii cum sa faci ceva sa arate mai bine? Contribuie <a href="https://github.com/Vlaaaaaaad/FMI-public-materials/tree/master/">direct pe GitHub</a> sau trimite un mail la <a href="mailto:stiu-chestii@vladionescu.me">stiu-chestii@vladionescu.me</a></p>
+</blockquote>
+
+<hr>
+
+<blockquote>
+  <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote></div>
+
+
+</body>
+</html>
